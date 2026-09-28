@@ -141,3 +141,32 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ecg-pulse,.portrait-ring{animation:none}.reveal{opacity:1;transform:none;transition:none}.cursor-glow{display:none}}
 @media(max-width:1000px){.credential-grid{grid-template-columns:repeat(2,1fr)}.desktop-nav{display:none}.menu-toggle{display:grid}.hero{grid-template-columns:1fr;min-height:auto;gap:55px;padding-top:145px}.hero-profile{justify-self:start;display:grid;grid-template-columns:220px 1fr;align-items:center;gap:28px;width:100%}.portrait-wrap{width:220px;margin:0}.metric-strip{margin-top:15px;top:70px}.section-heading{grid-template-columns:1fr;gap:25px}.section-heading>p{max-width:700px}.research-card,.research-card.featured{grid-column:span 6}.signal-grid,.about-grid{grid-template-columns:1fr;gap:55px}.clinical-item{grid-template-columns:150px 1fr}.clinical-meta{grid-column:2}.outputs-grid{grid-template-columns:repeat(2,1fr)}.award-item{grid-template-columns:70px 1fr 1fr}.award-action{grid-column:3}.about-panel{max-width:700px}.footer-meta{text-align:left}}
 @media(max-width:720px){.credential-grid{grid-template-columns:1fr}.credential-card{min-height:0}.site-header{top:10px;width:calc(100% - 20px);height:58px}.brand-name{display:none}.mobile-menu{top:78px;left:10px;right:10px}.section{width:calc(100% - 28px);padding:88px 0}.hero{padding-top:120px}.hero-profile{grid-template-columns:1fr}.portrait-wrap{width:210px;margin:0 auto}.profile-card{width:100%}.metric-strip{grid-template-columns:repeat(2,1fr);gap:22px 16px;margin-top:15px;top:55px}.metric strong{font-size:2.8rem}.metric span{font-size:.95rem}.research-card,.research-card.featured{grid-column:1/-1;min-height:330px}.signal-section{padding:90px 14px}.signal-panel{padding:22px}.clinical-route{overflow-x:auto;grid-template-columns:repeat(7,90px);padding-bottom:16px}.route-line{left:40px;right:auto;width:620px}.clinical-item{grid-template-columns:1fr;gap:10px}.clinical-meta{grid-column:1;margin-top:8px}.outputs-grid,.teaching-grid{grid-template-columns:1fr}.award-item{grid-template-columns:1fr;gap:8px;padding:22px 0}.award-action{grid-column:1;justify-self:start}.section-heading h2,.signal-copy h2,.about-copy h2,.contact-card h2{font-size:clamp(2.45rem,13vw,4rem)}.site-footer{width:calc(100% - 28px);flex-direction:column}.profile-card-row{flex-direction:column}.contact-card{border-radius:26px}.project-modal{padding:22px}.modal-metrics{grid-template-columns:1fr 1fr}}
+
+/* Portfolio photography */
+.research-card-image{height:180px;margin:-24px -24px 20px;overflow:hidden;border-bottom:1px solid var(--line)}
+.research-card-image img{width:100%;height:100%;object-fit:cover;display:block}
+.research-card.featured .research-card-image{height:235px}
+.output-photo{height:170px;margin:-22px -22px 18px;overflow:hidden;border-bottom:1px solid var(--line);border-radius:22px 22px 0 0}
+.output-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.lubdub-section{padding-top:130px}
+.lubdub-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:22px;align-items:stretch}
+.lubdub-photo{min-height:520px;border-radius:28px;overflow:hidden;border:1px solid var(--line)}
+.lubdub-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.lubdub-copy{border-radius:28px;padding:34px;display:flex;flex-direction:column;justify-content:center}
+.lubdub-logo{width:min(230px,70%);height:auto;object-fit:contain;margin-bottom:24px;background:#fff;border-radius:18px;padding:10px}
+.lubdub-copy h3{font-size:clamp(2rem,4vw,3.4rem);line-height:1;letter-spacing:-.05em;margin:0 0 8px}
+.lubdub-copy>span{font-size:.76rem;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.lubdub-copy p{font-size:1rem;color:var(--muted);line-height:1.6;margin:20px 0 12px}
+.lubdub-copy ul{padding-left:18px;margin:0;color:var(--muted);font-size:.88rem;line-height:1.7}
+.about-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:18px;margin-bottom:22px;border:1px solid var(--line)}
+@media(max-width:900px){
+  .lubdub-grid{grid-template-columns:1fr}
+  .lubdub-photo{min-height:340px}
+}
+@media(max-width:720px){
+  .research-card-image{height:200px}
+  .research-card.featured .research-card-image{height:220px}
+  .output-photo{height:210px}
+  .lubdub-photo{min-height:280px}
+  .lubdub-copy{padding:24px}
+}
