@@ -43,6 +43,7 @@
       <a href="#awards">Awards</a>
       <a href="#credentials">Evidence</a>
       <a href="#teaching">Teaching</a>
+      <a href="#lubdub">Lub Dub Club</a>
       <a href="#about">About</a>
     </nav>
     <div class="header-actions">
@@ -57,7 +58,7 @@
   </header>
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#awards">Awards</a><a href="#credentials">Evidence</a><a href="#teaching">Teaching</a><a href="#about">About</a>
+    <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#awards">Awards</a><a href="#credentials">Evidence</a><a href="#teaching">Teaching</a><a href="#lubdub">Lub Dub Club</a><a href="#about">About</a>
   </nav>
 
   <main>
@@ -82,7 +83,7 @@
       <div class="hero-profile reveal delay-1">
         <div class="portrait-wrap">
           <div class="portrait-ring"></div>
-          <img src="assets/headshot.webp" alt="Portrait of Mahmoud Einieh" class="portrait" width="640" height="640" fetchpriority="high" />
+          <img id="heroPortrait" src="assets/headshot.webp" alt="Portrait of Mahmoud Einieh" class="portrait" width="640" height="640" fetchpriority="high" />
         </div>
         <div class="profile-card glass">
           <div>
@@ -98,7 +99,7 @@
     <section class="section section-intro" id="research">
       <div class="section-heading reveal">
         <div><span class="kicker">01 · Research portfolio</span><h2>Cardiovascular questions first.<br><span>Broader translational work around them.</span></h2></div>
-        <p>From coronary physiology and interventional imaging to cardio-nephrology, nuclear medicine, and molecular research — with evidence synthesis as the methodological backbone.</p>
+        <p>Selected published, completed, and active research across cardiovascular medicine, imaging, nephrology, and related fields.</p>
       </div>
       <div class="filter-row reveal" id="researchFilters" aria-label="Research filters"></div>
       <div class="research-grid" id="researchGrid"></div>
@@ -108,7 +109,7 @@
     <section class="section" id="clinical">
       <div class="section-heading reveal">
         <div><span class="kicker">02 · Clinical experience</span><h2>International training across<br><span>medicine, cardiology and acute care.</span></h2></div>
-        <p>Clinical placements across Europe, the Middle East, and North Africa. Public supporting documents are shown only when appropriate; private recommendation letters remain available on request.</p>
+        <p>Clinical placements across Europe, the Middle East, and North Africa.</p>
       </div>
       <div class="clinical-shell">
         <div class="clinical-route reveal" aria-label="Countries represented in clinical experience">
@@ -129,7 +130,7 @@
     <section class="section outputs-section" id="publications">
       <div class="section-heading reveal">
         <div><span class="kicker">03 · Research outputs</span><h2>Published, presented,<br><span>submitted and ongoing.</span></h2></div>
-        <p>A publication-focused view of completed work, public research records, conference dissemination, and selected verification sources.</p>
+        <p>Published papers, conference work, and selected research outputs.</p>
       </div>
       <div class="outputs-grid reveal" id="outputsGrid"></div>
       <div class="source-ribbon reveal" id="sourceRibbon"></div>
@@ -138,7 +139,7 @@
     <section class="section" id="awards">
       <div class="section-heading reveal">
         <div><span class="kicker">04 · Recognition</span><h2>Competition, conference<br><span>and scientific recognition.</span></h2></div>
-        <p>Selected awards and presentations, with official sources or privacy-redacted certificates where appropriate.</p>
+        <p>Selected awards and conference presentations.</p>
       </div>
       <div class="award-list" id="awardList"></div>
     </section>
@@ -146,7 +147,7 @@
     <section class="section credentials-section" id="credentials">
       <div class="section-heading reveal">
         <div><span class="kicker">05 · Supporting evidence</span><h2>Credentials where they add value.<br><span>Privacy where it matters.</span></h2></div>
-        <p>Selected public-safe certificates support clinical placements, research awards, and formal training. Recommendation letters are intentionally not published because they contain third-party signatures and contact details; they can be provided directly when appropriate.</p>
+        <p>Selected certificates supporting clinical placements, research awards, and training.</p>
       </div>
       <div class="credential-grid" id="credentialGrid"></div>
     </section>
@@ -154,7 +155,7 @@
     <section class="section" id="teaching">
       <div class="section-heading reveal">
         <div><span class="kicker">06 · Teaching & leadership</span><h2>Building systems for<br><span>learning and collaboration.</span></h2></div>
-        <p>Teaching experience spans research methodology, pathology practicals, simulation-based cardiology education, and international student leadership.</p>
+        <p>Teaching and leadership in research methods, pathology, cardiology simulation, and student activities.</p>
       </div>
       <div class="teaching-grid" id="teachingGrid"></div>
     </section>
@@ -162,13 +163,13 @@
     <section class="section about-section" id="about">
       <div class="about-grid">
         <div class="about-copy reveal">
-          <span class="kicker">07 · About</span>
+          <span class="kicker">08 · About</span>
           <h2>Clinically grounded.<br><span>Research driven.</span></h2>
-          <p>Graduated from the six-year English Medicine programme at the University of Debrecen in 2026. My academic path has been shaped by international clinical exposure, original imaging research, systematic review methodology, and a long-term interest in cardiovascular medicine.</p>
-          <p>My goal is to develop into an independent cardiovascular investigator working at the interface of clinical cardiology, translational science, advanced phenotyping, and precision medicine.</p>
+          <p>Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.</p>
+          <p>Interested in cardiovascular medicine, clinical research, imaging, and translational science.</p>
           <div class="language-list" id="languageList"></div>
         </div>
-        <aside class="about-panel glass reveal delay-1">
+        <aside class="about-panel glass reveal delay-1"><img id="graduationPhoto" class="about-photo" alt="Graduation portrait of Mahmoud Einieh" loading="lazy">
           <span class="mini-label">Selected credentials</span>
           <a href="assets/docs/Mahmoud_Einieh_Public_CV.pdf" target="_blank" rel="noopener"><span>Public CV</span><strong>PDF ↗</strong></a>
           <a href="assets/docs/Meta_Analysis_Academy_Completion_Redacted.pdf" target="_blank" rel="noopener"><span>Meta-Analysis Academy</span><strong>Credential ↗</strong></a>
@@ -206,7 +207,7 @@
     <div class="search-results" id="searchResults"></div>
   </dialog>
 
-  <script src="data.js"></script>
+  <script src="image_data.js"></script>\n  <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
