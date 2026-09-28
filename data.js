@@ -13,7 +13,7 @@ const SITE_DATA = {
   },
 
   metrics: [
-    { value: 11, suffix: "+", label: "Research projects" },
+    { value: 8, suffix: "+", label: "Research projects" },
     { value: 3, suffix: "", label: "Peer-reviewed publications" },
     { value: 8, suffix: "+", label: "International clinical placements" },
     { value: 6, suffix: "", label: "Selected awards & congress highlights" }
@@ -44,61 +44,6 @@ const SITE_DATA = {
         { label: "DOI", url: "https://doi.org/10.1177/11297298261441029" },
         { label: "ESC 365", url: "https://esc365.escardio.org/presentation/309528?resource=abstract" }
       ]
-    },
-    {
-      id: "anoca",
-      featured: true,
-      title: "Endotyping ANOCA / INOCA beyond angiography",
-      domain: "Coronary physiology",
-      type: "Systematic review & meta-analysis",
-      status: "Submission-stage · Lead author",
-      year: "2026",
-      summary: "Synthesis of diagnostic yield, mechanistic endotypes, treatment response, and prognosis in patients with angina and no obstructive coronary disease.",
-      metrics: [
-        { value: "15", label: "studies" },
-        { value: "2,615", label: "patients" },
-        { value: "82%", label: "abnormal CFT" },
-        { value: "~32%", label: "vasospastic angina" }
-      ],
-      role: "Protocol development · evidence synthesis · quantitative analysis · manuscript leadership",
-      detail: "The project addresses the gap between a non-obstructive angiogram and functional coronary disease. Across the evidence base, most patients had an identifiable functional abnormality, supporting mechanism-based diagnostic pathways and treatment.",
-      tags: ["Cardiology", "Coronary physiology", "ANOCA", "INOCA", "Meta-analysis"],
-      links: []
-    },
-    {
-      id: "oct-ai",
-      featured: true,
-      title: "Artificial intelligence in coronary OCT",
-      domain: "Coronary imaging + AI",
-      type: "Diagnostic-accuracy systematic review",
-      status: "Ongoing · Lead reviewer",
-      year: "2026",
-      summary: "Diagnostic accuracy, plaque characterization, and translational readiness of AI systems applied to high-resolution coronary OCT.",
-      metrics: [
-        { value: "94.4%", label: "pooled accuracy" },
-        { value: "87.6%", label: "sensitivity" },
-        { value: "95.4%", label: "specificity" },
-        { value: "75.4%", label: "mean Dice" }
-      ],
-      role: "Study screening · diagnostic-accuracy synthesis · QUADAS-3 · scientific writing",
-      detail: "The synthesis highlights strong performance in plaque characterization while emphasizing the translational bottlenecks of external validation, dataset representativeness, and clinically meaningful prospective testing.",
-      tags: ["Cardiology", "OCT", "Artificial intelligence", "Imaging", "Diagnostic accuracy"],
-      links: []
-    },
-    {
-      id: "flnc",
-      featured: false,
-      title: "FLNC truncating variants & arrhythmogenic cardiomyopathy",
-      domain: "Genetics / electrophysiology",
-      type: "Systematic review & Bayesian meta-analysis",
-      status: "Ongoing · Collaborative",
-      year: "2026",
-      summary: "Phenotype, arrhythmic burden, penetrance, CMR features, and risk stratification associated with FLNC truncating variants.",
-      metrics: [{ value: "CRD420251243936", label: "PROSPERO" }],
-      role: "Evidence synthesis · phenotype extraction · collaborative manuscript development",
-      detail: "Focus areas include ventricular arrhythmia and sudden cardiac death, late gadolinium enhancement, genotype–phenotype relationships, disease penetrance, and ICD-related outcomes.",
-      tags: ["Cardiology", "Genetics", "Electrophysiology", "Bayesian meta-analysis"],
-      links: []
     },
     {
       id: "circrna",
