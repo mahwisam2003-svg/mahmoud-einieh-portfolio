@@ -13,9 +13,9 @@ const SITE_DATA = {
   },
 
   metrics: [
-    { value: 8, suffix: "+", label: "Research projects" },
+    { value: 8, suffix: "", label: "Research projects" },
     { value: 3, suffix: "", label: "Peer-reviewed publications" },
-    { value: 8, suffix: "+", label: "International clinical placements" },
+    { value: 8, suffix: "", label: "International clinical placements" },
     { value: 6, suffix: "", label: "Selected awards & congress highlights" }
   ],
 
