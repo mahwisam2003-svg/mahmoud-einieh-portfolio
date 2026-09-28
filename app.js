@@ -72,6 +72,7 @@
     modalContent.innerHTML=`
       <span class="modal-kicker">${esc(p.domain)} · ${esc(p.year)}</span>
       <h3 class="modal-title">${esc(p.title)}</h3>
+      ${p.imageKey && imgs[p.imageKey] ? `<img class="modal-project-photo" src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy">` : ''}
       <p class="modal-summary">${esc(p.summary)}</p>
       ${p.metrics.length?`<div class="modal-metrics">${p.metrics.map(m=>`<div class="modal-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('')}</div>`:''}
       <div class="modal-section"><h4>Research detail</h4><p>${esc(p.detail)}</p></div>
@@ -134,6 +135,15 @@
     if($('#lubdubRole')) $('#lubdubRole').textContent = d.lubdub.role;
     if($('#lubdubSummary')) $('#lubdubSummary').textContent = d.lubdub.summary;
     if($('#lubdubPoints')) $('#lubdubPoints').innerHTML = d.lubdub.points.map(x=>`<li>${esc(x)}</li>`).join('');
+    const lubLink=$('.lubdub-link'); if(lubLink && d.lubdub.instagram) lubLink.href=d.lubdub.instagram;
+  }
+
+  if(d.doe){
+    if($('#doeTitle')) $('#doeTitle').textContent = d.doe.title;
+    if($('#doeRole')) $('#doeRole').textContent = d.doe.role;
+    if($('#doeSummary')) $('#doeSummary').textContent = d.doe.summary;
+    if($('#doePoints')) $('#doePoints').innerHTML = d.doe.points.map(x=>`<li>${esc(x)}</li>`).join('');
+    const doeLink=$('.doe-link'); if(doeLink && d.doe.website) doeLink.href=d.doe.website;
   }
 
   const themeToggle=$('#themeToggle');
