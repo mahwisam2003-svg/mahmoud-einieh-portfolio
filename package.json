@@ -1,0 +1,9 @@
+{
+  "name": "mahmoud-einieh-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Research and clinical portfolio for Dr. Mahmoud Einieh, MD",
+  "scripts": {
+    "start": "python3 -m http.server 4173"
+  }
+}

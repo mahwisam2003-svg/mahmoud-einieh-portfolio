@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07131b" />
+  <meta name="description" content="Dr. Mahmoud Einieh, MD — cardiovascular research, advanced imaging, evidence synthesis, international clinical experience, publications and academic portfolio." />
+  <meta property="og:title" content="Dr. Mahmoud Einieh, MD" />
+  <meta property="og:description" content="Cardiovascular Research · Advanced Imaging · Evidence Synthesis" />
+  <meta property="og:type" content="website" />
+  <title>Dr. Mahmoud Einieh, MD · Research & Clinical Portfolio</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Mahmoud Einieh",
+    "honorificPrefix":"Dr.",
+    "honorificSuffix":"MD",
+    "jobTitle":"Medical Doctor and Clinical Researcher",
+    "affiliation":{"@type":"Organization","name":"University of Debrecen"},
+    "sameAs":[
+      "https://orcid.org/0009-0002-4240-9376",
+      "https://www.linkedin.com/in/mahmoud-einieh-74691428a"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Mahmoud Einieh home">
+      <span class="brand-mark">ME</span>
+      <span class="brand-name">Mahmoud Einieh</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#research">Research</a>
+      <a href="#clinical">Clinical</a>
+      <a href="#publications">Outputs</a>
+      <a href="#awards">Awards</a>
+      <a href="#credentials">Evidence</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="searchToggle" aria-label="Search portfolio" title="Search (/)" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+      </button>
+      <button class="icon-button" id="themeToggle" aria-label="Toggle theme" type="button">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" type="button"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#awards">Awards</a><a href="#credentials">Evidence</a><a href="#teaching">Teaching</a><a href="#about">About</a>
+  </nav>
+
+  <main>
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orb orb-a"></div><div class="orb orb-b"></div>
+        <svg class="ecg-line" viewBox="0 0 1200 220" preserveAspectRatio="none">
+          <path class="ecg-track" d="M0 115 H260 L295 115 L316 88 L341 154 L375 43 L411 171 L448 115 H1200" />
+          <path class="ecg-pulse" d="M0 115 H260 L295 115 L316 88 L341 154 L375 43 L411 171 L448 115 H1200" />
+        </svg>
+      </div>
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="status-dot"></span> MD · Clinical researcher · International experience</div>
+        <h1 id="hero-title">Clinical medicine,<br><em>translated through evidence.</em></h1>
+        <p class="hero-lead" id="heroSummary"></p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#research">Explore research <span>↘</span></a>
+          <a class="button button-ghost" id="cvLink" href="#">Public CV <span>↗</span></a>
+        </div>
+        <div class="hero-links" id="heroLinks"></div>
+      </div>
+      <div class="hero-profile reveal delay-1">
+        <div class="portrait-wrap">
+          <div class="portrait-ring"></div>
+          <img src="assets/headshot.webp" alt="Portrait of Mahmoud Einieh" class="portrait" width="640" height="640" fetchpriority="high" />
+        </div>
+        <div class="profile-card glass">
+          <div>
+            <span class="mini-label">Current focus</span>
+            <strong>Cardiovascular physiology · Imaging · AI</strong>
+          </div>
+          <div class="profile-card-row"><span>Research identity</span><strong>ORCID 0009-0002-4240-9376</strong></div>
+        </div>
+      </div>
+      <div class="metric-strip" id="metricStrip"></div>
+    </section>
+
+    <section class="section section-intro" id="research">
+      <div class="section-heading reveal">
+        <div><span class="kicker">01 · Research portfolio</span><h2>Cardiovascular questions first.<br><span>Broader translational work around them.</span></h2></div>
+        <p>From coronary physiology and interventional imaging to cardio-nephrology, nuclear medicine, and molecular research — with evidence synthesis as the methodological backbone.</p>
+      </div>
+      <div class="filter-row reveal" id="researchFilters" aria-label="Research filters"></div>
+      <div class="research-grid" id="researchGrid"></div>
+      <div class="center-action reveal"><button class="button button-ghost" id="showAllResearch" type="button">Show complete research portfolio</button></div>
+    </section>
+
+    <section class="section signal-section" aria-labelledby="signal-heading">
+      <div class="signal-grid reveal">
+        <div class="signal-copy">
+          <span class="kicker">Research signature</span>
+          <h2 id="signal-heading">Connecting clinical questions to measurable physiology.</h2>
+          <p>My work increasingly sits at the interface of clinical cardiology, advanced phenotyping, imaging, and quantitative evidence synthesis.</p>
+          <div class="signal-tags"><span>Coronary physiology</span><span>Cardio-nephrology</span><span>OCT + AI</span><span>SPECT/CT</span><span>Meta-analysis</span></div>
+        </div>
+        <div class="signal-panel glass">
+          <div class="signal-chart">
+            <div class="signal-stat"><strong data-count="82">0</strong><span>% abnormal coronary function testing</span></div>
+            <div class="bar-stack" aria-label="ANOCA INOCA endotype distribution">
+              <div style="--w:32"><span>VSA ~32%</span></div>
+              <div style="--w:21"><span>Isolated CMD ~21%</span></div>
+              <div style="--w:21"><span>Mixed ~21%</span></div>
+              <div style="--w:18"><span>Normal CFT ~18%</span></div>
+            </div>
+          </div>
+          <p class="chart-caption">Submission-stage ANOCA/INOCA evidence synthesis · 15 studies · n=2,615.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="clinical">
+      <div class="section-heading reveal">
+        <div><span class="kicker">02 · Clinical experience</span><h2>International training across<br><span>medicine, cardiology and acute care.</span></h2></div>
+        <p>Clinical placements across Europe, the Middle East, and North Africa. Public supporting documents are shown only when appropriate; private recommendation letters remain available on request.</p>
+      </div>
+      <div class="clinical-shell">
+        <div class="clinical-route reveal" aria-label="Countries represented in clinical experience">
+          <div class="route-line"></div>
+          <button type="button" data-country="Hungary"><span>HU</span><small>Debrecen</small></button>
+          <button type="button" data-country="United Kingdom"><span>UK</span><small>London / Swansea</small></button>
+          <button type="button" data-country="Italy"><span>IT</span><small>Catania</small></button>
+          <button type="button" data-country="Germany"><span>DE</span><small>Siegen</small></button>
+          <button type="button" data-country="Portugal"><span>PT</span><small>Porto</small></button>
+          <button type="button" data-country="Tunisia"><span>TN</span><small>Tunis</small></button>
+          <button type="button" data-country="United Arab Emirates"><span>AE</span><small>Dubai</small></button>
+        </div>
+        <div class="filter-row reveal" id="clinicalFilters"></div>
+        <div class="clinical-list" id="clinicalList"></div>
+      </div>
+    </section>
+
+    <section class="section outputs-section" id="publications">
+      <div class="section-heading reveal">
+        <div><span class="kicker">03 · Research outputs</span><h2>Published, presented,<br><span>submitted and ongoing.</span></h2></div>
+        <p>A publication-focused view of completed work, public research records, conference dissemination, and selected verification sources.</p>
+      </div>
+      <div class="outputs-grid reveal" id="outputsGrid"></div>
+      <div class="source-ribbon reveal" id="sourceRibbon"></div>
+    </section>
+
+    <section class="section" id="awards">
+      <div class="section-heading reveal">
+        <div><span class="kicker">04 · Recognition</span><h2>Competition, conference<br><span>and scientific recognition.</span></h2></div>
+        <p>Selected awards and presentations, with official sources or privacy-redacted certificates where appropriate.</p>
+      </div>
+      <div class="award-list" id="awardList"></div>
+    </section>
+
+    <section class="section credentials-section" id="credentials">
+      <div class="section-heading reveal">
+        <div><span class="kicker">05 · Supporting evidence</span><h2>Credentials where they add value.<br><span>Privacy where it matters.</span></h2></div>
+        <p>Selected public-safe certificates support clinical placements, research awards, and formal training. Recommendation letters are intentionally not published because they contain third-party signatures and contact details; they can be provided directly when appropriate.</p>
+      </div>
+      <div class="credential-grid" id="credentialGrid"></div>
+    </section>
+
+    <section class="section" id="teaching">
+      <div class="section-heading reveal">
+        <div><span class="kicker">06 · Teaching & leadership</span><h2>Building systems for<br><span>learning and collaboration.</span></h2></div>
+        <p>Teaching experience spans research methodology, pathology practicals, simulation-based cardiology education, and international student leadership.</p>
+      </div>
+      <div class="teaching-grid" id="teachingGrid"></div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <span class="kicker">07 · About</span>
+          <h2>Clinically grounded.<br><span>Research driven.</span></h2>
+          <p>Graduated from the six-year English Medicine programme at the University of Debrecen in 2026. My academic path has been shaped by international clinical exposure, original imaging research, systematic review methodology, and a long-term interest in cardiovascular medicine.</p>
+          <p>My goal is to develop into an independent cardiovascular investigator working at the interface of clinical cardiology, translational science, advanced phenotyping, and precision medicine.</p>
+          <div class="language-list" id="languageList"></div>
+        </div>
+        <aside class="about-panel glass reveal delay-1">
+          <span class="mini-label">Selected credentials</span>
+          <a href="assets/docs/Mahmoud_Einieh_Public_CV.pdf" target="_blank" rel="noopener"><span>Public CV</span><strong>PDF ↗</strong></a>
+          <a href="assets/docs/Meta_Analysis_Academy_Completion_Redacted.pdf" target="_blank" rel="noopener"><span>Meta-Analysis Academy</span><strong>Credential ↗</strong></a>
+          <a href="https://orcid.org/0009-0002-4240-9376" target="_blank" rel="noopener"><span>ORCID</span><strong>Record ↗</strong></a>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/42083154/" target="_blank" rel="noopener"><span>PubMed</span><strong>First-author paper ↗</strong></a>
+          <div class="privacy-note">Supporting documents are limited to credentials that add professional value. Recommendation letters and unnecessary third-party personal information are not published; public certificate copies are privacy-conscious versions when needed.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="contact-card reveal">
+        <span class="kicker">Contact</span>
+        <h2>Research collaboration,<br>clinical opportunities, or academic work.</h2>
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:mahwisam2003@gmail.com">Email Mahmoud <span>↗</span></a>
+          <a class="button button-ghost" href="https://www.linkedin.com/in/mahmoud-einieh-74691428a" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>Dr. Mahmoud Einieh, MD</strong><span>Cardiovascular Research · Advanced Imaging · Evidence Synthesis</span></div>
+    <div class="footer-meta"><span>Built as a living academic portfolio.</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <dialog class="project-modal" id="projectModal">
+    <button class="modal-close" id="modalClose" aria-label="Close project details" type="button">×</button>
+    <div id="modalContent"></div>
+  </dialog>
+
+  <dialog class="search-dialog" id="searchDialog">
+    <div class="search-head"><input id="searchInput" type="search" placeholder="Search projects, specialties, institutions…" autocomplete="off" aria-label="Search portfolio"/><kbd>esc</kbd></div>
+    <div class="search-results" id="searchResults"></div>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
