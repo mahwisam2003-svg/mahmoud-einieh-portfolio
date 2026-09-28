@@ -1,10 +1,13 @@
 (() => {
   const d = SITE_DATA;
+  const imgs = typeof SITE_IMAGES !== 'undefined' ? SITE_IMAGES : {};
   const $ = (s, p=document) => p.querySelector(s);
   const $$ = (s, p=document) => [...p.querySelectorAll(s)];
   const esc = s => String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 
   $('#heroSummary').textContent = d.profile.summary;
+  if($('#heroPortrait') && imgs.graduationPortrait) $('#heroPortrait').src = imgs.graduationPortrait;
+  if($('#graduationPhoto') && imgs.graduationPortrait) $('#graduationPhoto').src = imgs.graduationPortrait;
   $('#cvLink').href = d.profile.cv;
   $('#cvLink').target = '_blank';
   $('#cvLink').rel = 'noopener';
@@ -46,6 +49,7 @@
   function researchCard(p){
     const metrics = p.metrics.slice(0,4).map(m=>`<div class="micro-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('');
     return `<article class="research-card ${p.featured?'featured':''} reveal" tabindex="0" data-project="${p.id}" role="button" aria-label="Open ${esc(p.title)} details">
+      ${p.imageKey && imgs[p.imageKey] ? `<div class="research-card-image"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}
       <div class="card-top"><span class="status-badge">${esc(p.status)}</span><span class="project-year">${esc(p.year)}</span></div>
       <h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p>
       ${metrics?`<div class="card-metrics">${metrics}</div>`:''}
@@ -109,7 +113,7 @@
   renderClinical();
 
   const outputs=d.research.filter(p=>/Published|Submitted|Conference|Completed/.test(p.status));
-  $('#outputsGrid').innerHTML=outputs.map(p=>`<article class="output-card"><span class="pub-journal">${esc(p.venue||p.status)}</span><h3>${esc(p.title)}</h3><p>${esc(p.status)} · ${esc(p.type)} · ${esc(p.year)}</p><div class="output-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}${p.credential?`<a href="${p.credential}" target="_blank" rel="noopener">Credential ↗</a>`:''}</div></article>`).join('');
+  $('#outputsGrid').innerHTML=outputs.map(p=>`<article class="output-card">${p.imageKey && imgs[p.imageKey] ? `<div class="output-photo"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}<span class="pub-journal">${esc(p.venue||p.status)}</span><h3>${esc(p.title)}</h3><p>${esc(p.status)} · ${esc(p.type)} · ${esc(p.year)}</p><div class="output-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}${p.credential?`<a href="${p.credential}" target="_blank" rel="noopener">Credential ↗</a>`:''}</div></article>`).join('');
   $('#sourceRibbon').innerHTML=d.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)} ↗</a>`).join('');
 
   $('#awardList').innerHTML=d.awards.map(a=>`<article class="award-item reveal"><span class="award-year">${esc(a.year)}</span><h3>${esc(a.title)}</h3><p>${esc(a.detail)}</p><div class="award-action">${a.source?`<a class="doc-link" href="${a.source}" target="_blank" rel="noopener">Official source ↗</a>`:''}${a.credential?`<a class="doc-link" href="${a.credential}" target="_blank" rel="noopener">Redacted certificate ↗</a>`:''}</div></article>`).join('');
@@ -122,6 +126,15 @@
 
   $('#teachingGrid').innerHTML=d.teaching.map(t=>`<article class="teaching-card reveal"><span class="role">${esc(t.role)}</span><h3>${esc(t.organization)}</h3><span class="date">${esc(t.date)}</span><p>${esc(t.detail)}</p>${t.credential?`<a class="doc-link" href="${t.credential}" target="_blank" rel="noopener">View credential ↗</a>`:''}</article>`).join('');
   $('#languageList').innerHTML=d.languages.map(l=>`<div class="language-chip"><strong>${esc(l.language)}</strong><span>${esc(l.level)}</span></div>`).join('');
+
+  if(d.lubdub){
+    if($('#lubdubPhoto') && imgs[d.lubdub.photoKey]) $('#lubdubPhoto').src = imgs[d.lubdub.photoKey];
+    if($('#lubdubLogo') && imgs[d.lubdub.logoKey]) $('#lubdubLogo').src = imgs[d.lubdub.logoKey];
+    if($('#lubdubTitle')) $('#lubdubTitle').textContent = d.lubdub.title;
+    if($('#lubdubRole')) $('#lubdubRole').textContent = d.lubdub.role;
+    if($('#lubdubSummary')) $('#lubdubSummary').textContent = d.lubdub.summary;
+    if($('#lubdubPoints')) $('#lubdubPoints').innerHTML = d.lubdub.points.map(x=>`<li>${esc(x)}</li>`).join('');
+  }
 
   const themeToggle=$('#themeToggle');
   const savedTheme=localStorage.getItem('me-theme');
