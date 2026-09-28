@@ -41,9 +41,9 @@
       <a href="#clinical">Clinical</a>
       <a href="#publications">Outputs</a>
       <a href="#awards">Awards</a>
+      <a href="#lubdub">Lub Dub</a>
+      <a href="#doe">DOE</a>
       <a href="#credentials">Evidence</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#lubdub">Lub Dub Club</a>
       <a href="#about">About</a>
     </nav>
     <div class="header-actions">
@@ -58,7 +58,7 @@
   </header>
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#awards">Awards</a><a href="#credentials">Evidence</a><a href="#teaching">Teaching</a><a href="#lubdub">Lub Dub Club</a><a href="#about">About</a>
+    <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#awards">Awards</a><a href="#lubdub">Lub Dub Club</a><a href="#doe">DOE</a><a href="#credentials">Evidence</a><a href="#teaching">Teaching</a><a href="#about">About</a>
   </nav>
 
   <main>
@@ -83,7 +83,7 @@
       <div class="hero-profile reveal delay-1">
         <div class="portrait-wrap">
           <div class="portrait-ring"></div>
-          <img id="heroPortrait" src="assets/headshot.webp" alt="Portrait of Mahmoud Einieh" class="portrait" width="640" height="640" fetchpriority="high" />
+          <img id="heroPortrait" src="assets/portrait_hd.webp" alt="Portrait of Mahmoud Einieh" class="portrait" width="640" height="640" fetchpriority="high" />
         </div>
         <div class="profile-card glass">
           <div>
@@ -144,9 +144,44 @@
       <div class="award-list" id="awardList"></div>
     </section>
 
+    <section class="section lubdub-section" id="lubdub">
+      <div class="section-heading reveal">
+        <div><span class="kicker">05 · Founder-led education</span><h2>The Lub Dub Club.<br><span>Cardiology through simulation.</span></h2></div>
+        <p>Founded and led at the University of Debrecen to make cardiology more practical, interactive, and clinically grounded.</p>
+      </div>
+      <div class="lubdub-grid">
+        <figure class="lubdub-photo reveal"><img id="lubdubPhoto" src="assets/lubdub_activity.webp" alt="Lub Dub Club cardiology simulation workshop" loading="lazy"></figure>
+        <div class="lubdub-copy glass reveal delay-1">
+          <img id="lubdubLogo" class="lubdub-logo" src="assets/lubdub_logo.webp" alt="The Lub Dub Club logo" loading="lazy">
+          <span id="lubdubRole"></span>
+          <h3 id="lubdubTitle"></h3>
+          <p id="lubdubSummary"></p>
+          <ul id="lubdubPoints"></ul>
+          <a class="button button-ghost lubdub-link" href="https://www.instagram.com/lub.dubclub/" target="_blank" rel="noopener">Club Instagram <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section doe-section" id="doe">
+      <div class="section-heading reveal">
+        <div><span class="kicker">06 · Student leadership</span><h2>DOE / IFMSA.<br><span>International student engagement.</span></h2></div>
+        <p>Leadership within the Medical Students’ Association of Debrecen, connecting international students with exchanges, opportunities, and educational events.</p>
+      </div>
+      <div class="doe-card glass reveal">
+        <div class="doe-mark" aria-label="DOE">DOE</div>
+        <div class="doe-copy">
+          <span id="doeRole" class="role"></span>
+          <h3 id="doeTitle"></h3>
+          <p id="doeSummary"></p>
+          <ul id="doePoints"></ul>
+          <a class="button button-ghost doe-link" href="https://www.doedebrecen.hu/index.php" target="_blank" rel="noopener">DOE website <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
     <section class="section credentials-section" id="credentials">
       <div class="section-heading reveal">
-        <div><span class="kicker">05 · Supporting evidence</span><h2>Credentials where they add value.<br><span>Privacy where it matters.</span></h2></div>
+        <div><span class="kicker">07 · Supporting evidence</span><h2>Credentials where they add value.<br><span>Privacy where it matters.</span></h2></div>
         <p>Selected certificates supporting clinical placements, research awards, and training.</p>
       </div>
       <div class="credential-grid" id="credentialGrid"></div>
@@ -154,8 +189,8 @@
 
     <section class="section" id="teaching">
       <div class="section-heading reveal">
-        <div><span class="kicker">06 · Teaching & leadership</span><h2>Building systems for<br><span>learning and collaboration.</span></h2></div>
-        <p>Teaching and leadership in research methods, pathology, cardiology simulation, and student activities.</p>
+        <div><span class="kicker">08 · Teaching</span><h2>Building systems for<br><span>learning and collaboration.</span></h2></div>
+        <p>Teaching experience in research methodology and pathology practical education.</p>
       </div>
       <div class="teaching-grid" id="teachingGrid"></div>
     </section>
@@ -163,13 +198,13 @@
     <section class="section about-section" id="about">
       <div class="about-grid">
         <div class="about-copy reveal">
-          <span class="kicker">08 · About</span>
+          <span class="kicker">09 · About</span>
           <h2>Clinically grounded.<br><span>Research driven.</span></h2>
           <p>Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.</p>
           <p>Interested in cardiovascular medicine, clinical research, imaging, and translational science.</p>
           <div class="language-list" id="languageList"></div>
         </div>
-        <aside class="about-panel glass reveal delay-1"><img id="graduationPhoto" class="about-photo" alt="Graduation portrait of Mahmoud Einieh" loading="lazy">
+        <aside class="about-panel glass reveal delay-1"><img id="graduationPhoto" src="assets/portrait_hd.webp" class="about-photo" alt="Graduation portrait of Mahmoud Einieh" loading="lazy">
           <span class="mini-label">Selected credentials</span>
           <a href="assets/docs/Mahmoud_Einieh_Public_CV.pdf" target="_blank" rel="noopener"><span>Public CV</span><strong>PDF ↗</strong></a>
           <a href="assets/docs/Meta_Analysis_Academy_Completion_Redacted.pdf" target="_blank" rel="noopener"><span>Meta-Analysis Academy</span><strong>Credential ↗</strong></a>
