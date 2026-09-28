@@ -319,12 +319,6 @@ const SITE_DATA = {
 
   teaching: [
     {
-      role: "Founder & President",
-      organization: "The Lub Dub Club · University of Debrecen",
-      date: "2024–2026",
-      detail: "Founded the club and led weekly cardiology simulation workshops with faculty support."
-    },
-    {
       role: "Teaching Assistant",
       organization: "Meta-Analysis Academy",
       date: "Feb–Jun 2025",
@@ -336,27 +330,35 @@ const SITE_DATA = {
       organization: "University of Debrecen",
       date: "2023–2024",
       detail: "Supported third-year autopsy teaching across three semesters."
-    },
-    {
-      role: "Local Officer of International Students",
-      organization: "Medical Students’ Association of Debrecen / IFMSA",
-      date: "2025–2026",
-      detail: "Led international student opportunities, exchanges, and educational events."
     }
   ],
 
 
   lubdub: {
     title: "The Lub Dub Club",
-    role: "Founder & President · 2024–2026",
-    summary: "A student-led cardiology club at the University of Debrecen focused on practical, simulation-based learning.",
+    role: "Founder & President · Aug 2024–Sep 2026",
+    summary: "A student-led cardiology education initiative at the University of Debrecen built around practical, simulation-based learning.",
     points: [
-      "Founded and led the club with faculty support.",
-      "Organized weekly cardiology and Mentice VIST simulation sessions.",
-      "Built a team of students interested in cardiovascular medicine."
+      "Founded and organized weekly cardiology workshops with Vice Dean Prof. Norbert Németh and faculty collaborators.",
+      "Led semester-long sessions using the Mentice VIST simulator to develop clinical and procedural skills through simulated cardiology cases.",
+      "Worked with specialists to connect cardiovascular theory with practical, case-based learning."
     ],
+    instagram: "https://www.instagram.com/lub.dubclub/",
     logoKey: "lubDubLogo",
     photoKey: "lubDubWorkshop"
+  },
+
+  doe: {
+    title: "Medical Students’ Association of Debrecen",
+    acronym: "DOE",
+    role: "Local Officer of International Students (LOIS) · Sep 2025–Sep 2026",
+    summary: "Led international-student engagement under the IFMSA framework, with a focus on exchanges, global opportunities, capacity building, and multidisciplinary educational events.",
+    points: [
+      "Managed a team focused on international student opportunities and exchange programmes.",
+      "Promoted global engagement initiatives under the IFMSA framework.",
+      "Coordinated capacity-building events and expert-led lectures across multiple medical specialties."
+    ],
+    website: "https://www.doedebrecen.hu/index.php"
   },
 
   credentials: [
