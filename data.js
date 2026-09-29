@@ -186,7 +186,7 @@ const SITE_DATA = {
       supervisor: "Dr. Joana Nunes",
       detail: "Neonatal and perinatal ward experience, including prematurity and neonatal sepsis.",
       credential: "assets/docs/IFMSA_Neonatology_Porto_2026_Redacted.pdf",
-      credentialLabel: "View redacted credential"
+      credentialLabel: "View supporting document*"
     },
     {
       id: "siegen-surgery",
@@ -219,7 +219,7 @@ const SITE_DATA = {
       supervisor: "Dr. Besma Dhahri",
       detail: "Pulmonology attachment covering procedures, imaging, oncology, tuberculosis, and ward care.",
       credential: "assets/docs/IFMSA_Pulmonology_Tunis_2025_Redacted.pdf",
-      credentialLabel: "View redacted credential",
+      credentialLabel: "View supporting document*",
       privateDoc: "Recommendation letter available on request"
     },
     {
@@ -232,7 +232,7 @@ const SITE_DATA = {
       supervisor: "Prof. Davide Capodanno",
       detail: "Electrophysiology exposure including EP studies and ablation for WPW and AVNRT.",
       credential: "assets/docs/IFMSA_Cardiology_Catania_2024_Redacted.pdf",
-      credentialLabel: "View redacted credential"
+      credentialLabel: "View supporting document*"
     },
     {
       id: "stgeorges-cardio",
@@ -254,7 +254,7 @@ const SITE_DATA = {
       supervisor: "Dr. Mohammad Zaidan",
       detail: "Interventional cardiology observership with catheter-lab exposure.",
       credential: "assets/docs/American_Hospital_Dubai_Cardiology_2024_Redacted.pdf",
-      credentialLabel: "View redacted credential"
+      credentialLabel: "View supporting document*"
     },
     {
       id: "debrecen-clinical",
@@ -368,7 +368,7 @@ const SITE_DATA = {
       year: "2024",
       doc: "assets/docs/American_Hospital_Dubai_Cardiology_2024_Redacted.pdf",
       thumb: "assets/thumbs/American_Hospital_Dubai_Cardiology_2024_Redacted.webp",
-      note: "Public-safe copy"
+      note: "Supporting document*"
     },
     {
       title: "Cardiology Professional Exchange",
@@ -376,7 +376,7 @@ const SITE_DATA = {
       year: "2024",
       doc: "assets/docs/IFMSA_Cardiology_Catania_2024_Redacted.pdf",
       thumb: "assets/thumbs/IFMSA_Cardiology_Catania_2024_Redacted.webp",
-      note: "Public-safe copy"
+      note: "Supporting document*"
     },
     {
       title: "Pulmonology Professional Exchange",
@@ -384,7 +384,7 @@ const SITE_DATA = {
       year: "2025",
       doc: "assets/docs/IFMSA_Pulmonology_Tunis_2025_Redacted.pdf",
       thumb: "assets/thumbs/IFMSA_Pulmonology_Tunis_2025_Redacted.webp",
-      note: "Public-safe copy"
+      note: "Supporting document*"
     },
     {
       title: "Neonatology Professional Exchange",
@@ -392,7 +392,7 @@ const SITE_DATA = {
       year: "2026",
       doc: "assets/docs/IFMSA_Neonatology_Porto_2026_Redacted.pdf",
       thumb: "assets/thumbs/IFMSA_Neonatology_Porto_2026_Redacted.webp",
-      note: "Public-safe copy"
+      note: "Supporting document*"
     },
     {
       title: "TDK Conference · Third Prize",
