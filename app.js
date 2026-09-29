@@ -49,7 +49,7 @@
   function researchCard(p){
     const metrics = p.metrics.slice(0,4).map(m=>`<div class="micro-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('');
     return `<article class="research-card ${p.featured?'featured':''} reveal" tabindex="0" data-project="${p.id}" role="button" aria-label="Open ${esc(p.title)} details">
-      ${p.imageKey && imgs[p.imageKey] ? `<div class="research-card-image"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}
+      ${p.imageKey && imgs[p.imageKey] ? `<div class="research-card-image ${p.imageKey==='escPoster'?'photo-esc':p.imageKey==='eanmBarcelona'?'photo-eanm':''}"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}
       <div class="card-top"><span class="status-badge">${esc(p.status)}</span><span class="project-year">${esc(p.year)}</span></div>
       <h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p>
       ${metrics?`<div class="card-metrics">${metrics}</div>`:''}
