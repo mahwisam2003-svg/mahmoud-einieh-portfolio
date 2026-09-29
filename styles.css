@@ -144,7 +144,7 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
 
 /* Portfolio photography */
 .research-card-image{height:180px;margin:-24px -24px 20px;overflow:hidden;border-bottom:1px solid var(--line)}
-.research-card-image img{width:100%;height:100%;object-fit:cover;display:block}
+.research-card-image img{width:100%;height:100%;object-fit:cover;display:block}.research-card-image.photo-esc{height:300px}.research-card-image.photo-esc img{object-position:center 4%}.research-card-image.photo-eanm img{object-position:center 5%}
 .research-card.featured .research-card-image{height:235px}
 .output-photo{height:170px;margin:-22px -22px 18px;overflow:hidden;border-bottom:1px solid var(--line);border-radius:22px 22px 0 0}
 .output-photo img{width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block}.output-photo.photo-esc img{object-position:center 20%}.output-photo.photo-eanm img{object-position:center 16%}
