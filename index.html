@@ -47,6 +47,11 @@
       <a href="#about">About</a>
     </nav>
     <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="de">DE</button>
+        <button type="button" data-lang="hu">HU</button>
+      </div>
       <button class="icon-button" id="searchToggle" aria-label="Search portfolio" title="Search (/)" type="button">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
       </button>
@@ -58,6 +63,7 @@
   </header>
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <div class="mobile-lang-switch lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button><button type="button" data-lang="hu">HU</button></div>
     <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#awards">Awards</a><a href="#lubdub">Lub Dub Club</a><a href="#doe">DOE</a><a href="#credentials">Evidence</a><a href="#teaching">Teaching</a><a href="#about">About</a>
   </nav>
 
@@ -168,7 +174,7 @@
         <p>Leadership within the Medical Students’ Association of Debrecen, connecting international students with exchanges, opportunities, and educational events.</p>
       </div>
       <div class="doe-card glass reveal">
-        <div class="doe-mark" aria-label="DOE">DOE</div>
+        <div class="doe-mark" aria-label="DOE"><img src="assets/doe_logo.png" alt="DOE — Medical Students’ Association of Debrecen logo" loading="lazy"></div>
         <div class="doe-copy">
           <span id="doeRole" class="role"></span>
           <h3 id="doeTitle"></h3>
@@ -244,6 +250,7 @@
 
   <script src="image_data.js"></script>
   <script src="data.js"></script>
+  <script src="translations.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
