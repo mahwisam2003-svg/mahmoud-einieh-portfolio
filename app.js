@@ -52,6 +52,14 @@
   }
   const d = localizeData();
 
+  function applyDeferredMedia(){
+    $('[data-media-key]').forEach(img=>{
+      const key=img.dataset.mediaKey;
+      if(key && media[key] && img.getAttribute('src') !== media[key]) img.setAttribute('src',media[key]);
+    });
+  }
+  window.addEventListener('site-media-updated', applyDeferredMedia);
+
   function setHTML(sel, value){ const el=$(sel); if(el && value!=null) el.innerHTML=value; }
   function setText(sel, value){ const el=$(sel); if(el && value!=null) el.textContent=value; }
   function applyStaticUI(){
@@ -189,7 +197,7 @@
 
   const photoClass=p=>p.imageKey==='escPoster'?'photo-esc':p.imageKey==='eanmBarcelona'?'photo-eanm':'';
   function researchCard(p){
-    const metrics = p.metrics.slice(0,4).map(m=>`<div class="micro-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('');
+    const metrics = (p.metrics||[]).slice(0,4).map(m=>`<div class="micro-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('');
     return `<article class="research-card ${p.featured?'featured':''} reveal" tabindex="0" data-project="${p.id}" role="button" aria-label="${esc(ui.aria.openProject)}: ${esc(p.title)}">
       ${p.imageKey && imgs[p.imageKey] ? `<div class="research-card-image ${photoClass(p)}"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}
       <div class="card-top"><span class="status-badge">${esc(p.status)}</span><span class="project-year">${esc(p.year)}</span></div>
@@ -216,12 +224,12 @@
       <h3 class="modal-title">${esc(p.title)}</h3>
       ${p.imageKey && imgs[p.imageKey] ? `<img class="modal-project-photo ${photoClass(p)}" src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy">` : ''}
       <p class="modal-summary">${esc(p.summary)}</p>
-      ${p.metrics.length?`<div class="modal-metrics">${p.metrics.map(m=>`<div class="modal-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('')}</div>`:''}
+      ${(p.metrics||[]).length?`<div class="modal-metrics">${(p.metrics||[]).map(m=>`<div class="modal-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('')}</div>`:''}
       <div class="modal-section"><h4>${esc(ui.modal.detail)}</h4><p>${esc(p.detail)}</p></div>
       <div class="modal-section"><h4>${esc(ui.modal.role)}</h4><p>${esc(p.role)}</p></div>
       <div class="modal-section"><h4>${esc(ui.modal.status)}</h4><p>${esc(p.status)} · ${esc(p.type)}</p></div>
       <div class="modal-links">
-        ${p.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}
+        ${(p.links||[]).map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}
 
       </div>`;
     modal.showModal(); document.body.classList.add('modal-open');
@@ -261,7 +269,7 @@
 
   const outputIds = new Set(BASE.research.filter(p=>/Published|Submitted|Conference|Completed/.test(p.status)).map(p=>p.id));
   const outputs=d.research.filter(p=>outputIds.has(p.id));
-  $('#outputsGrid').innerHTML=outputs.map(p=>`<article class="output-card">${p.imageKey && imgs[p.imageKey] ? `<div class="output-photo ${photoClass(p)}"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}<span class="pub-journal">${esc(p.venue||p.status)}</span><h3>${esc(p.title)}</h3><p>${esc(p.status)} · ${esc(p.type)} · ${esc(p.year)}</p><div class="output-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div></article>`).join('');
+  $('#outputsGrid').innerHTML=outputs.map(p=>`<article class="output-card">${p.imageKey && imgs[p.imageKey] ? `<div class="output-photo ${photoClass(p)}"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}<span class="pub-journal">${esc(p.venue||p.status)}</span><h3>${esc(p.title)}</h3><p>${esc(p.status)} · ${esc(p.type)} · ${esc(p.year)}</p><div class="output-links">${(p.links||[]).map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div></article>`).join('');
   $('#sourceRibbon').innerHTML=d.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)} ↗</a>`).join('');
 
   $('#awardList').innerHTML=d.awards.map(a=>`<article class="award-item reveal"><span class="award-year">${esc(a.year)}</span><h3>${esc(a.title)}</h3><p>${esc(a.detail)}</p><div class="award-action">${a.source?`<a class="doc-link" href="${a.source}" target="_blank" rel="noopener">${esc(ui.buttons.officialSource)} ↗</a>`:''}${a.credential?`<a class="doc-link" href="${a.credential}" target="_blank" rel="noopener">${esc(ui.buttons.supportingDoc)} ↗</a>`:''}</div></article>`).join('');
@@ -272,8 +280,11 @@
     setText('#medcupSummary', d.medcup.summary);
     setText('#medcupDetail', d.medcup.detail);
     const source=$('#medcupSource'); if(source) source.href=d.medcup.source;
-    if($('#medcupStage') && media[d.medcup.images?.[0]]) $('#medcupStage').src=media[d.medcup.images[0]];
-    if($('#medcupSpeaking') && media[d.medcup.images?.[1]]) $('#medcupSpeaking').src=media[d.medcup.images[1]];
+    const youtube=$('#medcupYoutube'); if(youtube && d.medcup.youtube) youtube.href=d.medcup.youtube;
+    const gallery=$('#medcupGallery');
+    if(gallery){
+      gallery.innerHTML=(d.medcup.images||[]).map((key,i)=>`<figure class="medcup-shot shot-${i+1}"><img data-media-key="${esc(key)}" alt="MedCup 2024 — ${i<2?'Belgian Defence clinical simulation':i===2?'final stage':i===3?'final quiz':'second-place award'}" loading="lazy" decoding="async"></figure>`).join('');
+    }
   }
 
   const evidenceItems=(d.evidenceGroups||[]).flatMap(g=>(g.items||[]).map(item=>({...item,groupTitle:g.title})));
@@ -285,7 +296,7 @@
       <div class="evidence-group-head"><div><h3>${esc(g.title)}</h3><p>${esc(g.description||'')}</p></div><span>${g.items.length}</span></div>
       <div class="evidence-grid">
         ${g.items.map(item=>`<button class="evidence-card" type="button" data-evidence="${item.id}">
-          <div class="evidence-preview">${media[item.imageKey]?`<img src="${media[item.imageKey]}" alt="${esc(item.title)}" loading="lazy" decoding="async">`:''}</div>
+          <div class="evidence-preview"><img data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}" loading="lazy" decoding="async"></div>
           <div class="evidence-copy"><span>${esc(item.year)} · ${esc(item.note)}</span><h4>${esc(item.title)}</h4><p>${esc(item.issuer)}</p><strong>${esc(ui.credential?.open || 'View redacted copy')} ↗</strong></div>
         </button>`).join('')}
       </div>
@@ -293,7 +304,7 @@
 
   $('#recommendationGrid').innerHTML=recommendationItems.map(item=>`
     <button class="recommendation-card glass reveal" type="button" data-evidence="${item.id}">
-      <div class="recommendation-preview">${media[item.imageKey]?`<img src="${media[item.imageKey]}" alt="${esc(item.title)}" loading="lazy" decoding="async">`:''}</div>
+      <div class="recommendation-preview"><img data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}" loading="lazy" decoding="async"></div>
       <div class="recommendation-copy"><span>${esc(item.year)} · Signed recommendation</span><h3>${esc(item.title)}</h3><p>${esc(item.issuer)}</p><p>${esc(item.detail)}</p><strong>View letter ↗</strong></div>
     </button>`).join('');
 
@@ -306,8 +317,9 @@
       <h3 class="modal-title">${esc(item.title)}</h3>
       <p class="modal-summary">${esc(item.issuer||'')}</p>
       ${item.detail?`<p class="modal-summary">${esc(item.detail)}</p>`:''}
-      ${media[item.imageKey]?`<img class="evidence-modal-image" src="${media[item.imageKey]}" alt="${esc(item.title)}">`:''}
+      <img class="evidence-modal-image" data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}">
       <div class="evidence-modal-note">${isRecommendation?'Signed recommendation shown as supporting evidence.':'Redacted for privacy. Original unredacted copy available on reasonable request.'}</div>`;
+    applyDeferredMedia();
     evidenceModal.showModal(); document.body.classList.add('modal-open');
   }
   $('#evidenceGroups').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidence(b.dataset.evidence)});
@@ -318,6 +330,8 @@
 
   $('#teachingGrid').innerHTML=d.teaching.map(t=>`<article class="teaching-card reveal"><span class="role">${esc(t.role)}</span><h3>${esc(t.organization)}</h3><span class="date">${esc(t.date)}</span><p>${esc(t.detail)}</p>${t.credential?`<a class="doc-link" href="${t.credential}" target="_blank" rel="noopener">${esc(ui.buttons.supportingDoc)} ↗</a>`:''}</article>`).join('');
   $('#languageList').innerHTML=d.languages.map(l=>`<div class="language-chip"><strong>${esc(l.language)}</strong><span>${esc(l.level)}</span></div>`).join('');
+
+  applyDeferredMedia();
 
   if(d.lubdub){
     if($('#lubdubPhoto') && imgs[d.lubdub.photoKey]) $('#lubdubPhoto').src = imgs[d.lubdub.photoKey];
@@ -348,7 +362,7 @@
 
   const searchDialog=$('#searchDialog'), searchInput=$('#searchInput'), searchResults=$('#searchResults');
   const searchable=[
-    ...d.research.map(x=>({kind:ui.search.research,title:x.title,meta:`${x.domain} · ${x.status}`,text:[x.title,x.domain,x.summary,...x.tags].join(' '),action:()=>{searchDialog.close();openProject(x.id)}})),
+    ...d.research.map(x=>({kind:ui.search.research,title:x.title,meta:`${x.domain} · ${x.status}`,text:[x.title,x.domain,x.summary,...(x.tags||[])].join(' '),action:()=>{searchDialog.close();openProject(x.id)}})),
     ...d.clinical.map(x=>({kind:ui.search.clinical,title:`${x.specialty} · ${x.institution}`,meta:`${x.location} · ${x.date}`,text:[x.specialty,x.institution,x.location,x.detail,x.supervisor].join(' '),action:()=>{searchDialog.close();location.hash='clinical'}})),
     ...d.awards.map(x=>({kind:ui.search.recognition,title:x.title,meta:x.year,text:[x.title,x.detail].join(' '),action:()=>{searchDialog.close();location.hash='awards'}})),
     ...(d.medcup?[{kind:'MedCup',title:d.medcup.title,meta:d.medcup.result,text:[d.medcup.title,d.medcup.result,d.medcup.summary,d.medcup.detail].join(' '),action:()=>{searchDialog.close();location.hash='medcup'}}]:[]),
