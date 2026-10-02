@@ -42,6 +42,7 @@
 
     if(pack.lubdub) d.lubdub = {...d.lubdub,...pack.lubdub};
     if(pack.doe) d.doe = {...d.doe,...pack.doe};
+    if(pack.hobbies) d.hobbies = (d.hobbies||[]).map(h=>({...h,...(pack.hobbies[h.id]||{})}));
 
     if(pack.medcup) d.medcup = {...d.medcup,...pack.medcup};
     if(pack.evidenceGroups) d.evidenceGroups = d.evidenceGroups.map(g=>({...g,...(pack.evidenceGroups[g.id]||{})}));
@@ -367,6 +368,17 @@
 
   $('#teachingGrid').innerHTML=d.teaching.map(t=>`<article class="teaching-card reveal"><span class="role">${esc(t.role)}</span><h3>${esc(t.organization)}</h3><span class="date">${esc(t.date)}</span><p>${esc(t.detail)}</p>${t.credential?`<a class="doc-link" href="${t.credential}" target="_blank" rel="noopener">${esc(ui.buttons.supportingDoc)} ↗</a>`:''}</article>`).join('');
   $('#languageList').innerHTML=d.languages.map(l=>`<div class="language-chip"><strong>${esc(l.language)}</strong><span>${esc(l.level)}</span></div>`).join('');
+
+  if($('#hobbyBlock') && d.hobbies?.length){
+    const hobby=d.hobbies[0];
+    $('#hobbyTitle').textContent=hobby.title;
+    $('#hobbySummary').textContent=hobby.summary;
+    const preview=(hobby.gallery||[]).slice(0,3);
+    $('#hobbyGallery').innerHTML=preview.map((item,i)=>`<button type="button" class="hobby-photo hobby-photo-${i+1}" data-hobby-gallery>
+      <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||hobby.title)}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
+    </button>`).join('')+${(hobby.gallery||[]).length>3?`<button class="hobby-more" type="button" data-hobby-gallery>View all ${hobby.gallery.length} photos</button>`:''};
+    $('#hobbyGallery').querySelectorAll('[data-hobby-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(hobby.galleryTitle||hobby.title,hobby.gallery||[])));
+  }
 
   applyDeferredMedia();
 
