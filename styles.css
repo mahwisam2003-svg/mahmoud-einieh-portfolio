@@ -212,12 +212,19 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
 .medcup-copy .role{font-size:.76rem;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.09em}
 .medcup-copy h3{font-size:clamp(2rem,4vw,3.5rem);line-height:1;letter-spacing:-.05em;margin:12px 0 18px}
 .medcup-copy p{color:var(--muted);line-height:1.7;margin:0 0 16px}
-.medcup-copy .button{width:max-content;margin-top:10px}
-.medcup-gallery{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}
-.medcup-gallery figure{margin:0;min-height:430px;border:1px solid var(--line);border-radius:26px;overflow:hidden;background:var(--panel)}
+.medcup-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.medcup-copy .button{width:max-content;margin-top:0}
+.youtube-button{border-color:rgba(215,25,32,.42)}
+.medcup-gallery{display:grid;grid-template-columns:1.08fr .92fr;gap:12px;align-items:stretch}
+.medcup-gallery figure{margin:0;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:linear-gradient(145deg,var(--panel-strong),var(--panel));min-height:0}
 .medcup-gallery img{width:100%;height:100%;object-fit:cover;display:block}
-.medcup-gallery figure:first-child img{object-position:center center}
-.medcup-gallery figure:last-child img{object-position:center 30%}
+.medcup-gallery .shot-1,.medcup-gallery .shot-2{height:300px}
+.medcup-gallery .shot-3{grid-column:1/-1;height:430px}
+.medcup-gallery .shot-4,.medcup-gallery .shot-5{height:500px}
+.medcup-gallery .shot-1 img,.medcup-gallery .shot-2 img{object-position:center center}
+.medcup-gallery .shot-3 img{object-position:center 42%}
+.medcup-gallery .shot-4 img{object-position:center center}
+.medcup-gallery .shot-5 img{object-position:center 28%}
 
 /* Curated evidence */
 .evidence-groups{display:grid;gap:46px}
@@ -256,11 +263,14 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
 @media(max-width:1050px){
   .evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .medcup-layout{grid-template-columns:1fr}
-  .medcup-gallery figure{min-height:360px}
+  .medcup-gallery .shot-1,.medcup-gallery .shot-2{height:320px}
+  .medcup-gallery .shot-3{height:420px}
+  .medcup-gallery .shot-4,.medcup-gallery .shot-5{height:460px}
 }
 @media(max-width:760px){
   .medcup-gallery{grid-template-columns:1fr}
-  .medcup-gallery figure{min-height:300px}
+  .medcup-gallery .shot-1,.medcup-gallery .shot-2,.medcup-gallery .shot-3,.medcup-gallery .shot-4,.medcup-gallery .shot-5{grid-column:1;height:auto;aspect-ratio:4/3}
+  .medcup-gallery .shot-5{aspect-ratio:3/4}
   .evidence-grid{grid-template-columns:1fr}
   .evidence-group-head{align-items:start}
   .recommendation-grid{grid-template-columns:1fr}
