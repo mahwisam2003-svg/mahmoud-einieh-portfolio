@@ -240,8 +240,30 @@
   modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
   modal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
 
+  const galleryModal=$('#galleryModal'), galleryModalContent=$('#galleryModalContent');
+  function openGallery(title, items){
+    if(!galleryModal || !items?.length) return;
+    galleryModalContent.innerHTML=`
+      <span class="modal-kicker">Photo gallery</span>
+      <h3 class="modal-title">${esc(title)}</h3>
+      <div class="portfolio-gallery-grid">
+        ${items.map((item,i)=>`<figure class="portfolio-gallery-item">
+          <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||title)}" loading="${i===0?'eager':'lazy'}" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
+          ${item.caption?`<figcaption>${esc(item.caption)}</figcaption>`:''}
+        </figure>`).join('')}
+      </div>`;
+    applyDeferredMedia();
+    galleryModal.showModal();
+    document.body.classList.add('modal-open');
+  }
+  if($('#galleryModalClose')) $('#galleryModalClose').addEventListener('click',()=>galleryModal.close());
+  if(galleryModal){
+    galleryModal.addEventListener('click',e=>{if(e.target===galleryModal)galleryModal.close()});
+    galleryModal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
+  }
+
   const baseClinical = Object.fromEntries(BASE.clinical.map(x=>[x.id,x]));
-  const clinicalCats=['All','Cardiology','Medicine','Surgery','Neonatology'];
+  const clinicalCats=['All','Cardiology','Medicine','Surgery','Neonatology','Emergency'];
   let clinicalFilter='All', countryFilter='All';
   function renderClinicalFilters(){
     $('#clinicalFilters').innerHTML=clinicalCats.map(c=>`<button type="button" class="filter-pill ${c===clinicalFilter?'active':''}" data-clinical="${c}">${esc(ui.filters.clinical[c]||c)}</button>`).join('');
@@ -252,15 +274,26 @@
     if(s.includes('cardiology'))return'Cardiology';
     if(s.includes('surgery'))return'Surgery';
     if(s.includes('neonat'))return'Neonatology';
+    if(s.includes('disaster')||s.includes('emergency'))return'Emergency';
     return'Medicine';
   };
   function renderClinical(){
     let items=d.clinical.filter(c=>(clinicalFilter==='All'||clinicalCategory(c)===clinicalFilter)&&(countryFilter==='All'||(baseClinical[c.id]?.location||c.location).includes(countryFilter)));
     $('#clinicalList').innerHTML=items.map(c=>`<article class="clinical-item reveal">
       <div class="clinical-date"><strong>${esc(c.date)}</strong><br>${esc(c.duration)}</div>
-      <div class="clinical-main"><h3>${esc(c.specialty)}</h3><div class="institution">${esc(c.institution)} · ${esc(c.location)}</div><p>${esc(c.detail)}</p></div>
+      <div class="clinical-main"><h3>${esc(c.specialty)}</h3><div class="institution">${esc(c.institution)} · ${esc(c.location)}</div><p>${esc(c.detail)}</p>
+        ${(c.courses||[]).length?`<details class="clinical-details"><summary>${esc((c.courses||[]).length)} completed electives</summary><ul>${c.courses.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details>`:''}
+        <div class="clinical-actions">
+          ${(c.gallery||[]).length?`<button class="clinical-gallery-trigger" type="button" data-clinical-gallery="${esc(c.id)}">View photos · ${c.gallery.length}</button>`:''}
+          ${c.evidenceId?`<button class="clinical-evidence-trigger" type="button" data-clinical-evidence="${esc(c.evidenceId)}">View certificate</button>`:''}
+        </div>
+      </div>
       <div class="clinical-meta"><span>${esc(ui.clinical.supervision)}: ${esc(c.supervisor)}</span></div>
     </article>`).join('') || `<div class="search-empty">${esc(ui.clinical.empty)}</div>`;
+    $('#clinicalList').querySelectorAll('[data-clinical-gallery]').forEach(b=>b.addEventListener('click',()=>{
+      const item=d.clinical.find(x=>x.id===b.dataset.clinicalGallery); if(item) openGallery(item.galleryTitle||item.specialty,item.gallery||[]);
+    }));
+    $('#clinicalList').querySelectorAll('[data-clinical-evidence]').forEach(b=>b.addEventListener('click',()=>openEvidence(b.dataset.clinicalEvidence)));
     bindReveal();
   }
   $('#clinicalFilters').addEventListener('click',e=>{const b=e.target.closest('[data-clinical]');if(!b)return;clinicalFilter=b.dataset.clinical;renderClinicalFilters();renderClinical()});
@@ -300,7 +333,7 @@
       <div class="evidence-grid">
         ${g.items.map(item=>`<button class="evidence-card" type="button" data-evidence="${item.id}">
           <div class="evidence-preview"><img data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}" loading="lazy" decoding="async"></div>
-          <div class="evidence-copy"><span>${esc(item.year)} · ${esc(item.note)}</span><h4>${esc(item.title)}</h4><p>${esc(item.issuer)}</p><strong>${esc(ui.credential?.open || 'View redacted copy')} ↗</strong></div>
+          <div class="evidence-copy"><span>${esc(item.year)} · ${esc(item.note)}</span><h4>${esc(item.title)}</h4><p>${esc(item.issuer)}</p><strong>${esc(item.redacted===false?'View certificate':(ui.credential?.open || 'View redacted copy'))} ↗</strong></div>
         </button>`).join('')}
       </div>
     </section>`).join('');
@@ -321,7 +354,7 @@
       <p class="modal-summary">${esc(item.issuer||'')}</p>
       ${item.detail?`<p class="modal-summary">${esc(item.detail)}</p>`:''}
       <img class="evidence-modal-image" data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}">
-      <div class="evidence-modal-note">${isRecommendation?'Signature redacted for privacy. Original unredacted copy available on reasonable request.':'Redacted for privacy. Original unredacted copy available on reasonable request.'}</div>`;
+      <div class="evidence-modal-note">${isRecommendation?'Signature redacted for privacy. Original unredacted copy available on reasonable request.':(item.redacted===false?'Official certificate shown in full.':'Redacted for privacy. Original unredacted copy available on reasonable request.')}</div>`;
     applyDeferredMedia();
     evidenceModal.showModal(); document.body.classList.add('modal-open');
   }
@@ -352,6 +385,14 @@
     if($('#doeRole')) $('#doeRole').textContent = d.doe.role;
     if($('#doeSummary')) $('#doeSummary').textContent = d.doe.summary;
     if($('#doePoints')) $('#doePoints').innerHTML = d.doe.points.map(x=>`<li>${esc(x)}</li>`).join('');
+    if($('#doeHighlights')) $('#doeHighlights').innerHTML=(d.doe.highlights||[]).map(x=>`<article><span>${esc(x.title)}</span><p>${esc(x.detail)}</p></article>`).join('');
+    if($('#doeGallery')){
+      $('#doeGallery').innerHTML=(d.doe.gallery||[]).map((item,i)=>`<button type="button" class="doe-gallery-tile doe-gallery-${i+1}" data-doe-gallery>
+        <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||'DOE activity')}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
+        <span>${esc(item.caption||'DOE activity')}</span>
+      </button>`).join('');
+      $('#doeGallery').querySelectorAll('[data-doe-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(d.doe.galleryTitle||'DOE & IFMSA',d.doe.gallery||[])));
+    }
     const doeLink=$('.doe-link'); if(doeLink && d.doe.website) doeLink.href=d.doe.website;
   }
 
