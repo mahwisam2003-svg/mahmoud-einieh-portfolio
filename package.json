@@ -4,6 +4,7 @@
   "private": true,
   "description": "Research and clinical portfolio for Dr. Mahmoud Einieh, MD",
   "scripts": {
-    "start": "python3 -m http.server 4173"
+    "start": "python3 -m http.server 4173",
+    "build": "python3 -m pip install -q pymupdf pillow && python3 .github/scripts/redact_meta_ta.py"
   }
 }
