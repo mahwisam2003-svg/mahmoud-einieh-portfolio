@@ -5,7 +5,7 @@ const SITE_I18N = {
       description: "Dr. Mahmoud Einieh, MD — cardiovascular research, advanced imaging, evidence synthesis, international clinical experience, publications and academic portfolio."
     },
     ui: {
-      nav: { research:"Research", clinical:"Clinical", outputs:"Outputs", awards:"Awards", lubdub:"Lub Dub", doe:"DOE", evidence:"Evidence", teaching:"Teaching", about:"About" },
+      nav: { research:"Research", clinical:"Clinical", outputs:"Outputs", medcup:"MedCup", leadership:"Leadership", awards:"Awards", lubdub:"Lub Dub", doe:"DOE", evidence:"Evidence", teaching:"Teaching", about:"About" },
       hero: {
         eyebrow:"MD · Clinical researcher · International experience",
         title:"Clinical medicine,<br><em>translated through evidence.</em>",
@@ -17,12 +17,14 @@ const SITE_I18N = {
         research:{kicker:"01 · Research portfolio",title:"Cardiovascular questions first.<br><span>Broader translational work around them.</span>",desc:"Selected published, completed, and active research across cardiovascular medicine, imaging, nephrology, and related fields."},
         clinical:{kicker:"02 · Clinical experience",title:"International training across<br><span>medicine, cardiology and acute care.</span>",desc:"Clinical placements across Europe, the Middle East, and North Africa."},
         outputs:{kicker:"03 · Research outputs",title:"Published, presented,<br><span>submitted and ongoing.</span>",desc:"Published papers, conference work, and selected research outputs."},
-        awards:{kicker:"04 · Recognition",title:"Competition, conference<br><span>and scientific recognition.</span>",desc:"Selected awards and conference presentations."},
-        lubdub:{kicker:"05 · Founder-led education",title:"The Lub Dub Club.<br><span>Cardiology through simulation.</span>",desc:"Founded and led at the University of Debrecen to make cardiology more practical, interactive, and clinically grounded."},
-        doe:{kicker:"06 · Student leadership",title:"DOE / IFMSA.<br><span>International student engagement.</span>",desc:"Leadership within the Medical Students’ Association of Debrecen, connecting international students with exchanges, opportunities, and educational events."},
-        evidence:{kicker:"07 · Supporting evidence",title:"Credentials where they add value.<br><span>Privacy where it matters.</span>",desc:"Selected certificates supporting clinical placements, research awards, and training."},
-        teaching:{kicker:"08 · Teaching",title:"Building systems for<br><span>learning and collaboration.</span>",desc:"Teaching experience in research methodology and pathology practical education."},
-        about:{kicker:"09 · About",title:"Clinically grounded.<br><span>Research driven.</span>"}
+        medcup:{kicker:"04 · MedCup 2024",title:"International clinical competition.<br><span>Second place in Brussels.</span>",desc:"A dedicated highlight for a team result combining clinical reasoning, practical skills, imaging and emergency decision-making."},
+        awards:{kicker:"05 · Recognition",title:"Competition, conference<br><span>and scientific recognition.</span>",desc:"Selected awards and conference presentations."},
+        lubdub:{kicker:"06 · Founder-led education",title:"The Lub Dub Club.<br><span>Cardiology through simulation.</span>",desc:"Founded and led at the University of Debrecen to make cardiology more practical, interactive, and clinically grounded."},
+        doe:{kicker:"07 · Student leadership",title:"DOE / IFMSA.<br><span>International student engagement.</span>",desc:"Leadership within the Medical Students’ Association of Debrecen, connecting international students with exchanges, opportunities, and educational events."},
+        evidence:{kicker:"08 · Supporting evidence",title:"Strong evidence, selectively shown.<br><span>Redacted where privacy matters.</span>",desc:"Core academic credentials, selected international clinical certificates, and scientific awards in high-resolution privacy-safe form."},
+        recommendations:{kicker:"09 · Recommendation letters",title:"Signed clinical recommendations.<br><span>Kept separate from certificates.</span>",desc:"Selected recommendation letters are presented separately so supporting credentials remain easy to scan."},
+        teaching:{kicker:"10 · Teaching",title:"Building systems for<br><span>learning and collaboration.</span>",desc:"Teaching experience in research methodology and pathology practical education."},
+        about:{kicker:"11 · About",title:"Clinically grounded.<br><span>Research driven.</span>"}
       },
       buttons: {
         showAll:"Show complete research portfolio", showFeatured:"Show featured research only", resetResearch:"Reset to featured research",
@@ -36,12 +38,12 @@ const SITE_I18N = {
       clinical:{supervision:"Supervision",empty:"No clinical experiences match this filter.",recommendation:"Recommendation letter available on request"},
       modal:{detail:"Research detail",role:"My role",status:"Status",supporting:"Supporting document*"},
       search:{placeholder:"Search projects, specialties, institutions…",empty:"No matching portfolio items.",research:"Research",clinical:"Clinical",recognition:"Recognition",credential:"Credential"},
-      credential:{open:"Open supporting document*"},
+      credential:{open:"View redacted copy"},
       about:{
         p1:"Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.",
         p2:"Interested in cardiovascular medicine, clinical research, imaging, and translational science.",
-        selected:"Selected credentials", publicCV:"Public CV", credential:"Credential", record:"Record", firstAuthor:"First-author paper",
-        privacy:"Supporting documents shown on this website may have limited personal information removed for privacy. *Original copies can be made available on reasonable request."
+        selected:"Selected credentials", selectedEvidence:"Selected evidence", view:"View", publicCV:"Public CV", credential:"Credential", record:"Record", firstAuthor:"First-author paper",
+        privacy:"Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request."
       },
       contact:{kicker:"Contact",title:"Research collaboration,<br>clinical opportunities, or academic work."},
       footer:{tagline:"Cardiovascular Research · Advanced Imaging · Evidence Synthesis",living:"Built as a living academic portfolio."},
@@ -57,7 +59,7 @@ const SITE_I18N = {
       description: "Dr. Mahmoud Einieh, MD — kardiovaskuläre Forschung, moderne Bildgebung, Evidenzsynthese, internationale klinische Erfahrung und wissenschaftliches Portfolio."
     },
     ui: {
-      nav: { research:"Forschung", clinical:"Klinik", outputs:"Publikationen", awards:"Auszeichnungen", lubdub:"Lub Dub", doe:"DOE", evidence:"Nachweise", teaching:"Lehre", about:"Über mich" },
+      nav: { research:"Forschung", clinical:"Klinik", outputs:"Publikationen", medcup:"MedCup", leadership:"Engagement", awards:"Auszeichnungen", lubdub:"Lub Dub", doe:"DOE", evidence:"Nachweise", teaching:"Lehre", about:"Über mich" },
       hero: {
         eyebrow:"MD · Klinischer Forscher · Internationale Erfahrung",
         title:"Klinische Medizin,<br><em>evidenzbasiert weitergedacht.</em>",
@@ -69,12 +71,14 @@ const SITE_I18N = {
         research:{kicker:"01 · Forschungsportfolio",title:"Kardiovaskuläre Fragen zuerst.<br><span>Breitere translationale Forschung darum herum.</span>",desc:"Ausgewählte publizierte, abgeschlossene und laufende Arbeiten in Kardiologie, Bildgebung, Nephrologie und angrenzenden Bereichen."},
         clinical:{kicker:"02 · Klinische Erfahrung",title:"Internationale Ausbildung in<br><span>Medizin, Kardiologie und Akutversorgung.</span>",desc:"Klinische Praktika und Hospitationen in Europa, dem Nahen Osten und Nordafrika."},
         outputs:{kicker:"03 · Wissenschaftliche Arbeiten",title:"Publiziert, präsentiert,<br><span>eingereicht und laufend.</span>",desc:"Publikationen, Kongressbeiträge und ausgewählte wissenschaftliche Arbeiten."},
-        awards:{kicker:"04 · Anerkennung",title:"Wettbewerbe, Kongresse<br><span>und wissenschaftliche Auszeichnungen.</span>",desc:"Ausgewählte Preise und Kongresspräsentationen."},
-        lubdub:{kicker:"05 · Gegründete Lehrinitiative",title:"The Lub Dub Club.<br><span>Kardiologie durch Simulation.</span>",desc:"An der Universität Debrecen gegründet und geleitet, um Kardiologie praxisnaher, interaktiver und klinisch orientierter zu vermitteln."},
-        doe:{kicker:"06 · Studentische Führung",title:"DOE / IFMSA.<br><span>Internationale Studierendenarbeit.</span>",desc:"Leitung internationaler Studierendenaktivitäten mit Austauschprogrammen, globalen Möglichkeiten und interdisziplinären Bildungsangeboten."},
-        evidence:{kicker:"07 · Nachweise",title:"Nachweise dort, wo sie Mehrwert schaffen.<br><span>Datenschutz dort, wo er zählt.</span>",desc:"Ausgewählte Zertifikate zu klinischen Praktika, Forschungspreisen und Fortbildungen."},
-        teaching:{kicker:"08 · Lehre",title:"Strukturen für<br><span>Lernen und Zusammenarbeit schaffen.</span>",desc:"Lehrerfahrung in Forschungsmethodik und pathologischer Praxisausbildung."},
-        about:{kicker:"09 · Über mich",title:"Klinisch verankert.<br><span>Forschungsorientiert.</span>"}
+        medcup:{kicker:"04 · MedCup 2024",title:"Internationaler klinischer Wettbewerb.<br><span>Zweiter Platz in Brüssel.</span>",desc:"Ein eigener Abschnitt für den Teamerfolg in klinischem Denken, praktischen Fertigkeiten, Bildgebung und Notfallentscheidungen."},
+        awards:{kicker:"05 · Anerkennung",title:"Wettbewerbe, Kongresse<br><span>und wissenschaftliche Auszeichnungen.</span>",desc:"Ausgewählte Preise und Kongresspräsentationen."},
+        lubdub:{kicker:"06 · Gegründete Lehrinitiative",title:"The Lub Dub Club.<br><span>Kardiologie durch Simulation.</span>",desc:"An der Universität Debrecen gegründet und geleitet, um Kardiologie praxisnaher, interaktiver und klinisch orientierter zu vermitteln."},
+        doe:{kicker:"07 · Studentische Führung",title:"DOE / IFMSA.<br><span>Internationale Studierendenarbeit.</span>",desc:"Leitung internationaler Studierendenaktivitäten mit Austauschprogrammen, globalen Möglichkeiten und interdisziplinären Bildungsangeboten."},
+        evidence:{kicker:"08 · Nachweise",title:"Aussagekräftige Nachweise, gezielt gezeigt.<br><span>Geschwärzt, wo Datenschutz zählt.</span>",desc:"Zentrale Abschlüsse, ausgewählte internationale klinische Zertifikate und wissenschaftliche Auszeichnungen in hochauflösender, datenschutzgerechter Form."},
+        recommendations:{kicker:"09 · Empfehlungsschreiben",title:"Unterzeichnete klinische Empfehlungen.<br><span>Getrennt von Zertifikaten.</span>",desc:"Ausgewählte Empfehlungsschreiben werden separat gezeigt, damit die Nachweise übersichtlich bleiben."},
+        teaching:{kicker:"10 · Lehre",title:"Strukturen für<br><span>Lernen und Zusammenarbeit schaffen.</span>",desc:"Lehrerfahrung in Forschungsmethodik und pathologischer Praxisausbildung."},
+        about:{kicker:"11 · Über mich",title:"Klinisch verankert.<br><span>Forschungsorientiert.</span>"}
       },
       buttons: {
         showAll:"Vollständiges Forschungsportfolio anzeigen", showFeatured:"Nur ausgewählte Forschung anzeigen", resetResearch:"Auf ausgewählte Forschung zurücksetzen",
@@ -88,12 +92,12 @@ const SITE_I18N = {
       clinical:{supervision:"Betreuung",empty:"Keine klinischen Erfahrungen entsprechen diesem Filter.",recommendation:"Empfehlungsschreiben auf Anfrage verfügbar"},
       modal:{detail:"Forschungsdetails",role:"Meine Rolle",status:"Status",supporting:"Nachweis*"},
       search:{placeholder:"Projekte, Fachgebiete, Institutionen durchsuchen…",empty:"Keine passenden Einträge gefunden.",research:"Forschung",clinical:"Klinik",recognition:"Auszeichnung",credential:"Nachweis"},
-      credential:{open:"Nachweis öffnen*"},
+      credential:{open:"Geschwärzte Kopie ansehen"},
       about:{
         p1:"Abschluss des sechsjährigen englischsprachigen Medizinstudiums an der Universität Debrecen im Jahr 2026.",
         p2:"Interessen: Kardiovaskuläre Medizin, klinische Forschung, Bildgebung und translationale Wissenschaft.",
-        selected:"Ausgewählte Nachweise", publicCV:"Öffentlicher Lebenslauf", credential:"Nachweis", record:"Profil", firstAuthor:"Erstautor-Publikation",
-        privacy:"Bei den auf dieser Website gezeigten Nachweisen können aus Datenschutzgründen einzelne personenbezogene Angaben entfernt sein. *Unveränderte Originale können auf begründete Anfrage zur Verfügung gestellt werden."
+        selected:"Ausgewählte Nachweise", selectedEvidence:"Ausgewählte Nachweise", view:"Ansehen", publicCV:"Öffentlicher Lebenslauf", credential:"Nachweis", record:"Profil", firstAuthor:"Erstautor-Publikation",
+        privacy:"Dokumente werden aus Datenschutzgründen in geschwärzter Form gezeigt. Unveränderte Originale können auf begründete Anfrage zur Verfügung gestellt werden."
       },
       contact:{kicker:"Kontakt",title:"Forschungskooperation,<br>klinische Möglichkeiten oder akademische Projekte."},
       footer:{tagline:"Kardiovaskuläre Forschung · Moderne Bildgebung · Evidenzsynthese",living:"Als fortlaufend aktualisiertes akademisches Portfolio erstellt."},
@@ -155,7 +159,7 @@ const SITE_I18N = {
       description: "Dr. Mahmoud Einieh, MD — kardiovaszkuláris kutatás, korszerű képalkotás, evidenciaszintézis, nemzetközi klinikai tapasztalat és tudományos portfólió."
     },
     ui: {
-      nav: { research:"Kutatás", clinical:"Klinikum", outputs:"Publikációk", awards:"Eredmények", lubdub:"Lub Dub", doe:"DOE", evidence:"Igazolások", teaching:"Oktatás", about:"Rólam" },
+      nav: { research:"Kutatás", clinical:"Klinikum", outputs:"Publikációk", medcup:"MedCup", leadership:"Vezetői szerepek", awards:"Eredmények", lubdub:"Lub Dub", doe:"DOE", evidence:"Igazolások", teaching:"Oktatás", about:"Rólam" },
       hero: {
         eyebrow:"MD · Klinikai kutató · Nemzetközi tapasztalat",
         title:"Klinikai orvoslás,<br><em>bizonyítékokra építve.</em>",
@@ -167,12 +171,14 @@ const SITE_I18N = {
         research:{kicker:"01 · Kutatási portfólió",title:"Először a kardiovaszkuláris kérdések.<br><span>Körülöttük szélesebb transzlációs kutatás.</span>",desc:"Válogatott megjelent, befejezett és folyamatban lévő kutatások a kardiovaszkuláris medicina, képalkotás, nefrológia és kapcsolódó területek köréből."},
         clinical:{kicker:"02 · Klinikai tapasztalat",title:"Nemzetközi képzés<br><span>belgyógyászatban, kardiológiában és akut ellátásban.</span>",desc:"Klinikai gyakorlatok Európában, a Közel-Keleten és Észak-Afrikában."},
         outputs:{kicker:"03 · Tudományos eredmények",title:"Megjelent, bemutatott,<br><span>benyújtott és folyamatban lévő munkák.</span>",desc:"Publikációk, kongresszusi munkák és válogatott kutatási eredmények."},
-        awards:{kicker:"04 · Elismerések",title:"Versenyek, kongresszusok<br><span>és tudományos elismerések.</span>",desc:"Válogatott díjak és kongresszusi prezentációk."},
-        lubdub:{kicker:"05 · Saját alapítású oktatási kezdeményezés",title:"The Lub Dub Club.<br><span>Kardiológia szimuláción keresztül.</span>",desc:"A Debreceni Egyetemen alapított és vezetett kezdeményezés, amely a kardiológiát gyakorlatiasabbá, interaktívabbá és klinikailag megalapozottabbá teszi."},
-        doe:{kicker:"06 · Hallgatói vezetés",title:"DOE / IFMSA.<br><span>Nemzetközi hallgatói kapcsolatok.</span>",desc:"Nemzetközi hallgatói programok vezetése cserelehetőségekkel, globális szakmai lehetőségekkel és multidiszciplináris oktatási eseményekkel."},
-        evidence:{kicker:"07 · Igazolások",title:"Dokumentumok ott, ahol valódi értéket adnak.<br><span>Adatvédelem ott, ahol számít.</span>",desc:"Válogatott igazolások klinikai gyakorlatokról, kutatási díjakról és képzésekről."},
-        teaching:{kicker:"08 · Oktatás",title:"Rendszerek építése<br><span>a tanuláshoz és együttműködéshez.</span>",desc:"Oktatási tapasztalat kutatásmódszertanban és patológiai gyakorlati képzésben."},
-        about:{kicker:"09 · Rólam",title:"Klinikailag megalapozott.<br><span>Kutatásvezérelt.</span>"}
+        medcup:{kicker:"04 · MedCup 2024",title:"Nemzetközi klinikai verseny.<br><span>Második hely Brüsszelben.</span>",desc:"Külön kiemelés a klinikai gondolkodást, gyakorlati készségeket, képalkotást és sürgősségi döntéshozatalt ötvöző csapateredménynek."},
+        awards:{kicker:"05 · Elismerések",title:"Versenyek, kongresszusok<br><span>és tudományos elismerések.</span>",desc:"Válogatott díjak és kongresszusi prezentációk."},
+        lubdub:{kicker:"06 · Saját alapítású oktatási kezdeményezés",title:"The Lub Dub Club.<br><span>Kardiológia szimuláción keresztül.</span>",desc:"A Debreceni Egyetemen alapított és vezetett kezdeményezés, amely a kardiológiát gyakorlatiasabbá, interaktívabbá és klinikailag megalapozottabbá teszi."},
+        doe:{kicker:"07 · Hallgatói vezetés",title:"DOE / IFMSA.<br><span>Nemzetközi hallgatói kapcsolatok.</span>",desc:"Nemzetközi hallgatói programok vezetése cserelehetőségekkel, globális szakmai lehetőségekkel és multidiszciplináris oktatási eseményekkel."},
+        evidence:{kicker:"08 · Igazolások",title:"Erős bizonyítékok, válogatva.<br><span>Kitakarva, ahol az adatvédelem számít.</span>",desc:"Alapvető végzettségek, válogatott nemzetközi klinikai igazolások és tudományos díjak nagy felbontású, adatvédelmi szempontból biztonságos formában."},
+        recommendations:{kicker:"09 · Ajánlólevelek",title:"Aláírt klinikai ajánlások.<br><span>Külön a bizonyítványoktól.</span>",desc:"A válogatott ajánlólevelek külön jelennek meg, hogy az igazolások könnyen áttekinthetők maradjanak."},
+        teaching:{kicker:"10 · Oktatás",title:"Rendszerek építése<br><span>a tanuláshoz és együttműködéshez.</span>",desc:"Oktatási tapasztalat kutatásmódszertanban és patológiai gyakorlati képzésben."},
+        about:{kicker:"11 · Rólam",title:"Klinikailag megalapozott.<br><span>Kutatásvezérelt.</span>"}
       },
       buttons: {
         showAll:"Teljes kutatási portfólió megjelenítése", showFeatured:"Csak a kiemelt kutatások megjelenítése", resetResearch:"Vissza a kiemelt kutatásokhoz",
@@ -186,12 +192,12 @@ const SITE_I18N = {
       clinical:{supervision:"Témavezető / felügyelet",empty:"Nincs a szűrőnek megfelelő klinikai tapasztalat.",recommendation:"Ajánlólevél kérésre elérhető"},
       modal:{detail:"Kutatási részletek",role:"Saját szerepem",status:"Státusz",supporting:"Igazoló dokumentum*"},
       search:{placeholder:"Keresés projektek, szakterületek és intézmények között…",empty:"Nincs megfelelő találat.",research:"Kutatás",clinical:"Klinikum",recognition:"Elismerés",credential:"Igazolás"},
-      credential:{open:"Igazoló dokumentum megnyitása*"},
+      credential:{open:"Kitakart példány megtekintése"},
       about:{
         p1:"2026-ban végeztem a Debreceni Egyetem hatéves, angol nyelvű általános orvosképzésén.",
         p2:"Fő érdeklődési területeim a kardiovaszkuláris medicina, klinikai kutatás, képalkotás és transzlációs tudomány.",
-        selected:"Válogatott igazolások", publicCV:"Nyilvános önéletrajz", credential:"Igazolás", record:"Profil", firstAuthor:"Első szerzős közlemény",
-        privacy:"A weboldalon megjelenített igazoló dokumentumokból adatvédelmi okokból bizonyos személyes adatok eltávolíthatók. *Az eredeti, módosítatlan példányok indokolt kérésre rendelkezésre bocsáthatók."
+        selected:"Válogatott igazolások", selectedEvidence:"Válogatott igazolások", view:"Megtekintés", publicCV:"Nyilvános önéletrajz", credential:"Igazolás", record:"Profil", firstAuthor:"Első szerzős közlemény",
+        privacy:"A dokumentumok adatvédelmi okokból kitakart formában jelennek meg. Az eredeti, módosítatlan példányok indokolt kérésre rendelkezésre bocsáthatók."
       },
       contact:{kicker:"Kapcsolat",title:"Kutatási együttműködés,<br>klinikai lehetőségek vagy akadémiai projektek."},
       footer:{tagline:"Kardiovaszkuláris kutatás · Korszerű képalkotás · Evidenciaszintézis",living:"Folyamatosan frissülő akadémiai portfólió."},
