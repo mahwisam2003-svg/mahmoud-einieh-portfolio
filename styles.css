@@ -331,3 +331,29 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
 
 .doe-gallery-more{grid-column:1/-1;appearance:none;border:1px dashed var(--line);background:transparent;color:var(--muted);border-radius:14px;padding:10px 14px;font:inherit;font-size:.68rem;font-weight:760;cursor:pointer;transition:.2s}
 .doe-gallery-more:hover{border-color:var(--accent);color:var(--accent);background:var(--panel)}
+
+
+/* Six-section information architecture */
+.portfolio-group{position:relative}
+.portfolio-subsection{padding-top:72px;margin-top:72px;border-top:1px solid var(--line)}
+#research>.portfolio-subsection{padding-top:78px;margin-top:78px}
+.portfolio-subsection>.section-heading{margin-bottom:26px;align-items:end}
+.portfolio-subsection>.section-heading h2{font-size:clamp(1.75rem,3.5vw,3rem);letter-spacing:-.045em;line-height:1}
+.portfolio-subsection>.section-heading>p{max-width:560px;font-size:.82rem;line-height:1.6}
+.portfolio-subsection>.section-heading .kicker{font-size:.66rem;letter-spacing:.1em}
+.portfolio-subsection.medcup-section,
+.portfolio-subsection.doe-section,
+.portfolio-subsection.recommendations-section,
+.portfolio-subsection.lubdub-section{padding-top:72px}
+.portfolio-group.credentials-section{padding-top:120px}
+#credentials>.evidence-groups{margin-top:0}
+#credentials>.evidence-privacy{margin-bottom:0}
+#about{scroll-margin-top:90px}
+#research,#clinical,#leadership,#highlights,#credentials{scroll-margin-top:90px}
+
+@media(max-width:720px){
+  .portfolio-subsection{padding-top:52px;margin-top:52px}
+  #research>.portfolio-subsection{padding-top:56px;margin-top:56px}
+  .portfolio-subsection>.section-heading{margin-bottom:20px}
+  .portfolio-subsection>.section-heading h2{font-size:1.7rem}
+}
