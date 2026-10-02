@@ -343,7 +343,8 @@ const SITE_DATA = {
     summary: "Mahmoud Einieh and Ramzi Zeidan represented the University of Debrecen and finished second in the international MedCup competition in Brussels, one point behind the winning team.",
     detail: "The competition tested clinical reasoning, practical skills, imaging interpretation, emergency response and procedural ability across teams from universities worldwide.",
     source: "https://hirek.unideb.hu/en/international-success-debrecen-medical-students",
-    youtube: "https://www.youtube.com/watch?v=gPz7goPlIUE",
+    youtubeAftermovie: "https://www.youtube.com/watch?v=gPz7goPlIUE",
+    youtubeLivestream: "https://youtu.be/2DWyBH80oM8?si=ZZp9Th6jjj_lkchk",
     press: [
       { label: "HAON", url: "https://www.haon.hu/helyi-kozelet/2024/03/medcup-szakmai-verseny-debreceni-egyetem-orvostudomanyi-kar" },
       { label: "Debrecen Sun", url: "https://www.debrecensun.hu/uni/2024/03/08/medical-students-from-debrecen-successfully-participated-in-the-professional-championship-in-brussels/" },
