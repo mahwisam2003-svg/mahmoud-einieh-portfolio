@@ -120,6 +120,7 @@
       if(links[2]){ $('strong',links[2]).textContent=ui.about.record+' ↗'; }
       if(links[3]){ $('strong',links[3]).textContent=ui.about.firstAuthor+' ↗'; }
       const privacy=$('.privacy-note',about); if(privacy) privacy.textContent=ui.about.privacy;
+      const hobbyLabel=$('.hobby-block .mini-label',about); if(hobbyLabel) hobbyLabel.textContent=ui.about.hobby || 'Hobby';
     }
 
     const contact=$('.contact-section');
