@@ -211,7 +211,7 @@ const SITE_DATA = {
     },
     {
       id: "romania-disaster",
-      specialty: "Disaster Medicine & Emergency Response",
+      specialty: "Disaster Medicine, Firefighting & Emergency Response",
       institution: "MERIT · ROHU00026",
       location: "Diosig, Romania",
       date: "24–26 Apr 2026",
@@ -300,13 +300,13 @@ const SITE_DATA = {
       specialty: "Surgical Skills Electives (BST)",
       institution: "Department of Operative Techniques & Surgical Research · University of Debrecen",
       location: "Debrecen, Hungary",
-      date: "2023–2024",
+      date: "2023–2025",
       duration: "4 practical electives · all Excellent (5)",
       supervisor: "Department faculty",
-      detail: "Completed the department’s practical surgical-skills elective sequence, progressing from operative fundamentals to microsurgery, laparoscopy and advanced operative techniques.",
+      detail: "Completed the full practical elective sequence offered by the Department of Operative Techniques & Surgical Research, progressing from operative fundamentals to microsurgery, laparoscopy and advanced operative techniques.",
       courses: [
         "Surgical Operative Techniques",
-        "Basic Microsurgical Training: Introduction to Microsurgery",
+        "Basic Microsurgical Training. Introduction to Microsurgery",
         "Basic Laparoscopic Surgical Training",
         "Advanced Surgical Operative Techniques"
       ],
