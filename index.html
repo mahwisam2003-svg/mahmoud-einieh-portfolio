@@ -153,12 +153,12 @@
           <h3 id="medcupTitle"></h3>
           <p id="medcupSummary"></p>
           <p id="medcupDetail"></p>
-          <a class="button button-ghost" id="medcupSource" href="#" target="_blank" rel="noopener">University of Debrecen article <span>↗</span></a>
+          <div class="medcup-actions">
+            <a class="button button-ghost" id="medcupSource" href="#" target="_blank" rel="noopener">University of Debrecen article <span>↗</span></a>
+            <a class="button button-ghost youtube-button" id="medcupYoutube" href="#" target="_blank" rel="noopener">Watch on YouTube <span>▶</span></a>
+          </div>
         </div>
-        <div class="medcup-gallery reveal delay-1">
-          <figure><img id="medcupStage" alt="MedCup 2024 final stage in Brussels" loading="lazy"></figure>
-          <figure><img id="medcupSpeaking" alt="Mahmoud Einieh speaking at MedCup 2024" loading="lazy"></figure>
-        </div>
+        <div class="medcup-gallery reveal delay-1" id="medcupGallery"></div>
       </div>
     </section>
 
@@ -283,13 +283,16 @@
   </dialog>
 
   <script src="image_data.js?v=20261002-4"></script>
-  <script src="media_diplomas.js?v=20261002-2"></script>
-  <script src="media_clinical.js?v=20261002-1"></script>
-  <script src="media_awards_training.js?v=20261002-1"></script>
-  <script src="media_recommendations.js?v=20261002-1"></script>
-  <script src="media_medcup.js?v=20261002-1"></script>
-  <script src="data.js?v=20261002-4"></script>
+  <script src="data.js?v=20261002-5"></script>
   <script src="translations.js?v=20261002-4"></script>
-  <script src="app.js?v=20261002-4"></script>
+  <script>window.SITE_MEDIA = window.SITE_MEDIA || {};</script>
+  <script src="app.js?v=20261002-5"></script>
+
+  <!-- Large document/photo payloads load after the portfolio itself so text/cards never appear blank. -->
+  <script async src="media_diplomas.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
+  <script async src="media_clinical.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
+  <script async src="media_awards_training.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
+  <script async src="media_recommendations.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
+  <script async src="media_medcup.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
 </body>
 </html>
