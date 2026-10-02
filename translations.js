@@ -5,7 +5,7 @@ const SITE_I18N = {
       description: "Dr. Mahmoud Einieh, MD — cardiovascular research, advanced imaging, evidence synthesis, international clinical experience, publications and academic portfolio."
     },
     ui: {
-      nav: { research:"Research", clinical:"Clinical", outputs:"Outputs", medcup:"MedCup", leadership:"Leadership", awards:"Awards", lubdub:"Lub Dub", doe:"DOE", evidence:"Evidence", teaching:"Teaching", about:"About" },
+      nav: { research:"Research", clinical:"Clinical", outputs:"Outputs", medcup:"MedCup", leadership:"Leadership", highlights:"Highlights", awards:"Awards", lubdub:"Lub Dub", doe:"DOE", evidence:"Credentials", teaching:"Teaching", about:"About" },
       hero: {
         eyebrow:"MD · Clinical researcher · International experience",
         title:"Clinical medicine,<br><em>translated through evidence.</em>",
@@ -14,17 +14,19 @@ const SITE_I18N = {
         researchIdentity:"Research identity"
       },
       sections: {
-        research:{kicker:"01 · Research",title:"Research.",desc:"Selected projects."},
-        clinical:{kicker:"02 · Clinical",title:"Clinical.",desc:"International placements, electives and simulation."},
-        outputs:{kicker:"03 · Outputs",title:"Publications.",desc:"Papers, abstracts and presentations."},
-        medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Second place in Brussels."},
-        awards:{kicker:"05 · Recognition",title:"Awards.",desc:"Selected academic and scientific recognition."},
-        lubdub:{kicker:"06 · Leadership",title:"Lub Dub Club.",desc:"Founder-led cardiology education through simulation."},
-        doe:{kicker:"07 · Leadership",title:"DOE & IFMSA.",desc:"Leadership, outreach and exchange."},
-        evidence:{kicker:"08 · Evidence",title:"Credentials.",desc:"Selected certificates and supporting documents."},
-        recommendations:{kicker:"09 · References",title:"Letters of recommendation.",desc:""},
-        teaching:{kicker:"10 · Teaching",title:"Teaching.",desc:"Research methods and pathology."},
-        about:{kicker:"11 · About",title:"About."}
+        research:{kicker:"01 · Research",title:"Research.",desc:"Projects, publications and presentations."},
+        clinical:{kicker:"02 · Clinical",title:"Clinical.",desc:"International placements, electives and simulation training."},
+        leadership:{kicker:"03 · Leadership",title:"Leadership.",desc:"Student leadership, teaching and practical medical education."},
+        highlights:{kicker:"04 · Highlights",title:"Highlights.",desc:"Selected awards, competitions and academic milestones."},
+        evidence:{kicker:"05 · Credentials",title:"Credentials.",desc:"Certificates, supporting evidence and recommendation letters."},
+        about:{kicker:"06 · About",title:"About."},
+        outputs:{kicker:"Selected outputs",title:"Publications & presentations.",desc:"Papers, abstracts and presentations."},
+        medcup:{kicker:"Featured",title:"MedCup 2024.",desc:"Second place in Brussels."},
+        awards:{kicker:"Recognition",title:"Awards & recognition.",desc:"Selected academic and scientific recognition."},
+        lubdub:{kicker:"Founder-led education",title:"Lub Dub Club.",desc:"Cardiology education through simulation."},
+        doe:{kicker:"Student leadership",title:"DOE & IFMSA.",desc:"Leadership, outreach and exchange."},
+        recommendations:{kicker:"References",title:"Letters of recommendation.",desc:""},
+        teaching:{kicker:"Education",title:"Teaching.",desc:"Research methods and pathology."}
       },
       buttons: {
         showAll:"Show complete research portfolio", showFeatured:"Show featured research only", resetResearch:"Reset to featured research",
@@ -59,7 +61,7 @@ const SITE_I18N = {
       description: "Dr. Mahmoud Einieh, MD — kardiovaskuläre Forschung, moderne Bildgebung, Evidenzsynthese, internationale klinische Erfahrung und wissenschaftliches Portfolio."
     },
     ui: {
-      nav: { research:"Forschung", clinical:"Klinik", outputs:"Publikationen", medcup:"MedCup", leadership:"Engagement", awards:"Auszeichnungen", lubdub:"Lub Dub", doe:"DOE", evidence:"Nachweise", teaching:"Lehre", about:"Über mich" },
+      nav: { research:"Forschung", clinical:"Klinik", outputs:"Publikationen", medcup:"MedCup", leadership:"Engagement", highlights:"Highlights", awards:"Auszeichnungen", lubdub:"Lub Dub", doe:"DOE", evidence:"Nachweise", teaching:"Lehre", about:"Über mich" },
       hero: {
         eyebrow:"MD · Klinischer Forscher · Internationale Erfahrung",
         title:"Klinische Medizin,<br><em>evidenzbasiert weitergedacht.</em>",
@@ -68,17 +70,19 @@ const SITE_I18N = {
         researchIdentity:"Forschungsprofil"
       },
       sections: {
-        research:{kicker:"01 · Forschung",title:"Forschung.",desc:"Ausgewählte Projekte."},
-        clinical:{kicker:"02 · Klinik",title:"Klinik.",desc:"Internationale Praktika, Wahlfächer und Simulation."},
-        outputs:{kicker:"03 · Arbeiten",title:"Publikationen.",desc:"Artikel, Abstracts und Präsentationen."},
-        medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Zweiter Platz in Brüssel."},
-        awards:{kicker:"05 · Anerkennung",title:"Auszeichnungen.",desc:"Ausgewählte akademische und wissenschaftliche Anerkennungen."},
-        lubdub:{kicker:"06 · Leitung",title:"Lub Dub Club.",desc:"Von mir gegründete Kardiologieausbildung durch Simulation."},
-        doe:{kicker:"07 · Leitung",title:"DOE & IFMSA.",desc:"Leitung, Outreach und Austausch."},
-        evidence:{kicker:"08 · Nachweise",title:"Nachweise.",desc:"Ausgewählte Dokumente und Zertifikate."},
-        recommendations:{kicker:"09 · Referenzen",title:"Empfehlungsschreiben.",desc:""},
-        teaching:{kicker:"10 · Lehre",title:"Lehre.",desc:"Forschungsmethoden und Pathologie."},
-        about:{kicker:"11 · Über mich",title:"Über mich."}
+        research:{kicker:"01 · Forschung",title:"Forschung.",desc:"Projekte, Publikationen und Präsentationen."},
+        clinical:{kicker:"02 · Klinik",title:"Klinik.",desc:"Internationale Praktika, Wahlfächer und Simulationstraining."},
+        leadership:{kicker:"03 · Engagement",title:"Engagement.",desc:"Studentische Leitung, Lehre und praxisnahe medizinische Ausbildung."},
+        highlights:{kicker:"04 · Highlights",title:"Highlights.",desc:"Ausgewählte Preise, Wettbewerbe und akademische Meilensteine."},
+        evidence:{kicker:"05 · Nachweise",title:"Nachweise.",desc:"Zertifikate, Belege und Empfehlungsschreiben."},
+        about:{kicker:"06 · Über mich",title:"Über mich."},
+        outputs:{kicker:"Ausgewählte Arbeiten",title:"Publikationen & Präsentationen.",desc:"Artikel, Abstracts und Präsentationen."},
+        medcup:{kicker:"Highlight",title:"MedCup 2024.",desc:"Zweiter Platz in Brüssel."},
+        awards:{kicker:"Anerkennung",title:"Preise & Anerkennung.",desc:"Ausgewählte akademische und wissenschaftliche Anerkennungen."},
+        lubdub:{kicker:"Gegründete Lehrinitiative",title:"Lub Dub Club.",desc:"Kardiologieausbildung durch Simulation."},
+        doe:{kicker:"Studentisches Engagement",title:"DOE & IFMSA.",desc:"Leitung, Outreach und Austausch."},
+        recommendations:{kicker:"Referenzen",title:"Empfehlungsschreiben.",desc:""},
+        teaching:{kicker:"Lehre",title:"Lehre.",desc:"Forschungsmethoden und Pathologie."}
       },
       buttons: {
         showAll:"Vollständiges Forschungsportfolio anzeigen", showFeatured:"Nur ausgewählte Forschung anzeigen", resetResearch:"Auf ausgewählte Forschung zurücksetzen",
@@ -161,7 +165,7 @@ const SITE_I18N = {
       description: "Dr. Mahmoud Einieh, MD — kardiovaszkuláris kutatás, korszerű képalkotás, evidenciaszintézis, nemzetközi klinikai tapasztalat és tudományos portfólió."
     },
     ui: {
-      nav: { research:"Kutatás", clinical:"Klinikum", outputs:"Publikációk", medcup:"MedCup", leadership:"Vezetői szerepek", awards:"Eredmények", lubdub:"Lub Dub", doe:"DOE", evidence:"Igazolások", teaching:"Oktatás", about:"Rólam" },
+      nav: { research:"Kutatás", clinical:"Klinikum", outputs:"Publikációk", medcup:"MedCup", leadership:"Vezetés", highlights:"Kiemelések", awards:"Eredmények", lubdub:"Lub Dub", doe:"DOE", evidence:"Igazolások", teaching:"Oktatás", about:"Rólam" },
       hero: {
         eyebrow:"MD · Klinikai kutató · Nemzetközi tapasztalat",
         title:"Klinikai orvoslás,<br><em>bizonyítékokra építve.</em>",
@@ -170,17 +174,19 @@ const SITE_I18N = {
         researchIdentity:"Kutatói profil"
       },
       sections: {
-        research:{kicker:"01 · Kutatás",title:"Kutatás.",desc:"Válogatott projektek."},
-        clinical:{kicker:"02 · Klinikum",title:"Klinikum.",desc:"Nemzetközi gyakorlatok, választható tárgyak és szimuláció."},
-        outputs:{kicker:"03 · Eredmények",title:"Publikációk.",desc:"Cikkek, absztraktok és előadások."},
-        medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Második hely Brüsszelben."},
-        awards:{kicker:"05 · Elismerés",title:"Díjak.",desc:"Válogatott akadémiai és tudományos elismerések."},
-        lubdub:{kicker:"06 · Vezetés",title:"Lub Dub Club.",desc:"Saját alapítású kardiológiai oktatás szimulációval."},
-        doe:{kicker:"07 · Vezetés",title:"DOE & IFMSA.",desc:"Vezetés, közösségi programok és cserekapcsolatok."},
-        evidence:{kicker:"08 · Igazolások",title:"Igazolások.",desc:"Válogatott dokumentumok és tanúsítványok."},
-        recommendations:{kicker:"09 · Referenciák",title:"Ajánlólevelek.",desc:""},
-        teaching:{kicker:"10 · Oktatás",title:"Oktatás.",desc:"Kutatásmódszertan és patológia."},
-        about:{kicker:"11 · Rólam",title:"Rólam."}
+        research:{kicker:"01 · Kutatás",title:"Kutatás.",desc:"Projektek, publikációk és prezentációk."},
+        clinical:{kicker:"02 · Klinikum",title:"Klinikum.",desc:"Nemzetközi gyakorlatok, választható tárgyak és szimulációs képzés."},
+        leadership:{kicker:"03 · Vezetés",title:"Vezetés.",desc:"Hallgatói vezetés, oktatás és gyakorlati orvosképzés."},
+        highlights:{kicker:"04 · Kiemelések",title:"Kiemelések.",desc:"Válogatott díjak, versenyek és akadémiai mérföldkövek."},
+        evidence:{kicker:"05 · Igazolások",title:"Igazolások.",desc:"Tanúsítványok, igazoló dokumentumok és ajánlólevelek."},
+        about:{kicker:"06 · Rólam",title:"Rólam."},
+        outputs:{kicker:"Válogatott eredmények",title:"Publikációk & prezentációk.",desc:"Cikkek, absztraktok és előadások."},
+        medcup:{kicker:"Kiemelt",title:"MedCup 2024.",desc:"Második hely Brüsszelben."},
+        awards:{kicker:"Elismerés",title:"Díjak & elismerések.",desc:"Válogatott akadémiai és tudományos elismerések."},
+        lubdub:{kicker:"Saját alapítású oktatás",title:"Lub Dub Club.",desc:"Kardiológiai oktatás szimulációval."},
+        doe:{kicker:"Hallgatói vezetés",title:"DOE & IFMSA.",desc:"Vezetés, közösségi programok és cserekapcsolatok."},
+        recommendations:{kicker:"Referenciák",title:"Ajánlólevelek.",desc:""},
+        teaching:{kicker:"Oktatás",title:"Oktatás.",desc:"Kutatásmódszertan és patológia."}
       },
       buttons: {
         showAll:"Teljes kutatási portfólió megjelenítése", showFeatured:"Csak a kiemelt kutatások megjelenítése", resetResearch:"Vissza a kiemelt kutatásokhoz",
