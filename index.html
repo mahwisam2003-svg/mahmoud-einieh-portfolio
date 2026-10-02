@@ -285,6 +285,12 @@
           <p>Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.</p>
           <p>Interested in cardiovascular medicine, clinical research, imaging, and translational science.</p>
           <div class="language-list" id="languageList"></div>
+          <div class="hobby-block" id="hobbyBlock">
+            <span class="mini-label">Hobby</span>
+            <h3 id="hobbyTitle"></h3>
+            <p id="hobbySummary"></p>
+            <div class="hobby-gallery" id="hobbyGallery" aria-label="Horse riding photo highlights"></div>
+          </div>
         </div>
         <aside class="about-panel glass reveal delay-1"><img id="graduationPhoto" src="assets/portrait_hd.webp" class="about-photo" alt="Graduation portrait of Mahmoud Einieh" loading="lazy">
           <span class="mini-label">Selected credentials</span>
@@ -356,7 +362,7 @@
     })();
   </script>
 
-  <script src="image_data.js?v=20261002-4"></script>
+  <script src="image_data.js?v=20261002-12"></script>
   <script src="data.js?v=20261002-11"></script>
   <script src="translations.js?v=20261002-9"></script>
   <script>window.SITE_MEDIA = window.SITE_MEDIA || {};</script>
@@ -377,5 +383,6 @@
   <!-- Verified media overrides: authoritative LOIS team photo and emailed MERIT certificate. -->
   <script src="media_lois_team.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
   <script src="media_merit_certificate.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
+  <script async src="media_hobbies.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
 </body>
 </html>
