@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <title>Dr. Mahmoud Einieh, MD · Research & Clinical Portfolio</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?v=20261002-7" />
+  <link rel="stylesheet" href="styles.css?v=20261002-8" />
   <style>.reveal{opacity:1!important;transform:none!important}</style>
   <script type="application/ld+json">
   {
@@ -40,10 +40,9 @@
     <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#research">Research</a>
       <a href="#clinical">Clinical</a>
-      <a href="#publications">Outputs</a>
-      <a href="#medcup">MedCup</a>
-      <a href="#lubdub">Leadership</a>
-      <a href="#credentials">Evidence</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#credentials">Credentials</a>
       <a href="#about">About</a>
     </nav>
     <div class="header-actions">
@@ -64,7 +63,12 @@
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <div class="mobile-lang-switch lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button><button type="button" data-lang="hu">HU</button></div>
-    <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#medcup">MedCup</a><a href="#lubdub">Leadership</a><a href="#credentials">Evidence</a><a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#clinical">Clinical</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#credentials">Credentials</a>
+    <a href="#about">About</a>
   </nav>
 
   <main>
@@ -102,7 +106,9 @@
       <div class="metric-strip" id="metricStrip"></div>
     </section>
 
+    
     <section class="section section-intro" id="research">
+
       <div class="section-heading reveal">
         <div><span class="kicker">01 · Research</span><h2>Research.</h2></div>
         <p>Selected published, completed, and active projects.</p>
@@ -110,9 +116,21 @@
       <div class="filter-row reveal" id="researchFilters" aria-label="Research filters"></div>
       <div class="research-grid" id="researchGrid"></div>
       <div class="center-action reveal"><button class="button button-ghost" id="showAllResearch" type="button">Show complete research portfolio</button></div>
+    
+      <section class="portfolio-subsection outputs-section" id="publications">
+
+      <div class="section-heading reveal">
+        <div><span class="kicker">03 · Outputs</span><h2>Publications & presentations.</h2></div>
+        <p>Published papers, conference work and selected outputs.</p>
+      </div>
+      <div class="outputs-grid reveal" id="outputsGrid"></div>
+      <div class="source-ribbon reveal" id="sourceRibbon"></div>
+    
+      </section>
     </section>
 
     <section class="section" id="clinical">
+
       <div class="section-heading reveal">
         <div><span class="kicker">02 · Clinical</span><h2>Clinical experience.</h2></div>
         <p>International placements, surgical skills and simulation training.</p>
@@ -132,18 +150,74 @@
         <div class="filter-row reveal" id="clinicalFilters"></div>
         <div class="clinical-list" id="clinicalList"></div>
       </div>
+    
     </section>
 
-    <section class="section outputs-section" id="publications">
+    <section class="section portfolio-group" id="leadership">
       <div class="section-heading reveal">
-        <div><span class="kicker">03 · Outputs</span><h2>Publications & presentations.</h2></div>
-        <p>Published papers, conference work and selected outputs.</p>
+        <div><span class="kicker">03 · Leadership</span><h2>Leadership.</h2></div>
+        <p>Student leadership, teaching and practical medical education.</p>
       </div>
-      <div class="outputs-grid reveal" id="outputsGrid"></div>
-      <div class="source-ribbon reveal" id="sourceRibbon"></div>
+      <section class="portfolio-subsection lubdub-section" id="lubdub">
+
+      <div class="section-heading reveal">
+        <div><span class="kicker">06 · Leadership</span><h2>Lub Dub Club.</h2></div>
+        <p>Founder-led cardiology education through simulation.</p>
+      </div>
+      <div class="lubdub-grid">
+        <figure class="lubdub-photo reveal"><img id="lubdubPhoto" src="assets/lubdub_activity.webp" alt="Lub Dub Club cardiology simulation workshop" loading="lazy"></figure>
+        <div class="lubdub-copy glass reveal delay-1">
+          <img id="lubdubLogo" class="lubdub-logo" src="assets/lubdub_logo.webp" alt="The Lub Dub Club logo" loading="lazy">
+          <span id="lubdubRole"></span>
+          <h3 id="lubdubTitle"></h3>
+          <p id="lubdubSummary"></p>
+          <ul id="lubdubPoints"></ul>
+          <div class="lubdub-actions">
+            <a class="button button-ghost lubdub-link" href="https://www.instagram.com/lub.dubclub/" target="_blank" rel="noopener">Club Instagram <span>↗</span></a>
+            <a class="button button-ghost lubdub-linkedin" href="https://www.linkedin.com/company/lubdubclub" target="_blank" rel="noopener">Club LinkedIn <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    
+      </section>
+      <section class="portfolio-subsection doe-section" id="doe">
+
+      <div class="section-heading reveal">
+        <div><span class="kicker">07 · Leadership</span><h2>DOE & IFMSA.</h2></div>
+        <p>International leadership, outreach and capacity building.</p>
+      </div>
+      <div class="doe-card glass reveal">
+        <div class="doe-mark" aria-label="DOE"><img src="assets/doe_logo.png" alt="DOE — Medical Students’ Association of Debrecen logo" loading="lazy"></div>
+        <div class="doe-copy">
+          <span id="doeRole" class="role"></span>
+          <h3 id="doeTitle"></h3>
+          <p id="doeSummary"></p>
+          <ul id="doePoints"></ul>
+          <div class="doe-highlights" id="doeHighlights"></div>
+          <div class="doe-gallery" id="doeGallery" aria-label="DOE and IFMSA photo highlights"></div>
+          <a class="button button-ghost doe-link" href="https://www.doedebrecen.hu/index.php" target="_blank" rel="noopener">DOE website <span>↗</span></a>
+        </div>
+      </div>
+    
+      </section>
+      <section class="portfolio-subsection" id="teaching">
+
+      <div class="section-heading reveal">
+        <div><span class="kicker">10 · Teaching</span><h2>Teaching.</h2></div>
+        <p>Research methodology and pathology education.</p>
+      </div>
+      <div class="teaching-grid" id="teachingGrid"></div>
+    
+      </section>
     </section>
 
-    <section class="section medcup-section" id="medcup">
+    <section class="section portfolio-group" id="highlights">
+      <div class="section-heading reveal">
+        <div><span class="kicker">04 · Highlights</span><h2>Highlights.</h2></div>
+        <p>Selected awards, competitions and academic milestones.</p>
+      </div>
+      <section class="portfolio-subsection medcup-section" id="medcup">
+
       <div class="section-heading reveal">
         <div><span class="kicker">04 · MedCup</span><h2>MedCup 2024.</h2></div>
         <p>Second place in Brussels.</p>
@@ -168,84 +242,45 @@
         </div>
         <div class="medcup-gallery reveal delay-1" id="medcupGallery"></div>
       </div>
-    </section>
+    
+      </section>
+      <section class="portfolio-subsection" id="awards">
 
-    <section class="section" id="awards">
       <div class="section-heading reveal">
         <div><span class="kicker">05 · Recognition</span><h2>Awards & recognition.</h2></div>
         <p>Selected academic, scientific and competition highlights.</p>
       </div>
       <div class="award-list" id="awardList"></div>
+    
+      </section>
     </section>
 
-    <section class="section lubdub-section" id="lubdub">
+    <section class="section credentials-section portfolio-group" id="credentials">
       <div class="section-heading reveal">
-        <div><span class="kicker">06 · Leadership</span><h2>Lub Dub Club.</h2></div>
-        <p>Founder-led cardiology education through simulation.</p>
+        <div><span class="kicker">05 · Credentials</span><h2>Credentials.</h2></div>
+        <p>Selected certificates, supporting evidence and recommendation letters.</p>
       </div>
-      <div class="lubdub-grid">
-        <figure class="lubdub-photo reveal"><img id="lubdubPhoto" src="assets/lubdub_activity.webp" alt="Lub Dub Club cardiology simulation workshop" loading="lazy"></figure>
-        <div class="lubdub-copy glass reveal delay-1">
-          <img id="lubdubLogo" class="lubdub-logo" src="assets/lubdub_logo.webp" alt="The Lub Dub Club logo" loading="lazy">
-          <span id="lubdubRole"></span>
-          <h3 id="lubdubTitle"></h3>
-          <p id="lubdubSummary"></p>
-          <ul id="lubdubPoints"></ul>
-          <div class="lubdub-actions">
-            <a class="button button-ghost lubdub-link" href="https://www.instagram.com/lub.dubclub/" target="_blank" rel="noopener">Club Instagram <span>↗</span></a>
-            <a class="button button-ghost lubdub-linkedin" href="https://www.linkedin.com/company/lubdubclub" target="_blank" rel="noopener">Club LinkedIn <span>↗</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section doe-section" id="doe">
-      <div class="section-heading reveal">
-        <div><span class="kicker">07 · Leadership</span><h2>DOE & IFMSA.</h2></div>
-        <p>International leadership, outreach and capacity building.</p>
-      </div>
-      <div class="doe-card glass reveal">
-        <div class="doe-mark" aria-label="DOE"><img src="assets/doe_logo.png" alt="DOE — Medical Students’ Association of Debrecen logo" loading="lazy"></div>
-        <div class="doe-copy">
-          <span id="doeRole" class="role"></span>
-          <h3 id="doeTitle"></h3>
-          <p id="doeSummary"></p>
-          <ul id="doePoints"></ul>
-          <div class="doe-highlights" id="doeHighlights"></div>
-          <div class="doe-gallery" id="doeGallery" aria-label="DOE and IFMSA photo highlights"></div>
-          <a class="button button-ghost doe-link" href="https://www.doedebrecen.hu/index.php" target="_blank" rel="noopener">DOE website <span>↗</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section credentials-section" id="credentials">
-      <div class="section-heading reveal">
-        <div><span class="kicker">08 · Evidence</span><h2>Credentials.</h2></div>
-        <p>Selected supporting documents and certificates.</p>
+<p>Selected supporting documents and certificates.</p>
       </div>
       <div class="evidence-groups" id="evidenceGroups"></div>
       <p class="evidence-privacy reveal">Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.</p>
-    </section>
+    
+      <section class="portfolio-subsection recommendations-section" id="recommendations">
 
-    <section class="section recommendations-section" id="recommendations">
       <div class="section-heading reveal">
         <div><span class="kicker">09 · References</span><h2>Letters of recommendation.</h2></div>
       </div>
       <div class="recommendation-grid" id="recommendationGrid"></div>
-    </section>
-
-    <section class="section" id="teaching">
-      <div class="section-heading reveal">
-        <div><span class="kicker">10 · Teaching</span><h2>Teaching.</h2></div>
-        <p>Research methodology and pathology education.</p>
-      </div>
-      <div class="teaching-grid" id="teachingGrid"></div>
+    
+      </section>
     </section>
 
     <section class="section about-section" id="about">
+
       <div class="about-grid">
         <div class="about-copy reveal">
-          <span class="kicker">11 · About</span>
+          <span class="kicker">06 · About</span>
           <h2>About.</h2>
           <p>Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.</p>
           <p>Interested in cardiovascular medicine, clinical research, imaging, and translational science.</p>
@@ -260,6 +295,7 @@
           <div class="privacy-note">Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.</div>
         </aside>
       </div>
+    
     </section>
 
     <section class="section contact-section">
@@ -322,9 +358,9 @@
 
   <script src="image_data.js?v=20261002-4"></script>
   <script src="data.js?v=20261002-10"></script>
-  <script src="translations.js?v=20261002-7"></script>
+  <script src="translations.js?v=20261002-8"></script>
   <script>window.SITE_MEDIA = window.SITE_MEDIA || {};</script>
-  <script src="app.js?v=20261002-12"></script>
+  <script src="app.js?v=20261002-13"></script>
   <script src="fallback.js?v=20261002-3"></script>
 
   <!-- Large document/photo payloads load after the portfolio itself so text/cards never appear blank. -->
