@@ -191,7 +191,7 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
 
 .modal-project-photo{width:100%;max-height:520px;object-fit:cover;object-position:center;border-radius:18px;border:1px solid var(--line);margin:8px 0 22px}
 .modal-project-photo.photo-esc{object-position:center 12%}
-.modal-project-photo.photo-eanm{object-position:center 10%}
+.modal-project-photo.photo-eanm{object-position:center 55%}
 .lubdub-link,.doe-link{width:max-content;margin-top:24px}
 .doe-section{padding-top:120px}
 .doe-card{display:grid;grid-template-columns:210px 1fr;gap:42px;align-items:center;border-radius:28px;padding:clamp(26px,5vw,52px)}
