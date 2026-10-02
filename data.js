@@ -210,6 +210,24 @@ const SITE_DATA = {
       credentialLabel: "View supporting document*"
     },
     {
+      id: "romania-disaster",
+      specialty: "Disaster Medicine & Emergency Response",
+      institution: "MERIT · ROHU00026",
+      location: "Diosig, Romania",
+      date: "24–26 Apr 2026",
+      duration: "3-day interregional simulation training",
+      supervisor: "Interregional simulation faculty",
+      detail: "Hands-on disaster-medicine simulation at the Volunteer Firefighter Center, with emergency response, firefighting, rescue/extrication, triage and team-based incident management.",
+      galleryTitle: "Disaster medicine in Romania",
+      gallery: [
+        { key:"romaniaFirefighter", caption:"Firefighting and emergency-response simulation", position:"50% 38%" },
+        { key:"romaniaRescue", caption:"Team-based rescue and casualty-management exercise", position:"50% 48%" },
+        { key:"romaniaCarRescue", caption:"Vehicle-rescue and extrication training", position:"50% 42%" },
+        { key:"romaniaTeam", caption:"Interregional training team and instructors", position:"50% 45%" }
+      ],
+      evidenceId: "merit-cert"
+    },
+    {
       id: "siegen-surgery",
       specialty: "General & Visceral Surgery",
       institution: "Diakonie Klinikum Jung-Stilling",
@@ -276,6 +294,28 @@ const SITE_DATA = {
       detail: "Interventional cardiology observership with catheter-lab exposure.",
       credential: "assets/docs/American_Hospital_Dubai_Cardiology_2024_Redacted.pdf",
       credentialLabel: "View supporting document*"
+    },
+    {
+      id: "debrecen-surgical-skills",
+      specialty: "Surgical Skills Electives (BST)",
+      institution: "Department of Operative Techniques & Surgical Research · University of Debrecen",
+      location: "Debrecen, Hungary",
+      date: "2023–2024",
+      duration: "4 practical electives · all Excellent (5)",
+      supervisor: "Department faculty",
+      detail: "Completed the department’s practical surgical-skills elective sequence, progressing from operative fundamentals to microsurgery, laparoscopy and advanced operative techniques.",
+      courses: [
+        "Surgical Operative Techniques",
+        "Basic Microsurgical Training: Introduction to Microsurgery",
+        "Basic Laparoscopic Surgical Training",
+        "Advanced Surgical Operative Techniques"
+      ],
+      galleryTitle: "Surgical skills training",
+      gallery: [
+        { key:"bstORPortrait", caption:"Operative training environment", position:"50% 36%" },
+        { key:"bstORTeam", caption:"Operating-room team training", position:"50% 38%" },
+        { key:"bstSimulator", caption:"Simulation-based surgical skills practice", position:"50% 50%" }
+      ]
     },
     {
       id: "debrecen-clinical",
@@ -372,7 +412,8 @@ const SITE_DATA = {
         { id:"porto-cert", title:"Neonatology / Perinatal Medicine", issuer:"IFMSA SCOPE · Hospital São João, Porto", year:"2026", note:"Professional exchange", imageKey:"portoNeonatology" },
         { id:"tunis-cert", title:"Pulmonology", issuer:"IFMSA SCOPE · La Rabta Hospital, Tunis", year:"2025", note:"Professional exchange", imageKey:"tunisExchange" },
         { id:"catania-cert", title:"Cardiology", issuer:"IFMSA SCOPE · Catania, Italy", year:"2024", note:"Professional exchange", imageKey:"cataniaCardiology" },
-        { id:"ahd-cert", title:"Cardiology Observership", issuer:"American Hospital Dubai", year:"2024", note:"Clinical observership", imageKey:"americanHospital" }
+        { id:"merit-cert", title:"Disaster Medicine Simulation Training", issuer:"MERIT · ROHU00026 · Diosig, Romania", year:"2026", note:"Certificate of participation · 24–26 Apr", imageKey:"meritCertificate", redacted:false },
+                { id:"ahd-cert", title:"Cardiology Observership", issuer:"American Hospital Dubai", year:"2024", note:"Clinical observership", imageKey:"americanHospital" }
       ]
     },
     {
@@ -457,12 +498,24 @@ const SITE_DATA = {
   doe: {
     title: "Medical Students’ Association of Debrecen",
     acronym: "DOE",
-    role: "Local Officer of International Students (LOIS) · Sep 2025–Sep 2026",
-    summary: "Led international-student engagement under the IFMSA framework, with a focus on exchanges, global opportunities, capacity building, and multidisciplinary educational events.",
+    role: "Local Officer of International Students (LOIS) · 2025–2026",
+    summary: "Student leadership across international engagement, community outreach and capacity building within DOE and the IFMSA framework.",
     points: [
-      "Managed a team focused on international student opportunities and exchange programmes.",
-      "Promoted global engagement initiatives under the IFMSA framework.",
-      "Coordinated capacity-building events and expert-led lectures across multiple medical specialties."
+      "Led the LOIS team for the 2025–2026 term, coordinating international-student opportunities and exchange engagement.",
+      "Supported paediatric and community outreach through child-friendly health education and prevention activities.",
+      "Contributed to capacity-building programmes, soft-skills training and multidisciplinary student education."
+    ],
+    highlights: [
+      { title:"LOIS · 2025–2026", detail:"Led the international-students team and promoted IFMSA exchanges, global opportunities and student integration." },
+      { title:"Paediatric & Community Outreach", detail:"Participated in child-friendly health education, prevention and community-facing activities." },
+      { title:"Capacity Building", detail:"Took part in PaTH soft-skills training and student-development programmes." }
+    ],
+    galleryTitle: "DOE in practice",
+    gallery: [
+      { key:"loisTeam2025", caption:"LOIS team · 2025–2026", position:"50% 48%" },
+      { key:"doePediatric", caption:"Paediatric & community outreach", position:"52% 38%" },
+      { key:"doePaTH", caption:"PaTH capacity-building training", position:"50% 48%" },
+      { key:"doeAwareness", caption:"Community prevention & awareness activity", position:"50% 36%" }
     ],
     website: "https://www.doedebrecen.hu/index.php"
   },
