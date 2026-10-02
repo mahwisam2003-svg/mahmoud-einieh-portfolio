@@ -375,3 +375,9 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
   .hobby-photo-1{grid-column:1/-1;grid-row:auto;min-height:230px;aspect-ratio:16/10}
   .hobby-more{grid-column:1/-1}
 }
+
+/* Curated academic photography */
+.research-card-image.photo-bonespect img{object-position:center 46%}
+.research-card-image.photo-thesis img{object-position:center 39%}
+.modal-project-photo.photo-bonespect{object-fit:contain;background:color-mix(in srgb,var(--bg) 90%,#000 10%);object-position:center}
+.modal-project-photo.photo-thesis{object-fit:contain;background:color-mix(in srgb,var(--bg) 90%,#000 10%);object-position:center;max-height:680px}
