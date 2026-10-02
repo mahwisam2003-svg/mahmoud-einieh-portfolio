@@ -2,7 +2,7 @@
   const BASE = SITE_DATA;
   const I18N = typeof SITE_I18N !== 'undefined' ? SITE_I18N : { en:{} };
   const imgs = typeof SITE_IMAGES !== 'undefined' ? SITE_IMAGES : {};
-  const media = window.SITE_MEDIA || {};
+  const media = window.SITE_MEDIA = window.SITE_MEDIA || {};
   const $ = (s, p=document) => p.querySelector(s);
   const $$ = (s, p=document) => [...p.querySelectorAll(s)];
   const esc = s => String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -380,8 +380,12 @@
   document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();openSearch()}if(e.key==='Escape'&&searchDialog.open)searchDialog.close()});
 
   function bindReveal(){
+    if(!('IntersectionObserver' in window)){
+      $('.reveal:not(.visible)').forEach(el=>el.classList.add('visible'));
+      return;
+    }
     const io=new IntersectionObserver((entries,obs)=>entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}}),{threshold:.08,rootMargin:'0px 0px -40px'});
-    $$('.reveal:not(.visible)').forEach(el=>io.observe(el));
+    $('.reveal:not(.visible)').forEach(el=>io.observe(el));
   }
   bindReveal();
 
