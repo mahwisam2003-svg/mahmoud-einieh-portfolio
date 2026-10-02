@@ -303,7 +303,7 @@ const SITE_DATA = {
       date: "2023–2025",
       duration: "4 practical electives · all Excellent (5)",
       supervisor: "Department faculty",
-      detail: "Completed the full practical elective sequence offered by the Department of Operative Techniques & Surgical Research, progressing from operative fundamentals to microsurgery, laparoscopy and advanced operative techniques.",
+      detail: "Completed all four practical elective courses in the department’s surgical-skills sequence, progressing from operative fundamentals to microsurgery, laparoscopy and advanced operative techniques.",
       courses: [
         "Surgical Operative Techniques",
         "Basic Microsurgical Training. Introduction to Microsurgery",
