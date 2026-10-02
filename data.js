@@ -206,6 +206,10 @@ const SITE_DATA = {
       duration: "1 month · IFMSA SCOPE",
       supervisor: "Dr. Joana Nunes",
       detail: "Neonatal and perinatal ward experience, including prematurity and neonatal sepsis.",
+      galleryTitle: "Neonatology in Porto",
+      gallery: [
+        { key:"portoHospital", caption:"Hospital São João / Faculty of Medicine, Porto", position:"50% 34%" }
+      ],
       credential: "assets/docs/IFMSA_Neonatology_Porto_2026_Redacted.pdf",
       credentialLabel: "View supporting document*"
     },
@@ -236,6 +240,11 @@ const SITE_DATA = {
       duration: "4 weeks",
       supervisor: "Prof. Dr. Golriz",
       detail: "Ward rounds, perioperative care, and operative observation in general and visceral surgery.",
+      galleryTitle: "General & visceral surgery in Siegen",
+      gallery: [
+        { key:"siegenHospital", caption:"Diakonie Klinikum Jung-Stilling", position:"48% 40%" },
+        { key:"siegenTeam", caption:"General & visceral surgery team", position:"50% 42%" }
+      ],
       privateDoc: "Recommendation letter available on request"
     },
     {
@@ -246,7 +255,12 @@ const SITE_DATA = {
       date: "September 2025",
       duration: "4 weeks",
       supervisor: "Dr. Jagadish Nagaraj",
-      detail: "Inpatient gastroenterology, diagnostic work-up, and endoscopic procedures."
+      detail: "Inpatient gastroenterology, diagnostic work-up, and endoscopic procedures.",
+      galleryTitle: "Gastroenterology in Swansea",
+      gallery: [
+        { key:"swanseaHospital", caption:"Morriston Hospital · Swansea Bay University Health Board", position:"50% 44%" },
+        { key:"swanseaConsultant", caption:"With Dr. Jagadish Nagaraj", position:"50% 42%" }
+      ]
     },
     {
       id: "tunis-pulmonology",
@@ -270,6 +284,11 @@ const SITE_DATA = {
       duration: "1 month · IFMSA SCOPE",
       supervisor: "Prof. Davide Capodanno",
       detail: "Electrophysiology exposure including EP studies and ablation for WPW and AVNRT.",
+      galleryTitle: "Cardiology in Catania",
+      gallery: [
+        { key:"cataniaTeam", caption:"Clinical exchange team", position:"50% 38%" },
+        { key:"cataniaSign", caption:"A.O.U. Policlinico G. Rodolico", position:"50% 42%" }
+      ],
       credential: "assets/docs/IFMSA_Cardiology_Catania_2024_Redacted.pdf",
       credentialLabel: "View supporting document*"
     },
@@ -281,7 +300,12 @@ const SITE_DATA = {
       date: "June–July 2024",
       duration: "2 weeks",
       supervisor: "Dr. Faisal Khan",
-      detail: "Observed TAVI, PCI, ablation, and pacing-clinic work."
+      detail: "Observed TAVI, PCI, ablation, and pacing-clinic work.",
+      galleryTitle: "Cardiology at St George’s",
+      gallery: [
+        { key:"stgeorgesCathlab", caption:"Cath-lab placement at St George’s", position:"50% 35%" },
+        { key:"stgeorgesHospital", caption:"St George’s University Hospital", position:"50% 42%" }
+      ]
     },
     {
       id: "ahd-cardio",
@@ -510,12 +534,14 @@ const SITE_DATA = {
       { title:"Paediatric & Community Outreach", detail:"Participated in child-friendly health education, prevention and community-facing activities." },
       { title:"Capacity Building", detail:"Took part in PaTH soft-skills training and student-development programmes." }
     ],
-    galleryTitle: "DOE in practice",
+    galleryTitle: "DOE & IFMSA in practice",
     gallery: [
       { key:"loisTeam2025", caption:"LOIS team · 2025–2026", position:"50% 48%" },
-      { key:"doePediatric", caption:"Paediatric & community outreach", position:"52% 38%" },
-      { key:"doePaTH", caption:"PaTH capacity-building training", position:"50% 48%" },
-      { key:"doeAwareness", caption:"Community prevention & awareness activity", position:"50% 36%" }
+      { key:"doePediatric", caption:"Paediatric & community outreach", position:"52% 42%" },
+      { key:"doePaTH", caption:"PaTH capacity-building training", position:"50% 46%" },
+      { key:"doeAwareness", caption:"Community prevention & awareness activity", position:"50% 38%" },
+      { key:"doeSurgeryClub", caption:"DOE / Surgery Club collaboration", position:"50% 45%" },
+      { key:"doeStudentTalk", caption:"International-student orientation & guidance", position:"50% 40%" }
     ],
     website: "https://www.doedebrecen.hu/index.php"
   },
