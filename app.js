@@ -296,7 +296,7 @@
     $('#clinicalList').querySelectorAll('[data-clinical-gallery]').forEach(b=>b.addEventListener('click',()=>{
       const item=d.clinical.find(x=>x.id===b.dataset.clinicalGallery); if(item) openGallery(item.galleryTitle||item.specialty,item.gallery||[]);
     }));
-    $('#clinicalList').querySelectorAll('[data-clinical-evidence]').forEach(b=>b.addEventListener('click',()=>openEvidence(b.dataset.clinicalEvidence)));
+    $('#clinicalList').querySelectorAll('[data-clinical-evidence]').forEach(b=>b.addEventListener('click',()=>openEvidenceDocument(b.dataset.clinicalEvidence)));
     bindReveal();
   }
   $('#clinicalFilters').addEventListener('click',e=>{const b=e.target.closest('[data-clinical]');if(!b)return;clinicalFilter=b.dataset.clinical;renderClinicalFilters();renderClinical()});
@@ -348,6 +348,26 @@
     </button>`).join('');
 
   const evidenceModal=$('#evidenceModal'), evidenceModalContent=$('#evidenceModalContent');
+  function mediaToObjectUrl(dataUrl){
+    if(!dataUrl || !dataUrl.startsWith('data:')) return dataUrl || '';
+    try{
+      const [head,body]=dataUrl.split(',',2);
+      const mime=(head.match(/^data:([^;]+)/)||[])[1] || 'application/octet-stream';
+      const bytes=head.includes(';base64') ? Uint8Array.from(atob(body),ch=>ch.charCodeAt(0)) : new TextEncoder().encode(decodeURIComponent(body));
+      return URL.createObjectURL(new Blob([bytes],{type:mime}));
+    }catch(_){ return dataUrl; }
+  }
+  function openEvidenceDocument(id){
+    const item=evidenceById[id]; if(!item) return;
+    const src=media[item.imageKey];
+    if(src){
+      const url=mediaToObjectUrl(src);
+      const win=window.open(url,'_blank','noopener');
+      if(win) return;
+    }
+    openEvidence(id);
+  }
+
   function openEvidence(id){
     const item=evidenceById[id]; if(!item || !evidenceModal)return;
     const isRecommendation=recommendationItems.some(r=>r.id===id);
@@ -361,8 +381,8 @@
     applyDeferredMedia();
     evidenceModal.showModal(); document.body.classList.add('modal-open');
   }
-  $('#evidenceGroups').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidence(b.dataset.evidence)});
-  $('#recommendationGrid').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidence(b.dataset.evidence)});
+  $('#evidenceGroups').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidenceDocument(b.dataset.evidence)});
+  $('#recommendationGrid').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidenceDocument(b.dataset.evidence)});
   $('#evidenceModalClose').addEventListener('click',()=>evidenceModal.close());
   evidenceModal.addEventListener('click',e=>{if(e.target===evidenceModal)evidenceModal.close()});
   evidenceModal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
@@ -434,8 +454,8 @@
     ...d.clinical.map(x=>({kind:ui.search.clinical,title:`${x.specialty} · ${x.institution}`,meta:`${x.location} · ${x.date}`,text:[x.specialty,x.institution,x.location,x.detail,x.supervisor].join(' '),action:()=>{searchDialog.close();location.hash='clinical'}})),
     ...d.awards.map(x=>({kind:ui.search.recognition,title:x.title,meta:x.year,text:[x.title,x.detail].join(' '),action:()=>{searchDialog.close();location.hash='awards'}})),
     ...(d.medcup?[{kind:'MedCup',title:d.medcup.title,meta:d.medcup.result,text:[d.medcup.title,d.medcup.result,d.medcup.summary,d.medcup.detail].join(' '),action:()=>{searchDialog.close();location.hash='medcup'}}]:[]),
-    ...evidenceItems.map(x=>({kind:ui.search.credential,title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.note].join(' '),action:()=>{searchDialog.close();location.hash='credentials';setTimeout(()=>openEvidence(x.id),200)}})),
-    ...recommendationItems.map(x=>({kind:'Recommendation',title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.detail].join(' '),action:()=>{searchDialog.close();location.hash='recommendations';setTimeout(()=>openEvidence(x.id),200)}}))
+    ...evidenceItems.map(x=>({kind:ui.search.credential,title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.note].join(' '),action:()=>{searchDialog.close();location.hash='credentials';setTimeout(()=>openEvidenceDocument(x.id),200)}})),
+    ...recommendationItems.map(x=>({kind:'Recommendation',title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.detail].join(' '),action:()=>{searchDialog.close();location.hash='recommendations';setTimeout(()=>openEvidenceDocument(x.id),200)}}))
   ];
   function openSearch(){searchDialog.showModal();setTimeout(()=>searchInput.focus(),30);renderSearch('')}
   function renderSearch(q){
