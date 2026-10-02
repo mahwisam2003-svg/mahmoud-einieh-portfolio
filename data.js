@@ -13,10 +13,10 @@ const SITE_DATA = {
   },
 
   metrics: [
-    { value: 8, suffix: "", label: "Research projects" },
+    { value: 9, suffix: "", label: "Research projects" },
     { value: 3, suffix: "", label: "Peer-reviewed publications" },
     { value: 8, suffix: "", label: "International clinical placements" },
-    { value: 6, suffix: "", label: "Selected awards & congress highlights" }
+    { value: 7, suffix: "", label: "Selected awards & congress highlights" }
   ],
 
   research: [
@@ -43,6 +43,7 @@ const SITE_DATA = {
       links: [
         { label: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/42083154/" },
         { label: "DOI", url: "https://doi.org/10.1177/11297298261441029" },
+        { label: "PMC full text", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13547687/" },
         { label: "ESC 365", url: "https://esc365.escardio.org/presentation/309528?resource=abstract" }
       ]
     },
@@ -60,7 +61,7 @@ const SITE_DATA = {
       role: "Co-author · literature review · manuscript",
       detail: "Published review covering biomarkers, liquid biopsy, and RNA-based therapies.",
       tags: ["Cardiology", "Molecular medicine", "Biomarkers", "Diabetes"],
-      links: [{ label: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/41405560/" }, { label: "DOI", url: "https://doi.org/10.1002/edm2.70149" }]
+      links: [{ label: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/41405560/" }, { label: "DOI", url: "https://doi.org/10.1002/edm2.70149" }, { label: "PMC full text", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12710528/" }]
     },
     {
       id: "spect-ai",
@@ -102,7 +103,10 @@ const SITE_DATA = {
       detail: "Presented at the University of Debrecen TDK and the national MONT meeting.",
       tags: ["Nuclear medicine", "SPECT/CT", "Original research"],
       credential: "assets/docs/TDK_2025_Third_Prize_Redacted.pdf",
-      links: []
+      links: [
+        { label: "TDK programme", url: "https://www.oetdk.hu/tdk2025/docs/TDK%20kiadvany_2025_final.pdf" },
+        { label: "TDK 3rd prize", url: "https://www.oetdk.hu/tdk2025/docs/Zarounnepseg20250207.pdf" }
+      ]
     },
     {
       id: "rituximab",
@@ -148,14 +152,31 @@ const SITE_DATA = {
       title: "Clinical vs autopsy findings after allogeneic bone marrow transplantation",
       domain: "Pathology / hematology",
       type: "Clinicopathological cohort",
-      status: "Ongoing",
-      year: "2026",
-      summary: "Clinicopathological comparison of premortem and autopsy findings after allogeneic BMT.",
-      metrics: [],
-      role: "Dataset · clinicopathological correlation",
-      detail: "Examines diagnostic discordance and findings identified only at autopsy.",
+      status: "Presented · TDK 2025 · Ongoing",
+      venue: "University of Debrecen · TDK 2025",
+      year: "2025–2026",
+      summary: "Clinicopathological study of clinical and autopsy findings in 41 allogeneic bone marrow transplant recipients.",
+      metrics: [{ value: "41", label: "transplant recipients" }],
+      role: "Dataset · clinicopathological correlation · presentation",
+      detail: "Presented at TDK 2025; compares premortem and autopsy findings, including post-transplant complications and diagnostic discordance.",
       tags: ["Pathology", "Hematology", "Autopsy", "Clinical cohort"],
-      links: []
+      links: [{ label: "Official TDK programme", url: "https://www.oetdk.hu/tdk2025/docs/TDK%20kiadvany_2025_final.pdf" }]
+    },
+    {
+      id: "mfr-cac",
+      featured: false,
+      title: "Myocardial flow reserve across coronary calcium burden",
+      domain: "Nuclear cardiology",
+      type: "Systematic review & meta-analysis · conference abstract",
+      status: "Conference abstract · Co-author",
+      venue: "Journal of Nuclear Cardiology · September 2026",
+      year: "2026",
+      summary: "Systematic review and meta-analysis examining myocardial flow reserve phenotypes across coronary calcium burden.",
+      metrics: [{ value: "102870", label: "JNC abstract" }],
+      role: "Co-author · evidence synthesis",
+      detail: "Published in the September 2026 Journal of Nuclear Cardiology supplement.",
+      tags: ["Nuclear cardiology", "PET", "Myocardial flow reserve", "Coronary calcium", "Meta-analysis"],
+      links: [{ label: "JNC supplement", url: "https://www.journalofnuclearcardiology.org/issue/S1071-3581%2826%29X2009-8" }]
     },
     {
       id: "mpn",
@@ -282,7 +303,8 @@ const SITE_DATA = {
     {
       title: "3rd Place · TDK Conference 2025",
       detail: "3rd prize for first-author bone SPECT/CT research.",
-      year: "2025"
+      year: "2025",
+      source: "https://www.oetdk.hu/tdk2025/docs/Zarounnepseg20250207.pdf"
     },
     {
       title: "ESC Congress 2025 · Presenter",
@@ -306,6 +328,12 @@ const SITE_DATA = {
       detail: "University of Debrecen Surgery Club skills competition.",
       year: "2025",
       source: "https://hirek.unideb.hu/sikeresen-zarult-hallgatoi-skill-verseny"
+    },
+    {
+      title: "Dean’s Certificate of Recognition",
+      detail: "Awarded at the 2026 University of Debrecen medical-doctor inauguration.",
+      year: "2026",
+      source: "https://hirek.unideb.hu/en/inauguration-doctors-medicine-university-debrecen"
     }
   ],
 
@@ -316,6 +344,12 @@ const SITE_DATA = {
     detail: "The competition tested clinical reasoning, practical skills, imaging interpretation, emergency response and procedural ability across teams from universities worldwide.",
     source: "https://hirek.unideb.hu/en/international-success-debrecen-medical-students",
     youtube: "https://www.youtube.com/watch?v=gPz7goPlIUE",
+    press: [
+      { label: "HAON", url: "https://www.haon.hu/helyi-kozelet/2024/03/medcup-szakmai-verseny-debreceni-egyetem-orvostudomanyi-kar" },
+      { label: "Debrecen Sun", url: "https://www.debrecensun.hu/uni/2024/03/08/medical-students-from-debrecen-successfully-participated-in-the-professional-championship-in-brussels/" },
+      { label: "Le Spécialiste", url: "https://www.lespecialiste.be/fr/actualites/medcup-nbsp-2024-quand-les-etudiants-en-medecine-testent-leurs-aptitudes.html" },
+      { label: "Sorbonne Paris Nord", url: "https://www.univ-spn.fr/sorbonne-paris-nord-a-la-medcup-2024/" }
+    ],
     images: ["medcupMilitary1", "medcupMilitary2", "medcupFinalStage", "medcupFinalQuiz", "medcupAward"]
   },
 
@@ -350,6 +384,14 @@ const SITE_DATA = {
         { id:"maa-completion", title:"Meta-Analysis Academy · Completion", issuer:"Meta-Analysis Academy", year:"2024", note:"50-hour methods programme", imageKey:"maaCompletion" },
         { id:"maa-ta", title:"Meta-Analysis Academy · Teaching Assistant", issuer:"Meta-Analysis Academy", year:"2025", note:"80-hour teaching-assistant appointment", imageKey:"maaTeaching" }
       ]
+    },
+    {
+      id: "community",
+      title: "Community service",
+      description: "Selected evidence of sustained service outside formal medical training.",
+      items: [
+        { id:"winners-service", title:"Community Service · 350 Hours", issuer:"Winners Equestrian Club · Dubai", year:"2019", note:"Volunteer customer-service role", imageKey:"communityService2019" }
+      ]
     }
   ],
 
@@ -369,6 +411,14 @@ const SITE_DATA = {
       year:"2025",
       detail:"Signed recommendation following the pulmonology clinical attachment at La Rabta Hospital.",
       imageKey:"tunisRecommendation"
+    },
+    {
+      id:"swansea-recommendation",
+      title:"Gastroenterology · Recommendation",
+      issuer:"Morriston Hospital · Swansea Bay University Health Board, Wales",
+      year:"2025",
+      detail:"Recommendation following the gastroenterology placement at Morriston Hospital under Dr. Jagadish Nagaraj.",
+      imageKey:"swanseaRecommendation"
     }
   ],
 
@@ -382,8 +432,8 @@ const SITE_DATA = {
     {
       role: "Pathology Teaching Assistant",
       organization: "University of Debrecen",
-      date: "2023–2024",
-      detail: "Supported third-year autopsy teaching across three semesters."
+      date: "2023–2025",
+      detail: "Supported third-year autopsy teaching across four semesters."
     }
   ],
 
@@ -393,10 +443,11 @@ const SITE_DATA = {
     role: "Founder & President · Aug 2024–Sep 2026",
     summary: "A student-led cardiology education initiative at the University of Debrecen built around practical, simulation-based learning.",
     points: [
-      "Founded and organized weekly cardiology workshops with Vice Dean Prof. Norbert Németh and faculty collaborators.",
-      "Led semester-long sessions using the Mentice VIST simulator to develop clinical and procedural skills through simulated cardiology cases.",
-      "Worked with specialists to connect cardiovascular theory with practical, case-based learning."
+      "Organized 14 events and trained 55+ students through practical cardiology sessions.",
+      "Led two-hour Mentice VIST simulation sessions in which participants rotated through lead-operator and assistant roles.",
+      "Built the club with faculty support to connect interventional-cardiology theory with practical, case-based learning."
     ],
+    linkedin: "https://www.linkedin.com/company/lubdubclub",
     instagram: "https://www.instagram.com/lub.dubclub/",
     logoKey: "lubDubLogo",
     photoKey: "lubDubWorkshop"
