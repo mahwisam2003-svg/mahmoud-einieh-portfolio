@@ -546,6 +546,22 @@ const SITE_DATA = {
     website: "https://www.doedebrecen.hu/index.php"
   },
 
+  hobbies: [
+    {
+      id: "equestrian",
+      title: "Horse riding & show jumping",
+      summary: "A personal hobby outside medicine, combining riding, training and competition days.",
+      galleryTitle: "Horse riding & show jumping",
+      gallery: [
+        { key:"horseJumpWide", caption:"Show-jumping training", position:"50% 48%" },
+        { key:"horseAward", caption:"Competition day", position:"50% 38%" },
+        { key:"horseJumpRed", caption:"Show-jumping session", position:"50% 45%" },
+        { key:"horseJumpBlue", caption:"Training over fences", position:"50% 46%" },
+        { key:"horseCompetition", caption:"Indoor show-jumping competition", position:"50% 42%" }
+      ]
+    }
+  ],
+
   languages: [
     { language: "Arabic", level: "Native" },
     { language: "English", level: "C2" },
