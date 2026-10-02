@@ -280,7 +280,8 @@
     setText('#medcupSummary', d.medcup.summary);
     setText('#medcupDetail', d.medcup.detail);
     const source=$('#medcupSource'); if(source) source.href=d.medcup.source;
-    const youtube=$('#medcupYoutube'); if(youtube && d.medcup.youtube) youtube.href=d.medcup.youtube;
+    const aftermovie=$('#medcupAftermovie'); if(aftermovie && d.medcup.youtubeAftermovie) aftermovie.href=d.medcup.youtubeAftermovie;
+    const livestream=$('#medcupLivestream'); if(livestream && d.medcup.youtubeLivestream) livestream.href=d.medcup.youtubeLivestream;
     const press=$('#medcupPress');
     if(press) press.innerHTML=(d.medcup.press||[]).map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${esc(x.label)} ↗</a>`).join('');
     const gallery=$('#medcupGallery');
