@@ -315,7 +315,8 @@ const SITE_DATA = {
     summary: "Mahmoud Einieh and Ramzi Zeidan represented the University of Debrecen and finished second in the international MedCup competition in Brussels, one point behind the winning team.",
     detail: "The competition tested clinical reasoning, practical skills, imaging interpretation, emergency response and procedural ability across teams from universities worldwide.",
     source: "https://hirek.unideb.hu/en/international-success-debrecen-medical-students",
-    images: ["medcupStage", "medcupSpeaking"]
+    youtube: "https://www.youtube.com/watch?v=gPz7goPlIUE",
+    images: ["medcupMilitary1", "medcupMilitary2", "medcupFinalStage", "medcupFinalQuiz", "medcupAward"]
   },
 
   evidenceGroups: [
