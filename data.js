@@ -215,11 +215,11 @@ const SITE_DATA = {
     },
     {
       id: "romania-disaster",
-      specialty: "Disaster Medicine, Firefighting & Emergency Response",
+      specialty: "Disaster Medicine & Emergency Response",
       institution: "MERIT · ROHU00026",
       location: "Diosig, Romania",
       date: "24–26 Apr 2026",
-      duration: "3-day interregional simulation training",
+      duration: "3-day interregional simulation",
       supervisor: "Interregional simulation faculty",
       detail: "Disaster Medicine Situation Simulation Training within the Medical Emergency Response Interregional Simulation Training Programme, with firefighting, rescue/extrication, triage and team-based emergency response at the Volunteer Firefighter Center.",
       galleryTitle: "Disaster medicine in Romania",
