@@ -65,7 +65,12 @@
       if($('medcupSummary') && !$('medcupSummary').textContent.trim()) $('medcupSummary').textContent=d.medcup.summary||'';
       if($('medcupDetail') && !$('medcupDetail').textContent.trim()) $('medcupDetail').textContent=d.medcup.detail||'';
       if($('medcupSource')) $('medcupSource').href=d.medcup.source||'#';
-      if($('medcupYoutube')) $('medcupYoutube').href=d.medcup.youtube||'#';
+      if($('medcupAftermovie')) $('medcupAftermovie').href=d.medcup.youtubeAftermovie||'#';
+      if($('medcupLivestream')) $('medcupLivestream').href=d.medcup.youtubeLivestream||'#';
+      const press=$('medcupPress');
+      if(press && !press.children.length){
+        press.innerHTML=(d.medcup.press||[]).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)} ↗</a>`).join('');
+      }
       const gallery=$('medcupGallery');
       if(gallery && !gallery.children.length){
         gallery.innerHTML=(d.medcup.images||[]).map((key,i)=>`<figure class="medcup-shot shot-${i+1}"><img data-media-key="${esc(key)}" alt="MedCup 2024" loading="lazy" decoding="async"></figure>`).join('');
