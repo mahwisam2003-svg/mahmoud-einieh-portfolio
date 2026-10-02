@@ -362,8 +362,8 @@
     const src=media[item.imageKey];
     if(src){
       const url=mediaToObjectUrl(src);
-      const win=window.open(url,'_blank','noopener');
-      if(win) return;
+      window.open(url,'_blank','noopener');
+      return;
     }
     openEvidence(id);
   }
