@@ -557,7 +557,8 @@ const SITE_DATA = {
       gallery: [
         { key:"horseAward", caption:"Competition day", position:"50% 36%" },
         { key:"horseJumpRed", caption:"Show-jumping session", position:"50% 44%" },
-        { key:"horseCompetition", caption:"Indoor show-jumping competition", position:"50% 42%" }
+        { key:"horseCompetition", caption:"Indoor show-jumping competition", position:"50% 42%" },
+        { key:"horseJumpLongines", caption:"Show-jumping competition", position:"50% 46%" }
       ]
     }
   ],
