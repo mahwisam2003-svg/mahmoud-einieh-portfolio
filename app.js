@@ -376,7 +376,7 @@
     const preview=(hobby.gallery||[]).slice(0,3);
     $('#hobbyGallery').innerHTML=preview.map((item,i)=>`<button type="button" class="hobby-photo hobby-photo-${i+1}" data-hobby-gallery>
       <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||hobby.title)}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
-    </button>`).join('')+${(hobby.gallery||[]).length>3?`<button class="hobby-more" type="button" data-hobby-gallery>View all ${hobby.gallery.length} photos</button>`:''};
+    </button>`).join('')+((hobby.gallery||[]).length>3?`<button class="hobby-more" type="button" data-hobby-gallery>View all ${hobby.gallery.length} photos</button>`:'');
     $('#hobbyGallery').querySelectorAll('[data-hobby-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(hobby.galleryTitle||hobby.title,hobby.gallery||[])));
   }
 
