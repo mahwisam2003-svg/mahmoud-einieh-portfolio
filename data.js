@@ -221,7 +221,7 @@ const SITE_DATA = {
       date: "24–26 Apr 2026",
       duration: "3-day interregional simulation training",
       supervisor: "Interregional simulation faculty",
-      detail: "Hands-on disaster-medicine simulation at the Volunteer Firefighter Center, with emergency response, firefighting, rescue/extrication, triage and team-based incident management.",
+      detail: "Disaster Medicine Situation Simulation Training within the Medical Emergency Response Interregional Simulation Training Programme, with firefighting, rescue/extrication, triage and team-based emergency response at the Volunteer Firefighter Center.",
       galleryTitle: "Disaster medicine in Romania",
       gallery: [
         { key:"romaniaFirefighter", caption:"Firefighting and emergency-response simulation", position:"50% 38%" },
@@ -436,7 +436,7 @@ const SITE_DATA = {
         { id:"porto-cert", title:"Neonatology / Perinatal Medicine", issuer:"IFMSA SCOPE · Hospital São João, Porto", year:"2026", note:"Professional exchange", imageKey:"portoNeonatology" },
         { id:"tunis-cert", title:"Pulmonology", issuer:"IFMSA SCOPE · La Rabta Hospital, Tunis", year:"2025", note:"Professional exchange", imageKey:"tunisExchange" },
         { id:"catania-cert", title:"Cardiology", issuer:"IFMSA SCOPE · Catania, Italy", year:"2024", note:"Professional exchange", imageKey:"cataniaCardiology" },
-        { id:"merit-cert", title:"Disaster Medicine Simulation Training", issuer:"MERIT · ROHU00026 · Diosig, Romania", year:"2026", note:"Certificate of participation · 24–26 Apr", imageKey:"meritCertificate", redacted:false },
+        { id:"merit-cert", title:"Disaster Medicine Situation Simulation Training", issuer:"MERIT · Interreg Romania–Hungary · ROHU00026", year:"2026", note:"Certificate of participation · 24–26 Apr · Diosig, Romania", imageKey:"meritCertificate", redacted:false },
                 { id:"ahd-cert", title:"Cardiology Observership", issuer:"American Hospital Dubai", year:"2024", note:"Clinical observership", imageKey:"americanHospital" }
       ]
     },
