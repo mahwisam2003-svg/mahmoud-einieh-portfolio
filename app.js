@@ -2,6 +2,7 @@
   const BASE = SITE_DATA;
   const I18N = typeof SITE_I18N !== 'undefined' ? SITE_I18N : { en:{} };
   const imgs = typeof SITE_IMAGES !== 'undefined' ? SITE_IMAGES : {};
+  const media = window.SITE_MEDIA || {};
   const $ = (s, p=document) => p.querySelector(s);
   const $$ = (s, p=document) => [...p.querySelectorAll(s)];
   const esc = s => String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -42,10 +43,9 @@
     if(pack.lubdub) d.lubdub = {...d.lubdub,...pack.lubdub};
     if(pack.doe) d.doe = {...d.doe,...pack.doe};
 
-    d.credentials = d.credentials.map(c=>{
-      const key = `${c.title}|${c.year}`;
-      return {...c,...(pack.credentials?.[key] || pack.credentials?.[c.title] || {})};
-    });
+    if(pack.medcup) d.medcup = {...d.medcup,...pack.medcup};
+    if(pack.evidenceGroups) d.evidenceGroups = d.evidenceGroups.map(g=>({...g,...(pack.evidenceGroups[g.id]||{})}));
+    if(pack.recommendations) d.recommendations = d.recommendations.map(r=>({...r,...(pack.recommendations[r.id]||{})}));
 
     if(pack.languages) d.languages = pack.languages.map(([language,level])=>({language,level}));
     return d;
@@ -61,8 +61,13 @@
     const ogd=$('meta[property="og:description"]'); if(ogd && pack.meta?.description) ogd.content=pack.meta.description;
 
     const navMap = {
-      research:ui.nav.research, clinical:ui.nav.clinical, publications:ui.nav.outputs, awards:ui.nav.awards,
-      lubdub:ui.nav.lubdub, doe:ui.nav.doe, credentials:ui.nav.evidence, teaching:ui.nav.teaching, about:ui.nav.about
+      research:ui.nav.research,
+      clinical:ui.nav.clinical,
+      publications:ui.nav.outputs,
+      medcup:ui.nav.medcup || 'MedCup',
+      lubdub:ui.nav.leadership || ui.nav.lubdub || 'Leadership',
+      credentials:ui.nav.evidence,
+      about:ui.nav.about
     };
     Object.entries(navMap).forEach(([id,label])=>{
       $$('a[href="#'+id+'"]').forEach(a=>a.textContent=label);
@@ -85,10 +90,12 @@
     applySection('research',ui.sections.research);
     applySection('clinical',ui.sections.clinical);
     applySection('publications',ui.sections.outputs);
+    applySection('medcup',ui.sections.medcup);
     applySection('awards',ui.sections.awards);
     applySection('lubdub',ui.sections.lubdub);
     applySection('doe',ui.sections.doe);
     applySection('credentials',ui.sections.evidence);
+    applySection('recommendations',ui.sections.recommendations);
     applySection('teaching',ui.sections.teaching);
 
     const about=$('#about');
@@ -99,7 +106,7 @@
       const label=$('.about-panel .mini-label',about); if(label) label.textContent=ui.about.selected;
       const links=$$('.about-panel > a',about);
       if(links[0]){ $('span',links[0]).textContent=ui.about.publicCV; $('strong',links[0]).textContent='PDF ↗'; }
-      if(links[1]){ $('strong',links[1]).textContent=ui.about.credential+' ↗'; }
+      if(links[1]){ $('span',links[1]).textContent=ui.about.selectedEvidence || 'Selected evidence'; $('strong',links[1]).textContent=(ui.about.view || 'View')+' ↓'; }
       if(links[2]){ $('strong',links[2]).textContent=ui.about.record+' ↗'; }
       if(links[3]){ $('strong',links[3]).textContent=ui.about.firstAuthor+' ↗'; }
       const privacy=$('.privacy-note',about); if(privacy) privacy.textContent=ui.about.privacy;
@@ -215,7 +222,7 @@
       <div class="modal-section"><h4>${esc(ui.modal.status)}</h4><p>${esc(p.status)} · ${esc(p.type)}</p></div>
       <div class="modal-links">
         ${p.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}
-        ${p.credential?`<a href="${p.credential}" target="_blank" rel="noopener">${esc(ui.modal.supporting)} ↗</a>`:''}
+
       </div>`;
     modal.showModal(); document.body.classList.add('modal-open');
   }
@@ -244,7 +251,7 @@
     $('#clinicalList').innerHTML=items.map(c=>`<article class="clinical-item reveal">
       <div class="clinical-date"><strong>${esc(c.date)}</strong><br>${esc(c.duration)}</div>
       <div class="clinical-main"><h3>${esc(c.specialty)}</h3><div class="institution">${esc(c.institution)} · ${esc(c.location)}</div><p>${esc(c.detail)}</p></div>
-      <div class="clinical-meta"><span>${esc(ui.clinical.supervision)}: ${esc(c.supervisor)}</span>${c.credential?`<a class="doc-link" href="${c.credential}" target="_blank" rel="noopener">${esc(ui.buttons.supportingDoc)} ↗</a>`:''}${c.privateDoc?`<span class="private-doc">${esc(c.privateDoc)}</span>`:''}</div>
+      <div class="clinical-meta"><span>${esc(ui.clinical.supervision)}: ${esc(c.supervisor)}</span></div>
     </article>`).join('') || `<div class="search-empty">${esc(ui.clinical.empty)}</div>`;
     bindReveal();
   }
@@ -254,15 +261,60 @@
 
   const outputIds = new Set(BASE.research.filter(p=>/Published|Submitted|Conference|Completed/.test(p.status)).map(p=>p.id));
   const outputs=d.research.filter(p=>outputIds.has(p.id));
-  $('#outputsGrid').innerHTML=outputs.map(p=>`<article class="output-card">${p.imageKey && imgs[p.imageKey] ? `<div class="output-photo ${photoClass(p)}"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}<span class="pub-journal">${esc(p.venue||p.status)}</span><h3>${esc(p.title)}</h3><p>${esc(p.status)} · ${esc(p.type)} · ${esc(p.year)}</p><div class="output-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}${p.credential?`<a href="${p.credential}" target="_blank" rel="noopener">${esc(ui.modal.supporting)} ↗</a>`:''}</div></article>`).join('');
+  $('#outputsGrid').innerHTML=outputs.map(p=>`<article class="output-card">${p.imageKey && imgs[p.imageKey] ? `<div class="output-photo ${photoClass(p)}"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}<span class="pub-journal">${esc(p.venue||p.status)}</span><h3>${esc(p.title)}</h3><p>${esc(p.status)} · ${esc(p.type)} · ${esc(p.year)}</p><div class="output-links">${p.links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div></article>`).join('');
   $('#sourceRibbon').innerHTML=d.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)} ↗</a>`).join('');
 
   $('#awardList').innerHTML=d.awards.map(a=>`<article class="award-item reveal"><span class="award-year">${esc(a.year)}</span><h3>${esc(a.title)}</h3><p>${esc(a.detail)}</p><div class="award-action">${a.source?`<a class="doc-link" href="${a.source}" target="_blank" rel="noopener">${esc(ui.buttons.officialSource)} ↗</a>`:''}${a.credential?`<a class="doc-link" href="${a.credential}" target="_blank" rel="noopener">${esc(ui.buttons.supportingDoc)} ↗</a>`:''}</div></article>`).join('');
 
-  $('#credentialGrid').innerHTML=d.credentials.map(c=>`<a class="credential-card reveal" href="${c.doc}" target="_blank" rel="noopener">
-    <div class="credential-preview"><img src="${c.thumb}" alt="${esc(c.title)} — ${esc(c.issuer)}" loading="lazy" decoding="async"></div>
-    <div class="credential-copy"><span>${esc(c.year)} · ${esc(c.note)}</span><h3>${esc(c.title)}</h3><p>${esc(c.issuer)}</p><strong>${esc(ui.credential.open)} ↗</strong></div>
-  </a>`).join('');
+  if(d.medcup){
+    setText('#medcupResult', d.medcup.result);
+    setText('#medcupTitle', d.medcup.title);
+    setText('#medcupSummary', d.medcup.summary);
+    setText('#medcupDetail', d.medcup.detail);
+    const source=$('#medcupSource'); if(source) source.href=d.medcup.source;
+    if($('#medcupStage') && media[d.medcup.images?.[0]]) $('#medcupStage').src=media[d.medcup.images[0]];
+    if($('#medcupSpeaking') && media[d.medcup.images?.[1]]) $('#medcupSpeaking').src=media[d.medcup.images[1]];
+  }
+
+  const evidenceItems=(d.evidenceGroups||[]).flatMap(g=>(g.items||[]).map(item=>({...item,groupTitle:g.title})));
+  const recommendationItems=d.recommendations||[];
+  const evidenceById=Object.fromEntries([...evidenceItems,...recommendationItems].map(x=>[x.id,x]));
+
+  $('#evidenceGroups').innerHTML=(d.evidenceGroups||[]).map(g=>`
+    <section class="evidence-group reveal">
+      <div class="evidence-group-head"><div><h3>${esc(g.title)}</h3><p>${esc(g.description||'')}</p></div><span>${g.items.length}</span></div>
+      <div class="evidence-grid">
+        ${g.items.map(item=>`<button class="evidence-card" type="button" data-evidence="${item.id}">
+          <div class="evidence-preview">${media[item.imageKey]?`<img src="${media[item.imageKey]}" alt="${esc(item.title)}" loading="lazy" decoding="async">`:''}</div>
+          <div class="evidence-copy"><span>${esc(item.year)} · ${esc(item.note)}</span><h4>${esc(item.title)}</h4><p>${esc(item.issuer)}</p><strong>${esc(ui.credential?.open || 'View redacted copy')} ↗</strong></div>
+        </button>`).join('')}
+      </div>
+    </section>`).join('');
+
+  $('#recommendationGrid').innerHTML=recommendationItems.map(item=>`
+    <button class="recommendation-card glass reveal" type="button" data-evidence="${item.id}">
+      <div class="recommendation-preview">${media[item.imageKey]?`<img src="${media[item.imageKey]}" alt="${esc(item.title)}" loading="lazy" decoding="async">`:''}</div>
+      <div class="recommendation-copy"><span>${esc(item.year)} · Signed recommendation</span><h3>${esc(item.title)}</h3><p>${esc(item.issuer)}</p><p>${esc(item.detail)}</p><strong>View letter ↗</strong></div>
+    </button>`).join('');
+
+  const evidenceModal=$('#evidenceModal'), evidenceModalContent=$('#evidenceModalContent');
+  function openEvidence(id){
+    const item=evidenceById[id]; if(!item || !evidenceModal)return;
+    const isRecommendation=recommendationItems.some(r=>r.id===id);
+    evidenceModalContent.innerHTML=`
+      <span class="modal-kicker">${esc(item.year)} · ${esc(isRecommendation?'Recommendation letter':item.note||item.groupTitle||'Supporting evidence')}</span>
+      <h3 class="modal-title">${esc(item.title)}</h3>
+      <p class="modal-summary">${esc(item.issuer||'')}</p>
+      ${item.detail?`<p class="modal-summary">${esc(item.detail)}</p>`:''}
+      ${media[item.imageKey]?`<img class="evidence-modal-image" src="${media[item.imageKey]}" alt="${esc(item.title)}">`:''}
+      <div class="evidence-modal-note">${isRecommendation?'Signed recommendation shown as supporting evidence.':'Redacted for privacy. Original unredacted copy available on reasonable request.'}</div>`;
+    evidenceModal.showModal(); document.body.classList.add('modal-open');
+  }
+  $('#evidenceGroups').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidence(b.dataset.evidence)});
+  $('#recommendationGrid').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidence(b.dataset.evidence)});
+  $('#evidenceModalClose').addEventListener('click',()=>evidenceModal.close());
+  evidenceModal.addEventListener('click',e=>{if(e.target===evidenceModal)evidenceModal.close()});
+  evidenceModal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
 
   $('#teachingGrid').innerHTML=d.teaching.map(t=>`<article class="teaching-card reveal"><span class="role">${esc(t.role)}</span><h3>${esc(t.organization)}</h3><span class="date">${esc(t.date)}</span><p>${esc(t.detail)}</p>${t.credential?`<a class="doc-link" href="${t.credential}" target="_blank" rel="noopener">${esc(ui.buttons.supportingDoc)} ↗</a>`:''}</article>`).join('');
   $('#languageList').innerHTML=d.languages.map(l=>`<div class="language-chip"><strong>${esc(l.language)}</strong><span>${esc(l.level)}</span></div>`).join('');
@@ -299,7 +351,9 @@
     ...d.research.map(x=>({kind:ui.search.research,title:x.title,meta:`${x.domain} · ${x.status}`,text:[x.title,x.domain,x.summary,...x.tags].join(' '),action:()=>{searchDialog.close();openProject(x.id)}})),
     ...d.clinical.map(x=>({kind:ui.search.clinical,title:`${x.specialty} · ${x.institution}`,meta:`${x.location} · ${x.date}`,text:[x.specialty,x.institution,x.location,x.detail,x.supervisor].join(' '),action:()=>{searchDialog.close();location.hash='clinical'}})),
     ...d.awards.map(x=>({kind:ui.search.recognition,title:x.title,meta:x.year,text:[x.title,x.detail].join(' '),action:()=>{searchDialog.close();location.hash='awards'}})),
-    ...d.credentials.map(x=>({kind:ui.search.credential,title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.note].join(' '),action:()=>{searchDialog.close();location.hash='credentials'}}))
+    ...(d.medcup?[{kind:'MedCup',title:d.medcup.title,meta:d.medcup.result,text:[d.medcup.title,d.medcup.result,d.medcup.summary,d.medcup.detail].join(' '),action:()=>{searchDialog.close();location.hash='medcup'}}]:[]),
+    ...evidenceItems.map(x=>({kind:ui.search.credential,title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.note].join(' '),action:()=>{searchDialog.close();location.hash='credentials';setTimeout(()=>openEvidence(x.id),200)}})),
+    ...recommendationItems.map(x=>({kind:'Recommendation',title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.detail].join(' '),action:()=>{searchDialog.close();location.hash='recommendations';setTimeout(()=>openEvidence(x.id),200)}}))
   ];
   function openSearch(){searchDialog.showModal();setTimeout(()=>searchInput.focus(),30);renderSearch('')}
   function renderSearch(q){
