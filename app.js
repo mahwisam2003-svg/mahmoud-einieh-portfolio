@@ -432,6 +432,26 @@
     const doeLink=$('.doe-link'); if(doeLink && d.doe.website) doeLink.href=d.doe.website;
   }
 
+  if($('#photoHighlights') && d.photoHighlights?.length){
+    $('#photoHighlights').innerHTML=d.photoHighlights.map((group,gi)=>`
+      <article class="photo-highlight-group reveal">
+        <div class="photo-highlight-head">
+          <div><span class="mini-label">${esc(group.kicker||'Photo highlights')}</span><h3>${esc(group.title)}</h3></div>
+          <button type="button" class="photo-highlight-view" data-photo-highlight="${gi}">View all ${group.gallery.length}</button>
+        </div>
+        <div class="photo-highlight-grid">
+          ${group.gallery.slice(0,4).map((item,i)=>`<button type="button" class="photo-highlight-tile photo-highlight-${i+1}" data-photo-highlight="${gi}">
+            <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||group.title)}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
+            <span>${esc(item.caption||group.title)}</span>
+          </button>`).join('')}
+        </div>
+      </article>`).join('');
+    $('#photoHighlights').querySelectorAll('[data-photo-highlight]').forEach(b=>b.addEventListener('click',()=>{
+      const g=d.photoHighlights[Number(b.dataset.photoHighlight)];
+      if(g) openGallery(g.title,g.gallery);
+    }));
+  }
+
   const themeToggle=$('#themeToggle');
   if(themeToggle && !themeToggle.dataset.themeBound){
     themeToggle.dataset.themeBound='true';
