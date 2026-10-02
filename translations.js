@@ -14,16 +14,16 @@ const SITE_I18N = {
         researchIdentity:"Research identity"
       },
       sections: {
-        research:{kicker:"01 · Research",title:"Research.",desc:"Selected published, completed, and active projects."},
-        clinical:{kicker:"02 · Clinical",title:"Clinical experience.",desc:"International placements, surgical skills and simulation training."},
-        outputs:{kicker:"03 · Outputs",title:"Publications & presentations.",desc:"Published papers, conference work and selected outputs."},
+        research:{kicker:"01 · Research",title:"Research.",desc:"Selected projects."},
+        clinical:{kicker:"02 · Clinical",title:"Clinical.",desc:"International placements, electives and simulation."},
+        outputs:{kicker:"03 · Outputs",title:"Publications.",desc:"Papers, abstracts and presentations."},
         medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Second place in Brussels."},
-        awards:{kicker:"05 · Recognition",title:"Awards & recognition.",desc:"Selected academic, scientific and competition highlights."},
+        awards:{kicker:"05 · Recognition",title:"Awards.",desc:"Selected academic and scientific recognition."},
         lubdub:{kicker:"06 · Leadership",title:"Lub Dub Club.",desc:"Founder-led cardiology education through simulation."},
-        doe:{kicker:"07 · Leadership",title:"DOE & IFMSA.",desc:"International leadership, outreach and capacity building."},
-        evidence:{kicker:"08 · Evidence",title:"Credentials.",desc:"Selected supporting documents and certificates."},
+        doe:{kicker:"07 · Leadership",title:"DOE & IFMSA.",desc:"Leadership, outreach and exchange."},
+        evidence:{kicker:"08 · Evidence",title:"Credentials.",desc:"Selected certificates and supporting documents."},
         recommendations:{kicker:"09 · References",title:"Letters of recommendation.",desc:""},
-        teaching:{kicker:"10 · Teaching",title:"Teaching.",desc:"Research methodology and pathology education."},
+        teaching:{kicker:"10 · Teaching",title:"Teaching.",desc:"Research methods and pathology."},
         about:{kicker:"11 · About",title:"About."}
       },
       buttons: {
@@ -68,16 +68,16 @@ const SITE_I18N = {
         researchIdentity:"Forschungsprofil"
       },
       sections: {
-        research:{kicker:"01 · Forschung",title:"Forschung.",desc:"Ausgewählte publizierte, abgeschlossene und laufende Projekte."},
-        clinical:{kicker:"02 · Klinik",title:"Klinische Erfahrung.",desc:"Internationale Praktika, chirurgische Fertigkeiten und Simulationstraining."},
-        outputs:{kicker:"03 · Arbeiten",title:"Publikationen & Präsentationen.",desc:"Publikationen, Kongressbeiträge und ausgewählte Arbeiten."},
+        research:{kicker:"01 · Forschung",title:"Forschung.",desc:"Ausgewählte Projekte."},
+        clinical:{kicker:"02 · Klinik",title:"Klinik.",desc:"Internationale Praktika, Wahlfächer und Simulation."},
+        outputs:{kicker:"03 · Arbeiten",title:"Publikationen.",desc:"Artikel, Abstracts und Präsentationen."},
         medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Zweiter Platz in Brüssel."},
-        awards:{kicker:"05 · Anerkennung",title:"Preise & Anerkennung.",desc:"Ausgewählte akademische und wissenschaftliche Erfolge."},
+        awards:{kicker:"05 · Anerkennung",title:"Auszeichnungen.",desc:"Ausgewählte akademische und wissenschaftliche Anerkennungen."},
         lubdub:{kicker:"06 · Leitung",title:"Lub Dub Club.",desc:"Von mir gegründete Kardiologieausbildung durch Simulation."},
-        doe:{kicker:"07 · Leitung",title:"DOE & IFMSA.",desc:"Internationale Studierendenarbeit, Outreach und Capacity Building."},
+        doe:{kicker:"07 · Leitung",title:"DOE & IFMSA.",desc:"Leitung, Outreach und Austausch."},
         evidence:{kicker:"08 · Nachweise",title:"Nachweise.",desc:"Ausgewählte Dokumente und Zertifikate."},
         recommendations:{kicker:"09 · Referenzen",title:"Empfehlungsschreiben.",desc:""},
-        teaching:{kicker:"10 · Lehre",title:"Lehre.",desc:"Forschungsmethodik und pathologische Praxisausbildung."},
+        teaching:{kicker:"10 · Lehre",title:"Lehre.",desc:"Forschungsmethoden und Pathologie."},
         about:{kicker:"11 · Über mich",title:"Über mich."}
       },
       buttons: {
@@ -116,7 +116,7 @@ const SITE_I18N = {
       mpn:{title:"Mitochondriale Dysfunktion bei myeloproliferativen Neoplasien",domain:"Hämatologie / Molekulare Medizin",type:"Narratives Review",status:"Publiziert · Koautor",summary:"Übersichtsarbeit zu mitochondrialer Dysfunktion und therapeutischen Angriffspunkten bei myeloproliferativen Neoplasien.",role:"Koautor · Literaturrecherche · Manuskript",detail:"Publizierte Übersichtsarbeit zu Stoffwechsel, oxidativem Stress, Mitophagie und Präzisionstherapien."}
     },
     clinical:{
-      "romania-disaster":{specialty:"Katastrophenmedizin, Brandbekämpfung & Notfallversorgung",date:"24.–26. Apr. 2026",duration:"3-tägiges interregionales Simulationstraining",detail:"Praxisnahes Katastrophenmedizin-Training im Volunteer Firefighter Center mit Notfallkoordination, Brandbekämpfung, Rettung/Extrikation, Triage und Teamarbeit."},
+      "romania-disaster":{specialty:"Katastrophenmedizin & Notfallversorgung",date:"24.–26. Apr. 2026",duration:"3-tägiges interregionales Simulationstraining",detail:"Praxisnahes Katastrophenmedizin-Training im Volunteer Firefighter Center mit Notfallkoordination, Brandbekämpfung, Rettung/Extrikation, Triage und Teamarbeit."},
       "debrecen-surgical-skills":{specialty:"Chirurgische Fertigkeiten (BST)",date:"2023–2025",duration:"4 praktische Wahlfächer · alle mit Sehr gut (5)",detail:"Alle vier praktischen Wahlfächer der chirurgischen Skills-Reihe des Fachbereichs wurden abgeschlossen: Operationstechnik, Mikrochirurgie, Laparoskopie und fortgeschrittene Operationstechniken."},
       "porto-neonatology":{specialty:"Neonatologie",date:"Juli 2026",duration:"1 Monat · IFMSA SCOPE",detail:"Erfahrung auf neonatologischen und perinatalen Stationen, einschließlich Frühgeburtlichkeit und neonataler Sepsis."},
       "siegen-surgery":{specialty:"Allgemein- & Viszeralchirurgie",date:"November 2025",duration:"4 Wochen",detail:"Visiten, perioperative Versorgung und operative Hospitation in der Allgemein- und Viszeralchirurgie.",privateDoc:"Empfehlungsschreiben auf Anfrage verfügbar"},
@@ -170,16 +170,16 @@ const SITE_I18N = {
         researchIdentity:"Kutatói profil"
       },
       sections: {
-        research:{kicker:"01 · Kutatás",title:"Kutatás.",desc:"Válogatott megjelent, befejezett és folyamatban lévő projektek."},
-        clinical:{kicker:"02 · Klinikum",title:"Klinikai tapasztalat.",desc:"Nemzetközi gyakorlatok, sebészeti készségek és szimulációs képzés."},
-        outputs:{kicker:"03 · Eredmények",title:"Publikációk & prezentációk.",desc:"Publikációk, kongresszusi munkák és válogatott eredmények."},
+        research:{kicker:"01 · Kutatás",title:"Kutatás.",desc:"Válogatott projektek."},
+        clinical:{kicker:"02 · Klinikum",title:"Klinikum.",desc:"Nemzetközi gyakorlatok, választható tárgyak és szimuláció."},
+        outputs:{kicker:"03 · Eredmények",title:"Publikációk.",desc:"Cikkek, absztraktok és előadások."},
         medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Második hely Brüsszelben."},
-        awards:{kicker:"05 · Elismerés",title:"Díjak & elismerések.",desc:"Válogatott akadémiai és tudományos eredmények."},
+        awards:{kicker:"05 · Elismerés",title:"Díjak.",desc:"Válogatott akadémiai és tudományos elismerések."},
         lubdub:{kicker:"06 · Vezetés",title:"Lub Dub Club.",desc:"Saját alapítású kardiológiai oktatás szimulációval."},
-        doe:{kicker:"07 · Vezetés",title:"DOE & IFMSA.",desc:"Nemzetközi hallgatói vezetés, közösségi programok és készségfejlesztés."},
+        doe:{kicker:"07 · Vezetés",title:"DOE & IFMSA.",desc:"Vezetés, közösségi programok és cserekapcsolatok."},
         evidence:{kicker:"08 · Igazolások",title:"Igazolások.",desc:"Válogatott dokumentumok és tanúsítványok."},
         recommendations:{kicker:"09 · Referenciák",title:"Ajánlólevelek.",desc:""},
-        teaching:{kicker:"10 · Oktatás",title:"Oktatás.",desc:"Kutatásmódszertan és patológiai gyakorlati oktatás."},
+        teaching:{kicker:"10 · Oktatás",title:"Oktatás.",desc:"Kutatásmódszertan és patológia."},
         about:{kicker:"11 · Rólam",title:"Rólam."}
       },
       buttons: {
@@ -218,7 +218,7 @@ const SITE_I18N = {
       mpn:{title:"Mitokondriális diszfunkció myeloproliferatív neopláziákban",domain:"Hematológia / molekuláris medicina",type:"Narratív áttekintés",status:"Megjelent · társszerző",summary:"Áttekintés a mitokondriális diszfunkcióról és terápiás célpontokról myeloproliferatív neopláziákban.",role:"Társszerző · irodalomkutatás · kézirat",detail:"Publikált áttekintés az anyagcseréről, oxidatív stresszről, mitofágiáról és precíziós terápiákról."}
     },
     clinical:{
-      "romania-disaster":{specialty:"Katasztrófa-orvostan, tűzoltás és sürgősségi válasz",date:"2026. ápr. 24–26.",duration:"3 napos interregionális szimulációs képzés",detail:"Gyakorlati katasztrófa-orvostani képzés a Volunteer Firefighter Centerben sürgősségi koordinációval, tűzoltással, mentéssel/extrikációval, triázzsal és csapatmunkával."},
+      "romania-disaster":{specialty:"Katasztrófa-orvostan és sürgősségi ellátás",date:"2026. ápr. 24–26.",duration:"3 napos interregionális szimulációs képzés",detail:"Gyakorlati katasztrófa-orvostani képzés a Volunteer Firefighter Centerben sürgősségi koordinációval, tűzoltással, mentéssel/extrikációval, triázzsal és csapatmunkával."},
       "debrecen-surgical-skills":{specialty:"Sebészeti készségfejlesztő választható tárgyak (BST)",date:"2023–2025",duration:"4 gyakorlati kurzus · mind kiváló (5)",detail:"A tanszék sebészeti készségfejlesztő sorozatának mind a négy gyakorlati választható tárgyát teljesítette: műtéttani alapok, mikrosebészet, laparoszkópia és haladó műtéti technikák."},
       "porto-neonatology":{specialty:"Neonatológia",date:"2026. július",duration:"1 hónap · IFMSA SCOPE",detail:"Neonatológiai és perinatális osztályos tapasztalat, beleértve a koraszülöttséget és a neonatalis sepsist."},
       "siegen-surgery":{specialty:"Általános és visceralis sebészet",date:"2025. november",duration:"4 hét",detail:"Vizitek, perioperatív ellátás és műtéti megfigyelés általános és visceralis sebészeten.",privateDoc:"Ajánlólevél kérésre elérhető"},
