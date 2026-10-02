@@ -278,3 +278,12 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
   .recommendation-preview{min-height:300px;border-right:0;border-bottom:1px solid var(--line)}
   .evidence-modal{padding:20px}
 }
+
+.medcup-press{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.medcup-press:before{content:"Press coverage";width:100%;font-size:.62rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.medcup-press a{font-size:.7rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:2px}
+.medcup-press a:hover{color:var(--text);border-color:var(--accent)}
+.lubdub-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.lubdub-actions .button{margin-top:0}
+.recommendations-section .section-heading{grid-template-columns:1fr}
+.recommendations-section .section-heading h2{max-width:900px}
