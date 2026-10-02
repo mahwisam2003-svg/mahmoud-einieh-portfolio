@@ -41,9 +41,8 @@
       <a href="#research">Research</a>
       <a href="#clinical">Clinical</a>
       <a href="#publications">Outputs</a>
-      <a href="#awards">Awards</a>
-      <a href="#lubdub">Lub Dub</a>
-      <a href="#doe">DOE</a>
+      <a href="#medcup">MedCup</a>
+      <a href="#lubdub">Leadership</a>
       <a href="#credentials">Evidence</a>
       <a href="#about">About</a>
     </nav>
@@ -65,7 +64,7 @@
 
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
     <div class="mobile-lang-switch lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button><button type="button" data-lang="hu">HU</button></div>
-    <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#awards">Awards</a><a href="#lubdub">Lub Dub Club</a><a href="#doe">DOE</a><a href="#credentials">Evidence</a><a href="#teaching">Teaching</a><a href="#about">About</a>
+    <a href="#research">Research</a><a href="#clinical">Clinical</a><a href="#publications">Outputs</a><a href="#medcup">MedCup</a><a href="#lubdub">Leadership</a><a href="#credentials">Evidence</a><a href="#about">About</a>
   </nav>
 
   <main>
@@ -143,9 +142,29 @@
       <div class="source-ribbon reveal" id="sourceRibbon"></div>
     </section>
 
+    <section class="section medcup-section" id="medcup">
+      <div class="section-heading reveal">
+        <div><span class="kicker">04 · MedCup 2024</span><h2>International clinical competition.<br><span>Second place in Brussels.</span></h2></div>
+        <p>A dedicated highlight for a team result that combined clinical reasoning, practical skills, imaging and emergency decision-making.</p>
+      </div>
+      <div class="medcup-layout">
+        <div class="medcup-copy glass reveal">
+          <span class="role" id="medcupResult"></span>
+          <h3 id="medcupTitle"></h3>
+          <p id="medcupSummary"></p>
+          <p id="medcupDetail"></p>
+          <a class="button button-ghost" id="medcupSource" href="#" target="_blank" rel="noopener">University of Debrecen article <span>↗</span></a>
+        </div>
+        <div class="medcup-gallery reveal delay-1">
+          <figure><img id="medcupStage" alt="MedCup 2024 final stage in Brussels" loading="lazy"></figure>
+          <figure><img id="medcupSpeaking" alt="Mahmoud Einieh speaking at MedCup 2024" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="awards">
       <div class="section-heading reveal">
-        <div><span class="kicker">04 · Recognition</span><h2>Competition, conference<br><span>and scientific recognition.</span></h2></div>
+        <div><span class="kicker">05 · Recognition</span><h2>Competition, conference<br><span>and scientific recognition.</span></h2></div>
         <p>Selected awards and conference presentations.</p>
       </div>
       <div class="award-list" id="awardList"></div>
@@ -153,7 +172,7 @@
 
     <section class="section lubdub-section" id="lubdub">
       <div class="section-heading reveal">
-        <div><span class="kicker">05 · Founder-led education</span><h2>The Lub Dub Club.<br><span>Cardiology through simulation.</span></h2></div>
+        <div><span class="kicker">06 · Founder-led education</span><h2>The Lub Dub Club.<br><span>Cardiology through simulation.</span></h2></div>
         <p>Founded and led at the University of Debrecen to make cardiology more practical, interactive, and clinically grounded.</p>
       </div>
       <div class="lubdub-grid">
@@ -171,7 +190,7 @@
 
     <section class="section doe-section" id="doe">
       <div class="section-heading reveal">
-        <div><span class="kicker">06 · Student leadership</span><h2>DOE / IFMSA.<br><span>International student engagement.</span></h2></div>
+        <div><span class="kicker">07 · Student leadership</span><h2>DOE / IFMSA.<br><span>International student engagement.</span></h2></div>
         <p>Leadership within the Medical Students’ Association of Debrecen, connecting international students with exchanges, opportunities, and educational events.</p>
       </div>
       <div class="doe-card glass reveal">
@@ -188,15 +207,24 @@
 
     <section class="section credentials-section" id="credentials">
       <div class="section-heading reveal">
-        <div><span class="kicker">07 · Supporting evidence</span><h2>Credentials where they add value.<br><span>Privacy where it matters.</span></h2></div>
-        <p>Selected certificates supporting clinical placements, research awards, and training.</p>
+        <div><span class="kicker">08 · Supporting evidence</span><h2>Strong evidence, selectively shown.<br><span>Redacted where privacy matters.</span></h2></div>
+        <p>Core academic credentials, selected international clinical certificates, and scientific awards — using high-resolution privacy-safe previews.</p>
       </div>
-      <div class="credential-grid" id="credentialGrid"></div>
+      <div class="evidence-groups" id="evidenceGroups"></div>
+      <p class="evidence-privacy reveal">Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.</p>
+    </section>
+
+    <section class="section recommendations-section" id="recommendations">
+      <div class="section-heading reveal">
+        <div><span class="kicker">09 · Recommendation letters</span><h2>Signed clinical recommendations.<br><span>Kept separate from certificates.</span></h2></div>
+        <p>Selected recommendation letters are presented separately so supporting credentials remain easy to scan.</p>
+      </div>
+      <div class="recommendation-grid" id="recommendationGrid"></div>
     </section>
 
     <section class="section" id="teaching">
       <div class="section-heading reveal">
-        <div><span class="kicker">08 · Teaching</span><h2>Building systems for<br><span>learning and collaboration.</span></h2></div>
+        <div><span class="kicker">10 · Teaching</span><h2>Building systems for<br><span>learning and collaboration.</span></h2></div>
         <p>Teaching experience in research methodology and pathology practical education.</p>
       </div>
       <div class="teaching-grid" id="teachingGrid"></div>
@@ -205,7 +233,7 @@
     <section class="section about-section" id="about">
       <div class="about-grid">
         <div class="about-copy reveal">
-          <span class="kicker">09 · About</span>
+          <span class="kicker">11 · About</span>
           <h2>Clinically grounded.<br><span>Research driven.</span></h2>
           <p>Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.</p>
           <p>Interested in cardiovascular medicine, clinical research, imaging, and translational science.</p>
@@ -214,10 +242,10 @@
         <aside class="about-panel glass reveal delay-1"><img id="graduationPhoto" src="assets/portrait_hd.webp" class="about-photo" alt="Graduation portrait of Mahmoud Einieh" loading="lazy">
           <span class="mini-label">Selected credentials</span>
           <a href="assets/docs/Mahmoud_Einieh_Public_CV.pdf" target="_blank" rel="noopener"><span>Public CV</span><strong>PDF ↗</strong></a>
-          <a href="assets/docs/Meta_Analysis_Academy_Completion_Redacted.pdf" target="_blank" rel="noopener"><span>Meta-Analysis Academy</span><strong>Credential ↗</strong></a>
+          <a href="#credentials"><span>Selected evidence</span><strong>View ↓</strong></a>
           <a href="https://orcid.org/0009-0002-4240-9376" target="_blank" rel="noopener"><span>ORCID</span><strong>Record ↗</strong></a>
           <a href="https://pubmed.ncbi.nlm.nih.gov/42083154/" target="_blank" rel="noopener"><span>PubMed</span><strong>First-author paper ↗</strong></a>
-          <div class="privacy-note">Supporting documents shown on this website may have limited personal information removed for privacy. *Original copies can be made available on reasonable request.</div>
+          <div class="privacy-note">Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.</div>
         </aside>
       </div>
     </section>
@@ -244,14 +272,25 @@
     <div id="modalContent"></div>
   </dialog>
 
+  <dialog class="evidence-modal" id="evidenceModal">
+    <button class="modal-close" id="evidenceModalClose" aria-label="Close document preview" type="button">×</button>
+    <div id="evidenceModalContent"></div>
+  </dialog>
+
   <dialog class="search-dialog" id="searchDialog">
     <div class="search-head"><input id="searchInput" type="search" placeholder="Search projects, specialties, institutions…" autocomplete="off" aria-label="Search portfolio"/><kbd>esc</kbd></div>
     <div class="search-results" id="searchResults"></div>
   </dialog>
 
-  <script src="image_data.js?v=20261002-3"></script>
-  <script src="data.js?v=20261002-3"></script>
-  <script src="translations.js?v=20261002-3"></script>
-  <script src="app.js?v=20261002-3"></script>
+  <script src="image_data.js?v=20261002-4"></script>
+  <script src="media_diplomas.js?v=20261002-1"></script>
+  <script src="media_clinical.js?v=20261002-1"></script>
+  <script src="media_awards_training.js?v=20261002-1"></script>
+  <script src="media_recommendations.js?v=20261002-1"></script>
+  <script src="media_medcup.js?v=20261002-1"></script>
+  <script src="media_eanm.js?v=20261002-1"></script>
+  <script src="data.js?v=20261002-4"></script>
+  <script src="translations.js?v=20261002-4"></script>
+  <script src="app.js?v=20261002-4"></script>
 </body>
 </html>
