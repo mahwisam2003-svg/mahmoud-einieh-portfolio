@@ -71,10 +71,9 @@
     const navMap = {
       research:ui.nav.research,
       clinical:ui.nav.clinical,
-      publications:ui.nav.outputs,
-      medcup:ui.nav.medcup || 'MedCup',
-      lubdub:ui.nav.leadership || ui.nav.lubdub || 'Leadership',
-      credentials:ui.nav.evidence,
+      leadership:ui.nav.leadership || 'Leadership',
+      highlights:ui.nav.highlights || ui.nav.awards || 'Highlights',
+      credentials:ui.nav.evidence || 'Credentials',
       about:ui.nav.about
     };
     Object.entries(navMap).forEach(([id,label])=>{
@@ -97,6 +96,8 @@
     };
     applySection('research',ui.sections.research);
     applySection('clinical',ui.sections.clinical);
+    applySection('leadership',ui.sections.leadership);
+    applySection('highlights',ui.sections.highlights);
     applySection('publications',ui.sections.outputs);
     applySection('medcup',ui.sections.medcup);
     applySection('awards',ui.sections.awards);
