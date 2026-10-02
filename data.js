@@ -91,6 +91,7 @@ const SITE_DATA = {
     {
       id: "bone-spect",
       featured: false,
+      imageKey: "boneSpectPresentation",
       title: "The role of bone SPECT/CT in non-oncological indications",
       domain: "Nuclear medicine",
       type: "Original diagnostic-accuracy research",
@@ -111,6 +112,7 @@ const SITE_DATA = {
     {
       id: "rituximab",
       featured: false,
+      imageKey: "mdThesisPortrait",
       title: "Rituximab in immune-mediated glomerular disease",
       domain: "Nephrology",
       type: "MD thesis · Retrospective clinical cohort",
@@ -549,14 +551,12 @@ const SITE_DATA = {
   hobbies: [
     {
       id: "equestrian",
-      title: "Horse riding & show jumping",
-      summary: "A personal hobby outside medicine, combining riding, training and competition days.",
-      galleryTitle: "Horse riding & show jumping",
+      title: "Equestrian & show jumping",
+      summary: "A long-standing interest outside medicine, including training and competition days.",
+      galleryTitle: "Equestrian & show jumping",
       gallery: [
-        { key:"horseJumpWide", caption:"Show-jumping training", position:"50% 48%" },
-        { key:"horseAward", caption:"Competition day", position:"50% 38%" },
-        { key:"horseJumpRed", caption:"Show-jumping session", position:"50% 45%" },
-        { key:"horseJumpBlue", caption:"Training over fences", position:"50% 46%" },
+        { key:"horseAward", caption:"Competition day", position:"50% 36%" },
+        { key:"horseJumpRed", caption:"Show-jumping session", position:"50% 44%" },
         { key:"horseCompetition", caption:"Indoor show-jumping competition", position:"50% 42%" }
       ]
     }
