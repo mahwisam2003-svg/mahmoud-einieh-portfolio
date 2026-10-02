@@ -45,7 +45,7 @@ const SITE_I18N = {
         p1:"Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.",
         p2:"Interested in cardiovascular medicine, clinical research, imaging, and translational science.",
         selected:"Selected credentials", selectedEvidence:"Selected evidence", view:"View", publicCV:"Public CV", credential:"Credential", record:"Record", firstAuthor:"First-author paper",
-        privacy:"Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request."
+        privacy:"Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.", hobby:"Hobby"
       },
       contact:{kicker:"Contact",title:"Research collaboration,<br>clinical opportunities, or academic work."},
       footer:{tagline:"Cardiovascular Research · Advanced Imaging · Evidence Synthesis",living:"Built as a living academic portfolio."},
@@ -101,7 +101,7 @@ const SITE_I18N = {
         p1:"Abschluss des sechsjährigen englischsprachigen Medizinstudiums an der Universität Debrecen im Jahr 2026.",
         p2:"Interessen: Kardiovaskuläre Medizin, klinische Forschung, Bildgebung und translationale Wissenschaft.",
         selected:"Ausgewählte Nachweise", selectedEvidence:"Ausgewählte Nachweise", view:"Ansehen", publicCV:"Öffentlicher Lebenslauf", credential:"Nachweis", record:"Profil", firstAuthor:"Erstautor-Publikation",
-        privacy:"Dokumente werden aus Datenschutzgründen in geschwärzter Form gezeigt. Unveränderte Originale können auf begründete Anfrage zur Verfügung gestellt werden."
+        privacy:"Dokumente werden aus Datenschutzgründen in geschwärzter Form gezeigt. Unveränderte Originale können auf begründete Anfrage zur Verfügung gestellt werden.", hobby:"Hobby"
       },
       contact:{kicker:"Kontakt",title:"Forschungskooperation,<br>klinische Möglichkeiten oder akademische Projekte."},
       footer:{tagline:"Kardiovaskuläre Forschung · Moderne Bildgebung · Evidenzsynthese",living:"Als fortlaufend aktualisiertes akademisches Portfolio erstellt."},
@@ -205,7 +205,7 @@ const SITE_I18N = {
         p1:"2026-ban végeztem a Debreceni Egyetem hatéves, angol nyelvű általános orvosképzésén.",
         p2:"Fő érdeklődési területeim a kardiovaszkuláris medicina, klinikai kutatás, képalkotás és transzlációs tudomány.",
         selected:"Válogatott igazolások", selectedEvidence:"Válogatott igazolások", view:"Megtekintés", publicCV:"Nyilvános önéletrajz", credential:"Igazolás", record:"Profil", firstAuthor:"Első szerzős közlemény",
-        privacy:"A dokumentumok adatvédelmi okokból kitakart formában jelennek meg. Az eredeti, módosítatlan példányok indokolt kérésre rendelkezésre bocsáthatók."
+        privacy:"A dokumentumok adatvédelmi okokból kitakart formában jelennek meg. Az eredeti, módosítatlan példányok indokolt kérésre rendelkezésre bocsáthatók.", hobby:"Hobbi"
       },
       contact:{kicker:"Kapcsolat",title:"Kutatási együttműködés,<br>klinikai lehetőségek vagy akadémiai projektek."},
       footer:{tagline:"Kardiovaszkuláris kutatás · Korszerű képalkotás · Evidenciaszintézis",living:"Folyamatosan frissülő akadémiai portfólió."},
