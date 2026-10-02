@@ -140,7 +140,7 @@ const SITE_DATA = {
       role: "Systematic review · diagnostic performance",
       detail: "Hematology-focused functional imaging and diagnostic-accuracy research.",
       tags: ["Hematology", "PET/CT", "Diagnostic accuracy", "Evidence synthesis"],
-      links: [{ label: "EHA abstract", url: "https://library.ehaweb.org/eha/content_mapping?getpage=38" }]
+      links: [{ label: "EHA abstract", url: "https://library.ehaweb.org/eha/2026/eha2026-congress/4210513/" }]
     },
     {
       id: "bmt",
