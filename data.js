@@ -280,20 +280,13 @@ const SITE_DATA = {
 
   awards: [
     {
-      title: "2nd Place · MedCup 2024",
-      detail: "University of Debrecen team placed 2nd among 100 teams in Brussels.",
-      year: "2024",
-      source: "https://hirek.unideb.hu/en/international-success-debrecen-medical-students"
-    },
-    {
       title: "3rd Place · TDK Conference 2025",
       detail: "3rd prize for first-author bone SPECT/CT research.",
-      year: "2025",
-      credential: "assets/docs/TDK_2025_Third_Prize_Redacted.pdf"
+      year: "2025"
     },
     {
       title: "ESC Congress 2025 · Presenter",
-      detail: "Presented first-author AVF ligation meta-analysis in Madrid.",
+      detail: "Presented first-author AVF ligation meta-analysis at ESC Congress 2025.",
       year: "2025",
       source: "https://esc365.escardio.org/presentation/309528?resource=abstract"
     },
@@ -306,14 +299,75 @@ const SITE_DATA = {
     {
       title: "3rd Place · TDK Conference 2026",
       detail: "3rd prize for first-author rituximab research.",
-      year: "2026",
-      credential: "assets/docs/TDK_2026_Third_Prize_Redacted.pdf"
+      year: "2026"
     },
     {
       title: "1st Place · Arthroscopic Simulator Station",
       detail: "University of Debrecen Surgery Club skills competition.",
       year: "2025",
       source: "https://hirek.unideb.hu/sikeresen-zarult-hallgatoi-skill-verseny"
+    }
+  ],
+
+  medcup: {
+    title: "MedCup 2024 · Brussels",
+    result: "2nd place among 100 teams",
+    summary: "Mahmoud Einieh and Ramzi Zeidan represented the University of Debrecen and finished second in the international MedCup competition in Brussels, one point behind the winning team.",
+    detail: "The competition tested clinical reasoning, practical skills, imaging interpretation, emergency response and procedural ability across teams from universities worldwide.",
+    source: "https://hirek.unideb.hu/en/international-success-debrecen-medical-students",
+    images: ["medcupStage", "medcupSpeaking"]
+  },
+
+  evidenceGroups: [
+    {
+      id: "education",
+      title: "Academic credentials",
+      description: "Core educational qualifications, shown in privacy-safe redacted form.",
+      items: [
+        { id:"medical-degree", title:"Doctor of Medicine · University of Debrecen", issuer:"University of Debrecen", year:"2026", note:"Medical degree · cum laude", imageKey:"medicalDegree" },
+        { id:"high-school", title:"High School Diploma · Al Mawakeb School", issuer:"Al Mawakeb School, Dubai", year:"2020", note:"Secondary education diploma", imageKey:"highSchoolDiploma" }
+      ]
+    },
+    {
+      id: "clinical",
+      title: "International clinical training",
+      description: "Selected certificates documenting international clinical placements.",
+      items: [
+        { id:"porto-cert", title:"Neonatology / Perinatal Medicine", issuer:"IFMSA SCOPE · Hospital São João, Porto", year:"2026", note:"Professional exchange", imageKey:"portoNeonatology" },
+        { id:"tunis-cert", title:"Pulmonology", issuer:"IFMSA SCOPE · La Rabta Hospital, Tunis", year:"2025", note:"Professional exchange", imageKey:"tunisExchange" },
+        { id:"catania-cert", title:"Cardiology", issuer:"IFMSA SCOPE · Catania, Italy", year:"2024", note:"Professional exchange", imageKey:"cataniaCardiology" },
+        { id:"ahd-cert", title:"Cardiology Observership", issuer:"American Hospital Dubai", year:"2024", note:"Clinical observership", imageKey:"americanHospital" }
+      ]
+    },
+    {
+      id: "science",
+      title: "Scientific awards & methods training",
+      description: "Selected awards and formal research-methodology training.",
+      items: [
+        { id:"tdk-2025", title:"TDK Conference · Third Prize", issuer:"University of Debrecen", year:"2025", note:"Bone SPECT/CT research", imageKey:"tdk2025" },
+        { id:"tdk-2026", title:"TDK Conference · Third Prize", issuer:"University of Debrecen", year:"2026", note:"Rituximab research", imageKey:"tdk2026" },
+        { id:"maa-completion", title:"Meta-Analysis Academy · Completion", issuer:"Meta-Analysis Academy", year:"2024", note:"50-hour methods programme", imageKey:"maaCompletion" },
+        { id:"maa-ta", title:"Meta-Analysis Academy · Teaching Assistant", issuer:"Meta-Analysis Academy", year:"2025", note:"80-hour teaching-assistant appointment", imageKey:"maaTeaching" }
+      ]
+    }
+  ],
+
+  recommendations: [
+    {
+      id:"siegen-recommendation",
+      title:"General & Visceral Surgery · Recommendation",
+      issuer:"Diakonie Klinikum · Siegen, Germany",
+      year:"2025",
+      detail:"Signed recommendation following a four-week surgical observership under Prof. Dr. M. Golriz.",
+      imageKey:"siegenRecommendation"
+    },
+    {
+      id:"tunis-recommendation",
+      title:"Pulmonology · Recommendation",
+      issuer:"La Rabta Hospital · Tunis, Tunisia",
+      year:"2025",
+      detail:"Signed recommendation following the pulmonology clinical attachment at La Rabta Hospital.",
+      imageKey:"tunisRecommendation"
     }
   ],
 
@@ -360,65 +414,6 @@ const SITE_DATA = {
     website: "https://www.doedebrecen.hu/index.php"
   },
 
-  credentials: [
-    {
-      title: "Cardiology Observership",
-      issuer: "American Hospital Dubai",
-      year: "2024",
-      doc: "assets/docs/American_Hospital_Dubai_Cardiology_2024_Redacted.pdf",
-      thumb: "assets/thumbs/American_Hospital_Dubai_Cardiology_2024_Redacted.webp",
-      note: "Supporting document*"
-    },
-    {
-      title: "Cardiology Professional Exchange",
-      issuer: "IFMSA SCOPE · Catania",
-      year: "2024",
-      doc: "assets/docs/IFMSA_Cardiology_Catania_2024_Redacted.pdf",
-      thumb: "assets/thumbs/IFMSA_Cardiology_Catania_2024_Redacted.webp",
-      note: "Supporting document*"
-    },
-    {
-      title: "Pulmonology Professional Exchange",
-      issuer: "IFMSA SCOPE · Tunis",
-      year: "2025",
-      doc: "assets/docs/IFMSA_Pulmonology_Tunis_2025_Redacted.pdf",
-      thumb: "assets/thumbs/IFMSA_Pulmonology_Tunis_2025_Redacted.webp",
-      note: "Supporting document*"
-    },
-    {
-      title: "Neonatology Professional Exchange",
-      issuer: "IFMSA SCOPE · Porto",
-      year: "2026",
-      doc: "assets/docs/IFMSA_Neonatology_Porto_2026_Redacted.pdf",
-      thumb: "assets/thumbs/IFMSA_Neonatology_Porto_2026_Redacted.webp",
-      note: "Supporting document*"
-    },
-    {
-      title: "TDK Conference · Third Prize",
-      issuer: "University of Debrecen",
-      year: "2025",
-      doc: "assets/docs/TDK_2025_Third_Prize_Redacted.pdf",
-      thumb: "assets/thumbs/TDK_2025_Third_Prize_Redacted.webp",
-      note: "Scientific presentation"
-    },
-    {
-      title: "TDK Conference · Third Prize",
-      issuer: "University of Debrecen",
-      year: "2026",
-      doc: "assets/docs/TDK_2026_Third_Prize_Redacted.pdf",
-      thumb: "assets/thumbs/TDK_2026_Third_Prize_Redacted.webp",
-      note: "Scientific presentation"
-    },
-    {
-      title: "Meta-Analysis Academy",
-      issuer: "Certificate of Completion",
-      year: "2024",
-      doc: "assets/docs/Meta_Analysis_Academy_Completion_Redacted.pdf",
-      thumb: "assets/thumbs/Meta_Analysis_Academy_Completion_Redacted.webp",
-      note: "Methods training"
-    }
-  ],
-
   languages: [
     { language: "Arabic", level: "Native" },
     { language: "English", level: "C2" },
@@ -431,7 +426,6 @@ const SITE_DATA = {
     { label: "PubMed · circRNA review", url: "https://pubmed.ncbi.nlm.nih.gov/41405560/" },
     { label: "PubMed · MPN review", url: "https://pubmed.ncbi.nlm.nih.gov/40901187/" },
     { label: "ORCID", url: "https://orcid.org/0009-0002-4240-9376" },
-    { label: "University of Debrecen · MedCup", url: "https://hirek.unideb.hu/en/international-success-debrecen-medical-students" },
     { label: "ESC 365", url: "https://esc365.escardio.org/presentation/309528?resource=abstract" },
     { label: "University of Debrecen Research Portal", url: "https://tudoster.unideb.hu/en/publikacio/BIBFORM134396" }
   ]
