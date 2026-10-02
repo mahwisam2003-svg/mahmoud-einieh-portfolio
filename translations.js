@@ -14,17 +14,17 @@ const SITE_I18N = {
         researchIdentity:"Research identity"
       },
       sections: {
-        research:{kicker:"01 · Research portfolio",title:"Cardiovascular questions first.<br><span>Broader translational work around them.</span>",desc:"Selected published, completed, and active research across cardiovascular medicine, imaging, nephrology, and related fields."},
-        clinical:{kicker:"02 · Clinical experience",title:"International training across<br><span>medicine, cardiology and acute care.</span>",desc:"Clinical placements across Europe, the Middle East, and North Africa."},
-        outputs:{kicker:"03 · Research outputs",title:"Published, presented,<br><span>submitted and ongoing.</span>",desc:"Published papers, conference work, and selected research outputs."},
-        medcup:{kicker:"04 · MedCup 2024",title:"International clinical competition.<br><span>Second place in Brussels.</span>",desc:"A dedicated highlight for a team result combining clinical reasoning, practical skills, imaging and emergency decision-making."},
-        awards:{kicker:"05 · Recognition",title:"Competition, conference<br><span>and scientific recognition.</span>",desc:"Selected awards and conference presentations."},
-        lubdub:{kicker:"06 · Founder-led education",title:"The Lub Dub Club.<br><span>Cardiology through simulation.</span>",desc:"Founded and led at the University of Debrecen to make cardiology more practical, interactive, and clinically grounded."},
-        doe:{kicker:"07 · Student leadership",title:"DOE / IFMSA.<br><span>International student engagement.</span>",desc:"Leadership within the Medical Students’ Association of Debrecen, connecting international students with exchanges, opportunities, and educational events."},
-        evidence:{kicker:"08 · Supporting evidence",title:"Strong evidence, selectively shown.<br><span>Redacted where privacy matters.</span>",desc:"Core academic credentials, selected international clinical certificates, scientific awards, and community service in high-resolution privacy-safe form."},
+        research:{kicker:"01 · Research",title:"Research.",desc:"Selected published, completed, and active projects."},
+        clinical:{kicker:"02 · Clinical",title:"Clinical experience.",desc:"International placements, surgical skills and simulation training."},
+        outputs:{kicker:"03 · Outputs",title:"Publications & presentations.",desc:"Published papers, conference work and selected outputs."},
+        medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Second place in Brussels."},
+        awards:{kicker:"05 · Recognition",title:"Awards & recognition.",desc:"Selected academic, scientific and competition highlights."},
+        lubdub:{kicker:"06 · Leadership",title:"Lub Dub Club.",desc:"Founder-led cardiology education through simulation."},
+        doe:{kicker:"07 · Leadership",title:"DOE & IFMSA.",desc:"International leadership, outreach and capacity building."},
+        evidence:{kicker:"08 · Evidence",title:"Credentials.",desc:"Selected supporting documents and certificates."},
         recommendations:{kicker:"09 · References",title:"Letters of recommendation.",desc:""},
-        teaching:{kicker:"10 · Teaching",title:"Building systems for<br><span>learning and collaboration.</span>",desc:"Teaching experience in research methodology and pathology practical education."},
-        about:{kicker:"11 · About",title:"Clinically grounded.<br><span>Research driven.</span>"}
+        teaching:{kicker:"10 · Teaching",title:"Teaching.",desc:"Research methodology and pathology education."},
+        about:{kicker:"11 · About",title:"About."}
       },
       buttons: {
         showAll:"Show complete research portfolio", showFeatured:"Show featured research only", resetResearch:"Reset to featured research",
@@ -33,7 +33,7 @@ const SITE_I18N = {
       },
       filters: {
         research:{"All":"All","Cardiology":"Cardiology","Imaging / AI":"Imaging / AI","Nephrology":"Nephrology","Hematology":"Hematology"},
-        clinical:{"All":"All","Cardiology":"Cardiology","Medicine":"Medicine","Surgery":"Surgery","Neonatology":"Neonatology"}
+        clinical:{"All":"All","Cardiology":"Cardiology","Medicine":"Medicine","Surgery":"Surgery","Neonatology":"Neonatology","Emergency":"Emergency"}
       },
       clinical:{supervision:"Supervision",empty:"No clinical experiences match this filter.",recommendation:"Recommendation letter available on request"},
       modal:{detail:"Research detail",role:"My role",status:"Status",supporting:"Supporting document*"},
@@ -68,17 +68,17 @@ const SITE_I18N = {
         researchIdentity:"Forschungsprofil"
       },
       sections: {
-        research:{kicker:"01 · Forschungsportfolio",title:"Kardiovaskuläre Fragen zuerst.<br><span>Breitere translationale Forschung darum herum.</span>",desc:"Ausgewählte publizierte, abgeschlossene und laufende Arbeiten in Kardiologie, Bildgebung, Nephrologie und angrenzenden Bereichen."},
-        clinical:{kicker:"02 · Klinische Erfahrung",title:"Internationale Ausbildung in<br><span>Medizin, Kardiologie und Akutversorgung.</span>",desc:"Klinische Praktika und Hospitationen in Europa, dem Nahen Osten und Nordafrika."},
-        outputs:{kicker:"03 · Wissenschaftliche Arbeiten",title:"Publiziert, präsentiert,<br><span>eingereicht und laufend.</span>",desc:"Publikationen, Kongressbeiträge und ausgewählte wissenschaftliche Arbeiten."},
-        medcup:{kicker:"04 · MedCup 2024",title:"Internationaler klinischer Wettbewerb.<br><span>Zweiter Platz in Brüssel.</span>",desc:"Ein eigener Abschnitt für den Teamerfolg in klinischem Denken, praktischen Fertigkeiten, Bildgebung und Notfallentscheidungen."},
-        awards:{kicker:"05 · Anerkennung",title:"Wettbewerbe, Kongresse<br><span>und wissenschaftliche Auszeichnungen.</span>",desc:"Ausgewählte Preise und Kongresspräsentationen."},
-        lubdub:{kicker:"06 · Gegründete Lehrinitiative",title:"The Lub Dub Club.<br><span>Kardiologie durch Simulation.</span>",desc:"An der Universität Debrecen gegründet und geleitet, um Kardiologie praxisnaher, interaktiver und klinisch orientierter zu vermitteln."},
-        doe:{kicker:"07 · Studentische Führung",title:"DOE / IFMSA.<br><span>Internationale Studierendenarbeit.</span>",desc:"Leitung internationaler Studierendenaktivitäten mit Austauschprogrammen, globalen Möglichkeiten und interdisziplinären Bildungsangeboten."},
-        evidence:{kicker:"08 · Nachweise",title:"Aussagekräftige Nachweise, gezielt gezeigt.<br><span>Geschwärzt, wo Datenschutz zählt.</span>",desc:"Zentrale Abschlüsse, ausgewählte internationale klinische Zertifikate, wissenschaftliche Auszeichnungen und gemeinnütziges Engagement in datenschutzgerechter Form."},
+        research:{kicker:"01 · Forschung",title:"Forschung.",desc:"Ausgewählte publizierte, abgeschlossene und laufende Projekte."},
+        clinical:{kicker:"02 · Klinik",title:"Klinische Erfahrung.",desc:"Internationale Praktika, chirurgische Fertigkeiten und Simulationstraining."},
+        outputs:{kicker:"03 · Arbeiten",title:"Publikationen & Präsentationen.",desc:"Publikationen, Kongressbeiträge und ausgewählte Arbeiten."},
+        medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Zweiter Platz in Brüssel."},
+        awards:{kicker:"05 · Anerkennung",title:"Preise & Anerkennung.",desc:"Ausgewählte akademische und wissenschaftliche Erfolge."},
+        lubdub:{kicker:"06 · Leitung",title:"Lub Dub Club.",desc:"Von mir gegründete Kardiologieausbildung durch Simulation."},
+        doe:{kicker:"07 · Leitung",title:"DOE & IFMSA.",desc:"Internationale Studierendenarbeit, Outreach und Capacity Building."},
+        evidence:{kicker:"08 · Nachweise",title:"Nachweise.",desc:"Ausgewählte Dokumente und Zertifikate."},
         recommendations:{kicker:"09 · Referenzen",title:"Empfehlungsschreiben.",desc:""},
-        teaching:{kicker:"10 · Lehre",title:"Strukturen für<br><span>Lernen und Zusammenarbeit schaffen.</span>",desc:"Lehrerfahrung in Forschungsmethodik und pathologischer Praxisausbildung."},
-        about:{kicker:"11 · Über mich",title:"Klinisch verankert.<br><span>Forschungsorientiert.</span>"}
+        teaching:{kicker:"10 · Lehre",title:"Lehre.",desc:"Forschungsmethodik und pathologische Praxisausbildung."},
+        about:{kicker:"11 · Über mich",title:"Über mich."}
       },
       buttons: {
         showAll:"Vollständiges Forschungsportfolio anzeigen", showFeatured:"Nur ausgewählte Forschung anzeigen", resetResearch:"Auf ausgewählte Forschung zurücksetzen",
@@ -87,7 +87,7 @@ const SITE_I18N = {
       },
       filters: {
         research:{"All":"Alle","Cardiology":"Kardiologie","Imaging / AI":"Bildgebung / KI","Nephrology":"Nephrologie","Hematology":"Hämatologie"},
-        clinical:{"All":"Alle","Cardiology":"Kardiologie","Medicine":"Innere Medizin","Surgery":"Chirurgie","Neonatology":"Neonatologie"}
+        clinical:{"All":"Alle","Cardiology":"Kardiologie","Medicine":"Innere Medizin","Surgery":"Chirurgie","Neonatology":"Neonatologie","Emergency":"Notfall / Katastrophenmedizin"}
       },
       clinical:{supervision:"Betreuung",empty:"Keine klinischen Erfahrungen entsprechen diesem Filter.",recommendation:"Empfehlungsschreiben auf Anfrage verfügbar"},
       modal:{detail:"Forschungsdetails",role:"Meine Rolle",status:"Status",supporting:"Nachweis*"},
@@ -116,6 +116,8 @@ const SITE_I18N = {
       mpn:{title:"Mitochondriale Dysfunktion bei myeloproliferativen Neoplasien",domain:"Hämatologie / Molekulare Medizin",type:"Narratives Review",status:"Publiziert · Koautor",summary:"Übersichtsarbeit zu mitochondrialer Dysfunktion und therapeutischen Angriffspunkten bei myeloproliferativen Neoplasien.",role:"Koautor · Literaturrecherche · Manuskript",detail:"Publizierte Übersichtsarbeit zu Stoffwechsel, oxidativem Stress, Mitophagie und Präzisionstherapien."}
     },
     clinical:{
+      "romania-disaster":{specialty:"Katastrophenmedizin & Notfallversorgung",date:"24.–26. Apr. 2026",duration:"3-tägiges interregionales Simulationstraining",detail:"Praxisnahes Katastrophenmedizin-Training im Volunteer Firefighter Center mit Notfallkoordination, Brandbekämpfung, Rettung/Extrikation, Triage und Teamarbeit."},
+      "debrecen-surgical-skills":{specialty:"Chirurgische Fertigkeiten (BST)",date:"2023–2024",duration:"4 praktische Wahlfächer · alle mit Sehr gut (5)",detail:"Abschluss der praktischen chirurgischen Wahlfachreihe mit Grundlagen der Operationstechnik, Mikrochirurgie, Laparoskopie und fortgeschrittenen Operationstechniken."},
       "porto-neonatology":{specialty:"Neonatologie",date:"Juli 2026",duration:"1 Monat · IFMSA SCOPE",detail:"Erfahrung auf neonatologischen und perinatalen Stationen, einschließlich Frühgeburtlichkeit und neonataler Sepsis."},
       "siegen-surgery":{specialty:"Allgemein- & Viszeralchirurgie",date:"November 2025",duration:"4 Wochen",detail:"Visiten, perioperative Versorgung und operative Hospitation in der Allgemein- und Viszeralchirurgie.",privateDoc:"Empfehlungsschreiben auf Anfrage verfügbar"},
       "swansea-gastro":{specialty:"Gastroenterologie",date:"September 2025",duration:"4 Wochen",detail:"Stationäre Gastroenterologie, diagnostische Abklärung und endoskopische Verfahren."},
@@ -139,7 +141,7 @@ const SITE_I18N = {
       "Pathology Teaching Assistant|University of Debrecen":{role:"Teaching Assistant Pathologie",detail:"Unterstützung des Autopsieunterrichts für Studierende im 3. Studienjahr über drei Semester."}
     },
     lubdub:{role:"Gründer & Präsident · Aug. 2024–Sep. 2026",summary:"Studentische Kardiologie-Initiative an der Universität Debrecen mit Schwerpunkt auf praxisnahem, simulationsbasiertem Lernen.",points:["Wöchentliche Kardiologie-Workshops gemeinsam mit Vizerektor Prof. Norbert Németh und Fakultätskollegen gegründet und organisiert.","Semesterlange Sitzungen mit dem Mentice-VIST-Simulator geleitet, um klinische und prozedurale Fähigkeiten anhand simulierter kardiologischer Fälle zu trainieren.","Mit Fachärzten zusammengearbeitet, um kardiovaskuläre Theorie mit praxisnahem, fallbasiertem Lernen zu verbinden."]},
-    doe:{role:"Local Officer of International Students (LOIS) · Sep. 2025–Sep. 2026",summary:"Internationale Studierendenarbeit im IFMSA-Rahmen mit Schwerpunkt auf Austauschprogrammen, globalen Möglichkeiten, Capacity Building und multidisziplinären Bildungsformaten.",points:["Ein Team zu internationalen Möglichkeiten und Austauschprogrammen geleitet.","Globale Engagement-Initiativen im IFMSA-Rahmen gefördert.","Capacity-Building-Veranstaltungen und fachärztlich geleitete Vorträge in mehreren medizinischen Fachgebieten koordiniert."]},
+    doe:{role:"Local Officer of International Students (LOIS) · 2025–2026",summary:"Studentische Leitung in internationaler Vernetzung, Community Outreach und Capacity Building innerhalb von DOE und IFMSA.",points:["Leitung des LOIS-Teams 2025–2026 mit Fokus auf internationale Möglichkeiten und Austauschprogramme.","Mitwirkung an pädiatrischen und gemeindenahen Gesundheits- und Präventionsaktivitäten.","Mitwirkung an Capacity-Building-, Soft-Skills- und interdisziplinären Bildungsprogrammen."],highlights:[{title:"LOIS · 2025–2026",detail:"Leitung des Teams für internationale Studierende und Förderung von IFMSA-Austausch und globalen Möglichkeiten."},{title:"Pädiatrie & Community Outreach",detail:"Kindgerechte Gesundheitsbildung, Prävention und gemeindenahe Aktivitäten."},{title:"Capacity Building",detail:"PaTH-Soft-Skills-Training und Programme zur studentischen Weiterentwicklung."}]},
     credentials:{
       "Cardiology Observership":{title:"Kardiologie-Hospitation",note:"Nachweis*"},
       "Cardiology Professional Exchange":{title:"Kardiologischer Fachaustausch",note:"Nachweis*"},
@@ -168,17 +170,17 @@ const SITE_I18N = {
         researchIdentity:"Kutatói profil"
       },
       sections: {
-        research:{kicker:"01 · Kutatási portfólió",title:"Először a kardiovaszkuláris kérdések.<br><span>Körülöttük szélesebb transzlációs kutatás.</span>",desc:"Válogatott megjelent, befejezett és folyamatban lévő kutatások a kardiovaszkuláris medicina, képalkotás, nefrológia és kapcsolódó területek köréből."},
-        clinical:{kicker:"02 · Klinikai tapasztalat",title:"Nemzetközi képzés<br><span>belgyógyászatban, kardiológiában és akut ellátásban.</span>",desc:"Klinikai gyakorlatok Európában, a Közel-Keleten és Észak-Afrikában."},
-        outputs:{kicker:"03 · Tudományos eredmények",title:"Megjelent, bemutatott,<br><span>benyújtott és folyamatban lévő munkák.</span>",desc:"Publikációk, kongresszusi munkák és válogatott kutatási eredmények."},
-        medcup:{kicker:"04 · MedCup 2024",title:"Nemzetközi klinikai verseny.<br><span>Második hely Brüsszelben.</span>",desc:"Külön kiemelés a klinikai gondolkodást, gyakorlati készségeket, képalkotást és sürgősségi döntéshozatalt ötvöző csapateredménynek."},
-        awards:{kicker:"05 · Elismerések",title:"Versenyek, kongresszusok<br><span>és tudományos elismerések.</span>",desc:"Válogatott díjak és kongresszusi prezentációk."},
-        lubdub:{kicker:"06 · Saját alapítású oktatási kezdeményezés",title:"The Lub Dub Club.<br><span>Kardiológia szimuláción keresztül.</span>",desc:"A Debreceni Egyetemen alapított és vezetett kezdeményezés, amely a kardiológiát gyakorlatiasabbá, interaktívabbá és klinikailag megalapozottabbá teszi."},
-        doe:{kicker:"07 · Hallgatói vezetés",title:"DOE / IFMSA.<br><span>Nemzetközi hallgatói kapcsolatok.</span>",desc:"Nemzetközi hallgatói programok vezetése cserelehetőségekkel, globális szakmai lehetőségekkel és multidiszciplináris oktatási eseményekkel."},
-        evidence:{kicker:"08 · Igazolások",title:"Erős bizonyítékok, válogatva.<br><span>Kitakarva, ahol az adatvédelem számít.</span>",desc:"Alapvető végzettségek, válogatott nemzetközi klinikai igazolások, tudományos díjak és közösségi szolgálat adatvédelmi szempontból biztonságos formában."},
+        research:{kicker:"01 · Kutatás",title:"Kutatás.",desc:"Válogatott megjelent, befejezett és folyamatban lévő projektek."},
+        clinical:{kicker:"02 · Klinikum",title:"Klinikai tapasztalat.",desc:"Nemzetközi gyakorlatok, sebészeti készségek és szimulációs képzés."},
+        outputs:{kicker:"03 · Eredmények",title:"Publikációk & prezentációk.",desc:"Publikációk, kongresszusi munkák és válogatott eredmények."},
+        medcup:{kicker:"04 · MedCup",title:"MedCup 2024.",desc:"Második hely Brüsszelben."},
+        awards:{kicker:"05 · Elismerés",title:"Díjak & elismerések.",desc:"Válogatott akadémiai és tudományos eredmények."},
+        lubdub:{kicker:"06 · Vezetés",title:"Lub Dub Club.",desc:"Saját alapítású kardiológiai oktatás szimulációval."},
+        doe:{kicker:"07 · Vezetés",title:"DOE & IFMSA.",desc:"Nemzetközi hallgatói vezetés, közösségi programok és készségfejlesztés."},
+        evidence:{kicker:"08 · Igazolások",title:"Igazolások.",desc:"Válogatott dokumentumok és tanúsítványok."},
         recommendations:{kicker:"09 · Referenciák",title:"Ajánlólevelek.",desc:""},
-        teaching:{kicker:"10 · Oktatás",title:"Rendszerek építése<br><span>a tanuláshoz és együttműködéshez.</span>",desc:"Oktatási tapasztalat kutatásmódszertanban és patológiai gyakorlati képzésben."},
-        about:{kicker:"11 · Rólam",title:"Klinikailag megalapozott.<br><span>Kutatásvezérelt.</span>"}
+        teaching:{kicker:"10 · Oktatás",title:"Oktatás.",desc:"Kutatásmódszertan és patológiai gyakorlati oktatás."},
+        about:{kicker:"11 · Rólam",title:"Rólam."}
       },
       buttons: {
         showAll:"Teljes kutatási portfólió megjelenítése", showFeatured:"Csak a kiemelt kutatások megjelenítése", resetResearch:"Vissza a kiemelt kutatásokhoz",
@@ -187,7 +189,7 @@ const SITE_I18N = {
       },
       filters: {
         research:{"All":"Összes","Cardiology":"Kardiológia","Imaging / AI":"Képalkotás / MI","Nephrology":"Nefrológia","Hematology":"Hematológia"},
-        clinical:{"All":"Összes","Cardiology":"Kardiológia","Medicine":"Belgyógyászat","Surgery":"Sebészet","Neonatology":"Neonatológia"}
+        clinical:{"All":"Összes","Cardiology":"Kardiológia","Medicine":"Belgyógyászat","Surgery":"Sebészet","Neonatology":"Neonatológia","Emergency":"Sürgősségi / katasztrófa-orvostan"}
       },
       clinical:{supervision:"Témavezető / felügyelet",empty:"Nincs a szűrőnek megfelelő klinikai tapasztalat.",recommendation:"Ajánlólevél kérésre elérhető"},
       modal:{detail:"Kutatási részletek",role:"Saját szerepem",status:"Státusz",supporting:"Igazoló dokumentum*"},
@@ -216,6 +218,8 @@ const SITE_I18N = {
       mpn:{title:"Mitokondriális diszfunkció myeloproliferatív neopláziákban",domain:"Hematológia / molekuláris medicina",type:"Narratív áttekintés",status:"Megjelent · társszerző",summary:"Áttekintés a mitokondriális diszfunkcióról és terápiás célpontokról myeloproliferatív neopláziákban.",role:"Társszerző · irodalomkutatás · kézirat",detail:"Publikált áttekintés az anyagcseréről, oxidatív stresszről, mitofágiáról és precíziós terápiákról."}
     },
     clinical:{
+      "romania-disaster":{specialty:"Katasztrófa-orvostan és sürgősségi válasz",date:"2026. ápr. 24–26.",duration:"3 napos interregionális szimulációs képzés",detail:"Gyakorlati katasztrófa-orvostani képzés a Volunteer Firefighter Centerben sürgősségi koordinációval, tűzoltással, mentéssel/extrikációval, triázzsal és csapatmunkával."},
+      "debrecen-surgical-skills":{specialty:"Sebészeti készségfejlesztő választható tárgyak (BST)",date:"2023–2024",duration:"4 gyakorlati kurzus · mind kiváló (5)",detail:"A gyakorlati sebészeti készségfejlesztő kurzussor teljesítése műtéttani alapokkal, mikrosebészettel, laparoszkópiával és haladó műtéti technikákkal."},
       "porto-neonatology":{specialty:"Neonatológia",date:"2026. július",duration:"1 hónap · IFMSA SCOPE",detail:"Neonatológiai és perinatális osztályos tapasztalat, beleértve a koraszülöttséget és a neonatalis sepsist."},
       "siegen-surgery":{specialty:"Általános és visceralis sebészet",date:"2025. november",duration:"4 hét",detail:"Vizitek, perioperatív ellátás és műtéti megfigyelés általános és visceralis sebészeten.",privateDoc:"Ajánlólevél kérésre elérhető"},
       "swansea-gastro":{specialty:"Gasztroenterológia",date:"2025. szeptember",duration:"4 hét",detail:"Fekvőbeteg gasztroenterológia, diagnosztikai kivizsgálás és endoszkópos beavatkozások."},
@@ -239,7 +243,7 @@ const SITE_I18N = {
       "Pathology Teaching Assistant|University of Debrecen":{role:"Patológia oktatási asszisztens",detail:"Harmadéves bonctermi oktatás támogatása három féléven keresztül."}
     },
     lubdub:{role:"Alapító és elnök · 2024. aug.–2026. szept.",summary:"Hallgatói kardiológiai oktatási kezdeményezés a Debreceni Egyetemen, gyakorlati és szimulációalapú tanulással.",points:["Heti kardiológiai workshopok alapítása és szervezése Prof. Norbert Németh dékánhelyettessel és egyetemi oktatókkal.","Féléves foglalkozások vezetése Mentice VIST szimulátorral a klinikai és procedurális készségek fejlesztésére szimulált kardiológiai eseteken keresztül.","Szakorvosokkal együttműködve a kardiovaszkuláris elmélet és a gyakorlati, eset-alapú tanulás összekapcsolása."]},
-    doe:{role:"Local Officer of International Students (LOIS) · 2025. szept.–2026. szept.",summary:"Nemzetközi hallgatói kapcsolatok vezetése az IFMSA keretrendszerében, csereprogramokkal, nemzetközi lehetőségekkel, kapacitásfejlesztéssel és multidiszciplináris oktatási eseményekkel.",points:["Nemzetközi hallgatói lehetőségekkel és csereprogramokkal foglalkozó csapat vezetése.","Nemzetközi kapcsolódási lehetőségek népszerűsítése az IFMSA keretében.","Kapacitásfejlesztő események és több szakterületet érintő, szakértők által vezetett előadások koordinálása."]},
+    doe:{role:"Local Officer of International Students (LOIS) · 2025–2026",summary:"Hallgatói vezetés nemzetközi kapcsolatokban, közösségi programokban és készségfejlesztésben a DOE és az IFMSA keretében.",points:["A 2025–2026-os LOIS csapat vezetése nemzetközi lehetőségek és csereprogramok koordinálásával.","Részvétel gyermekgyógyászati és közösségi egészségnevelési, valamint prevenciós programokban.","Részvétel készségfejlesztő, soft-skills és multidiszciplináris oktatási programokban."],highlights:[{title:"LOIS · 2025–2026",detail:"A nemzetközi hallgatói csapat vezetése, IFMSA csereprogramok és globális lehetőségek népszerűsítése."},{title:"Gyermekgyógyászati & közösségi programok",detail:"Gyermekbarát egészségnevelés, prevenció és közösségi tevékenységek."},{title:"Készségfejlesztés",detail:"PaTH soft-skills képzés és hallgatói fejlesztő programok."}]},
     credentials:{
       "Cardiology Observership":{title:"Kardiológiai observership",note:"Igazoló dokumentum*"},
       "Cardiology Professional Exchange":{title:"Kardiológiai szakmai csereprogram",note:"Igazoló dokumentum*"},
