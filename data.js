@@ -548,6 +548,48 @@ const SITE_DATA = {
     website: "https://www.doedebrecen.hu/index.php"
   },
 
+  photoHighlights: [
+    {
+      kicker: "Clinical placements",
+      title: "Clinical experience in practice",
+      gallery: [
+        { key:"portoHospital", caption:"Neonatology · Hospital São João, Porto", position:"50% 34%" },
+        { key:"siegenHospital", caption:"General & Visceral Surgery · Siegen", position:"48% 40%" },
+        { key:"swanseaHospital", caption:"Gastroenterology · Morriston Hospital, Swansea", position:"50% 44%" },
+        { key:"cataniaSign", caption:"Cardiology · Catania, Italy", position:"50% 42%" },
+        { key:"stgeorgesHospital", caption:"Cardiology · St George’s Hospital, London", position:"50% 42%" }
+      ]
+    },
+    {
+      kicker: "Research & academia",
+      title: "Research milestones",
+      gallery: [
+        { key:"boneSpectPresentation", caption:"Bone SPECT/CT research presentation", position:"50% 46%" },
+        { key:"mdThesisPortrait", caption:"MD thesis · University of Debrecen", position:"50% 39%" }
+      ]
+    },
+    {
+      kicker: "Leadership & outreach",
+      title: "Student leadership and community work",
+      gallery: [
+        { key:"lubDubWorkshop", caption:"Lub Dub Club · simulation-based cardiology education", position:"50% 42%" },
+        { key:"doePediatric", caption:"Paediatric community outreach", position:"52% 42%" },
+        { key:"doeAwareness", caption:"Community health-awareness activity", position:"50% 38%" },
+        { key:"doePaTH", caption:"PaTH / IFMSA capacity-building training", position:"50% 46%" }
+      ]
+    },
+    {
+      kicker: "Outside medicine",
+      title: "Equestrian & show jumping",
+      gallery: [
+        { key:"horseAward", caption:"Competition day", position:"50% 36%" },
+        { key:"horseJumpRed", caption:"Show-jumping session", position:"50% 44%" },
+        { key:"horseCompetition", caption:"Indoor show-jumping competition", position:"50% 42%" },
+        { key:"horseJumpLongines", caption:"Show-jumping competition", position:"50% 46%" }
+      ]
+    }
+  ],
+
   hobbies: [
     {
       id: "equestrian",
