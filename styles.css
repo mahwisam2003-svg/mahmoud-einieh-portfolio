@@ -152,12 +152,12 @@ h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--ac
 .research-card-image img{width:100%;height:100%;object-fit:cover;display:block}
 .research-card.featured .research-card-image{height:235px}
 .research-card.featured .research-card-image.photo-esc{height:330px}
-.research-card-image.photo-esc img{object-position:center 15%}
+.research-card-image.photo-esc img{object-position:center 35%}
 .research-card-image.photo-eanm img{object-position:center 50%}
 .output-photo{height:170px;margin:-22px -22px 18px;overflow:hidden;border-bottom:1px solid var(--line);border-radius:22px 22px 0 0}
 .output-photo img{width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block}
 .output-photo.photo-esc{height:235px}
-.output-photo.photo-esc img{object-position:center 14%}
+.output-photo.photo-esc img{object-position:center 35%}
 .output-photo.photo-eanm{height:225px}
 .output-photo.photo-eanm img{object-position:center 14%}
 .lubdub-section{padding-top:130px}
