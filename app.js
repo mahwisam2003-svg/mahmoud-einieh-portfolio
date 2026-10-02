@@ -198,7 +198,7 @@
     renderResearch();
   });
 
-  const photoClass=p=>p.imageKey==='escPoster'?'photo-esc':p.imageKey==='eanmBarcelona'?'photo-eanm':'';
+  const photoClass=p=>p.imageKey==='escPoster'?'photo-esc':p.imageKey==='eanmBarcelona'?'photo-eanm':p.imageKey==='boneSpectPresentation'?'photo-bonespect':p.imageKey==='mdThesisPortrait'?'photo-thesis':'';
   function researchCard(p){
     const metrics = (p.metrics||[]).slice(0,4).map(m=>`<div class="micro-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('');
     return `<article class="research-card ${p.featured?'featured':''} reveal" tabindex="0" data-project="${p.id}" role="button" aria-label="${esc(ui.aria.openProject)}: ${esc(p.title)}">
