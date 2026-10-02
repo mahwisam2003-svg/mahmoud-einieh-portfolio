@@ -54,7 +54,7 @@
   const d = localizeData();
 
   function applyDeferredMedia(){
-    $('[data-media-key]').forEach(img=>{
+    $$('[data-media-key]').forEach(img=>{
       const key=img.dataset.mediaKey;
       if(key && media[key] && img.getAttribute('src') !== media[key]) img.setAttribute('src',media[key]);
     });
@@ -78,7 +78,7 @@
       about:ui.nav.about
     };
     Object.entries(navMap).forEach(([id,label])=>{
-      $$('a[href="#'+id+'"]').forEach(a=>a.textContent=label);
+      $$$('a[href="#'+id+'"]').forEach(a=>a.textContent=label);
     });
 
     setHTML('.eyebrow', '<span class="status-dot"></span>'+esc(ui.hero.eyebrow));
@@ -141,11 +141,11 @@
     const lubLink=$('.lubdub-link'); if(lubLink) lubLink.innerHTML=esc(ui.buttons.clubInstagram)+' <span>↗</span>';
     const doeLink=$('.doe-link'); if(doeLink) doeLink.innerHTML=esc(ui.buttons.doeWebsite)+' <span>↗</span>';
 
-    $$('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+    $$$('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
   }
   applyStaticUI();
 
-  $$('[data-lang]').forEach(b=>b.addEventListener('click',()=>{
+  $$$('[data-lang]').forEach(b=>b.addEventListener('click',()=>{
     const next=b.dataset.lang;
     if(!supported.includes(next) || next===lang) return;
     localStorage.setItem('me-lang',next);
@@ -300,7 +300,7 @@
     bindReveal();
   }
   $('#clinicalFilters').addEventListener('click',e=>{const b=e.target.closest('[data-clinical]');if(!b)return;clinicalFilter=b.dataset.clinical;renderClinicalFilters();renderClinical()});
-  $$('.clinical-route button').forEach(b=>b.addEventListener('click',()=>{const c=b.dataset.country;if(countryFilter===c){countryFilter='All';b.classList.remove('active')}else{countryFilter=c;$$('.clinical-route button').forEach(x=>x.classList.toggle('active',x===b))}renderClinical()}));
+  $$$('.clinical-route button').forEach(b=>b.addEventListener('click',()=>{const c=b.dataset.country;if(countryFilter===c){countryFilter='All';b.classList.remove('active')}else{countryFilter=c;$$$('.clinical-route button').forEach(x=>x.classList.toggle('active',x===b))}renderClinical()}));
   renderClinical();
 
   const outputIds = new Set(BASE.research.filter(p=>/Published|Submitted|Conference|Completed/.test(p.status)).map(p=>p.id));
@@ -466,7 +466,7 @@
 
   const menuToggle=$('#menuToggle'), mobileMenu=$('#mobileMenu');
   menuToggle.addEventListener('click',()=>{const open=menuToggle.getAttribute('aria-expanded')==='true';menuToggle.setAttribute('aria-expanded',String(!open));mobileMenu.classList.toggle('open',!open)});
-  $$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.remove('open');menuToggle.setAttribute('aria-expanded','false')}));
+  $$$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.remove('open');menuToggle.setAttribute('aria-expanded','false')}));
 
   const searchDialog=$('#searchDialog'), searchInput=$('#searchInput'), searchResults=$('#searchResults');
   const searchable=[
@@ -482,7 +482,7 @@
     q=q.trim().toLowerCase();
     const res=(q?searchable.filter(x=>x.text.toLowerCase().includes(q)):searchable.slice(0,8)).slice(0,12);
     searchResults.innerHTML=res.map((x,i)=>`<button class="search-result" type="button" data-search-index="${i}"><strong>${esc(x.title)}</strong><span>${esc(x.kind)} · ${esc(x.meta)}</span></button>`).join('')||`<div class="search-empty">${esc(ui.search.empty)}</div>`;
-    $$('#searchResults [data-search-index]').forEach((b,i)=>b.addEventListener('click',()=>res[i].action()));
+    $$$('#searchResults [data-search-index]').forEach((b,i)=>b.addEventListener('click',()=>res[i].action()));
   }
   $('#searchToggle').addEventListener('click',openSearch); searchInput.addEventListener('input',()=>renderSearch(searchInput.value));
   document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();openSearch()}if(e.key==='Escape'&&searchDialog.open)searchDialog.close()});
@@ -498,7 +498,7 @@
   bindReveal();
 
   const countObs=new IntersectionObserver((entries,obs)=>entries.forEach(en=>{if(!en.isIntersecting)return;const el=en.target,target=Number(el.dataset.count);if(!Number.isFinite(target))return;const start=performance.now(),dur=900;const step=now=>{const p=Math.min(1,(now-start)/dur);el.textContent=Math.round(target*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step);obs.unobserve(el)}),{threshold:.35});
-  $$('[data-count]').forEach(x=>countObs.observe(x));
+  $$$('[data-count]').forEach(x=>countObs.observe(x));
 
   const glow=$('.cursor-glow');
   window.addEventListener('pointermove',e=>{if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'}},{passive:true});
