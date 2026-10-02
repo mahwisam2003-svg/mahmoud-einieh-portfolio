@@ -322,8 +322,7 @@ const SITE_DATA = {
       role: "Teaching Assistant",
       organization: "Meta-Analysis Academy",
       date: "Feb–Jun 2025",
-      detail: "Reviewed 120+ research exercises and provided methodology feedback.",
-      credential: "assets/docs/Meta_Analysis_Academy_TA_Certificate.pdf"
+      detail: "Reviewed 120+ research exercises and provided methodology feedback."
     },
     {
       role: "Pathology Teaching Assistant",
@@ -417,14 +416,6 @@ const SITE_DATA = {
       doc: "assets/docs/Meta_Analysis_Academy_Completion_Redacted.pdf",
       thumb: "assets/thumbs/Meta_Analysis_Academy_Completion_Redacted.webp",
       note: "Methods training"
-    },
-    {
-      title: "Teaching Assistant",
-      issuer: "Meta-Analysis Academy",
-      year: "2025",
-      doc: "assets/docs/Meta_Analysis_Academy_TA_Certificate.pdf",
-      thumb: "assets/thumbs/Meta_Analysis_Academy_TA_Certificate.webp",
-      note: "80-hour teaching-assistant appointment"
     }
   ],
 
