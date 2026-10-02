@@ -352,9 +352,16 @@
   }
 
   const themeToggle=$('#themeToggle');
-  const savedTheme=localStorage.getItem('me-theme');
-  if(savedTheme)document.documentElement.dataset.theme=savedTheme;
-  themeToggle.addEventListener('click',()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('me-theme',t)});
+  if(themeToggle && !themeToggle.dataset.themeBound){
+    themeToggle.dataset.themeBound='true';
+    themeToggle.addEventListener('click',()=>{
+      const t=document.documentElement.dataset.theme==='dark'?'light':'dark';
+      document.documentElement.dataset.theme=t;
+      localStorage.setItem('me-theme',t);
+      const meta=document.querySelector('meta[name="theme-color"]');
+      if(meta) meta.content=t==='light'?'#ffffff':'#090b10';
+    });
+  }
 
   const menuToggle=$('#menuToggle'), mobileMenu=$('#mobileMenu');
   menuToggle.addEventListener('click',()=>{const open=menuToggle.getAttribute('aria-expanded')==='true';menuToggle.setAttribute('aria-expanded',String(!open));mobileMenu.classList.toggle('open',!open)});
