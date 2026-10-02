@@ -10,7 +10,7 @@
   <meta property="og:type" content="website" />
   <title>Dr. Mahmoud Einieh, MD · Research & Clinical Portfolio</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?v=20261002-3" />
+  <link rel="stylesheet" href="styles.css?v=20261002-4" />
   <style>.reveal{opacity:1!important;transform:none!important}</style>
   <script type="application/ld+json">
   {
@@ -282,11 +282,32 @@
     <div class="search-results" id="searchResults"></div>
   </dialog>
 
+  <script>
+    (() => {
+      const root=document.documentElement;
+      const saved=localStorage.getItem('me-theme');
+      if(saved==='light' || saved==='dark') root.dataset.theme=saved;
+      const btn=document.getElementById('themeToggle');
+      if(btn && !btn.dataset.themeBound){
+        btn.dataset.themeBound='true';
+        btn.addEventListener('click',()=>{
+          const next=root.dataset.theme==='dark'?'light':'dark';
+          root.dataset.theme=next;
+          localStorage.setItem('me-theme',next);
+          const meta=document.querySelector('meta[name="theme-color"]');
+          if(meta) meta.content=next==='light'?'#ffffff':'#090b10';
+        });
+      }
+      const meta=document.querySelector('meta[name="theme-color"]');
+      if(meta) meta.content=root.dataset.theme==='light'?'#ffffff':'#090b10';
+    })();
+  </script>
+
   <script src="image_data.js?v=20261002-4"></script>
   <script src="data.js?v=20261002-5"></script>
   <script src="translations.js?v=20261002-5"></script>
   <script>window.SITE_MEDIA = window.SITE_MEDIA || {};</script>
-  <script src="app.js?v=20261002-6"></script>
+  <script src="app.js?v=20261002-7"></script>
   <script src="fallback.js?v=20261002-1"></script>
 
   <!-- Large document/photo payloads load after the portfolio itself so text/cards never appear blank. -->
