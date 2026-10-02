@@ -281,6 +281,8 @@
     setText('#medcupDetail', d.medcup.detail);
     const source=$('#medcupSource'); if(source) source.href=d.medcup.source;
     const youtube=$('#medcupYoutube'); if(youtube && d.medcup.youtube) youtube.href=d.medcup.youtube;
+    const press=$('#medcupPress');
+    if(press) press.innerHTML=(d.medcup.press||[]).map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${esc(x.label)} ↗</a>`).join('');
     const gallery=$('#medcupGallery');
     if(gallery){
       gallery.innerHTML=(d.medcup.images||[]).map((key,i)=>`<figure class="medcup-shot shot-${i+1}"><img data-media-key="${esc(key)}" alt="MedCup 2024 — ${i<2?'Belgian Defence clinical simulation':i===2?'final stage':i===3?'final quiz':'second-place award'}" loading="lazy" decoding="async"></figure>`).join('');
@@ -318,7 +320,7 @@
       <p class="modal-summary">${esc(item.issuer||'')}</p>
       ${item.detail?`<p class="modal-summary">${esc(item.detail)}</p>`:''}
       <img class="evidence-modal-image" data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}">
-      <div class="evidence-modal-note">${isRecommendation?'Signed recommendation shown as supporting evidence.':'Redacted for privacy. Original unredacted copy available on reasonable request.'}</div>`;
+      <div class="evidence-modal-note">${isRecommendation?'Signature redacted for privacy. Original unredacted copy available on reasonable request.':'Redacted for privacy. Original unredacted copy available on reasonable request.'}</div>`;
     applyDeferredMedia();
     evidenceModal.showModal(); document.body.classList.add('modal-open');
   }
@@ -341,6 +343,7 @@
     if($('#lubdubSummary')) $('#lubdubSummary').textContent = d.lubdub.summary;
     if($('#lubdubPoints')) $('#lubdubPoints').innerHTML = d.lubdub.points.map(x=>`<li>${esc(x)}</li>`).join('');
     const lubLink=$('.lubdub-link'); if(lubLink && d.lubdub.instagram) lubLink.href=d.lubdub.instagram;
+    const lubLinkedIn=$('.lubdub-linkedin'); if(lubLinkedIn && d.lubdub.linkedin) lubLinkedIn.href=d.lubdub.linkedin;
   }
 
   if(d.doe){
