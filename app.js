@@ -387,11 +387,13 @@
     if($('#doePoints')) $('#doePoints').innerHTML = d.doe.points.map(x=>`<li>${esc(x)}</li>`).join('');
     if($('#doeHighlights')) $('#doeHighlights').innerHTML=(d.doe.highlights||[]).map(x=>`<article><span>${esc(x.title)}</span><p>${esc(x.detail)}</p></article>`).join('');
     if($('#doeGallery')){
-      $('#doeGallery').innerHTML=(d.doe.gallery||[]).map((item,i)=>`<button type="button" class="doe-gallery-tile doe-gallery-${i+1}" data-doe-gallery>
+      const allDoeGallery=d.doe.gallery||[];
+      $('#doeGallery').innerHTML=allDoeGallery.slice(0,4).map((item,i)=>`<button type="button" class="doe-gallery-tile doe-gallery-${i+1}" data-doe-gallery>
         <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||'DOE activity')}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
         <span>${esc(item.caption||'DOE activity')}</span>
-      </button>`).join('');
-      $('#doeGallery').querySelectorAll('[data-doe-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(d.doe.galleryTitle||'DOE & IFMSA',d.doe.gallery||[])));
+      </button>`).join('')+`
+        ${allDoeGallery.length>4?`<button type="button" class="doe-gallery-more" data-doe-gallery>View all ${allDoeGallery.length} photos</button>`:''}`;
+      $('#doeGallery').querySelectorAll('[data-doe-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(d.doe.galleryTitle||'DOE & IFMSA',allDoeGallery)));
     }
     const doeLink=$('.doe-link'); if(doeLink && d.doe.website) doeLink.href=d.doe.website;
   }
