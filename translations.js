@@ -21,8 +21,8 @@ const SITE_I18N = {
         awards:{kicker:"05 · Recognition",title:"Competition, conference<br><span>and scientific recognition.</span>",desc:"Selected awards and conference presentations."},
         lubdub:{kicker:"06 · Founder-led education",title:"The Lub Dub Club.<br><span>Cardiology through simulation.</span>",desc:"Founded and led at the University of Debrecen to make cardiology more practical, interactive, and clinically grounded."},
         doe:{kicker:"07 · Student leadership",title:"DOE / IFMSA.<br><span>International student engagement.</span>",desc:"Leadership within the Medical Students’ Association of Debrecen, connecting international students with exchanges, opportunities, and educational events."},
-        evidence:{kicker:"08 · Supporting evidence",title:"Strong evidence, selectively shown.<br><span>Redacted where privacy matters.</span>",desc:"Core academic credentials, selected international clinical certificates, and scientific awards in high-resolution privacy-safe form."},
-        recommendations:{kicker:"09 · Recommendation letters",title:"Signed clinical recommendations.<br><span>Kept separate from certificates.</span>",desc:"Selected recommendation letters are presented separately so supporting credentials remain easy to scan."},
+        evidence:{kicker:"08 · Supporting evidence",title:"Strong evidence, selectively shown.<br><span>Redacted where privacy matters.</span>",desc:"Core academic credentials, selected international clinical certificates, scientific awards, and community service in high-resolution privacy-safe form."},
+        recommendations:{kicker:"09 · References",title:"Letters of recommendation.",desc:""},
         teaching:{kicker:"10 · Teaching",title:"Building systems for<br><span>learning and collaboration.</span>",desc:"Teaching experience in research methodology and pathology practical education."},
         about:{kicker:"11 · About",title:"Clinically grounded.<br><span>Research driven.</span>"}
       },
@@ -75,8 +75,8 @@ const SITE_I18N = {
         awards:{kicker:"05 · Anerkennung",title:"Wettbewerbe, Kongresse<br><span>und wissenschaftliche Auszeichnungen.</span>",desc:"Ausgewählte Preise und Kongresspräsentationen."},
         lubdub:{kicker:"06 · Gegründete Lehrinitiative",title:"The Lub Dub Club.<br><span>Kardiologie durch Simulation.</span>",desc:"An der Universität Debrecen gegründet und geleitet, um Kardiologie praxisnaher, interaktiver und klinisch orientierter zu vermitteln."},
         doe:{kicker:"07 · Studentische Führung",title:"DOE / IFMSA.<br><span>Internationale Studierendenarbeit.</span>",desc:"Leitung internationaler Studierendenaktivitäten mit Austauschprogrammen, globalen Möglichkeiten und interdisziplinären Bildungsangeboten."},
-        evidence:{kicker:"08 · Nachweise",title:"Aussagekräftige Nachweise, gezielt gezeigt.<br><span>Geschwärzt, wo Datenschutz zählt.</span>",desc:"Zentrale Abschlüsse, ausgewählte internationale klinische Zertifikate und wissenschaftliche Auszeichnungen in hochauflösender, datenschutzgerechter Form."},
-        recommendations:{kicker:"09 · Empfehlungsschreiben",title:"Unterzeichnete klinische Empfehlungen.<br><span>Getrennt von Zertifikaten.</span>",desc:"Ausgewählte Empfehlungsschreiben werden separat gezeigt, damit die Nachweise übersichtlich bleiben."},
+        evidence:{kicker:"08 · Nachweise",title:"Aussagekräftige Nachweise, gezielt gezeigt.<br><span>Geschwärzt, wo Datenschutz zählt.</span>",desc:"Zentrale Abschlüsse, ausgewählte internationale klinische Zertifikate, wissenschaftliche Auszeichnungen und gemeinnütziges Engagement in datenschutzgerechter Form."},
+        recommendations:{kicker:"09 · Referenzen",title:"Empfehlungsschreiben.",desc:""},
         teaching:{kicker:"10 · Lehre",title:"Strukturen für<br><span>Lernen und Zusammenarbeit schaffen.</span>",desc:"Lehrerfahrung in Forschungsmethodik und pathologischer Praxisausbildung."},
         about:{kicker:"11 · Über mich",title:"Klinisch verankert.<br><span>Forschungsorientiert.</span>"}
       },
@@ -175,8 +175,8 @@ const SITE_I18N = {
         awards:{kicker:"05 · Elismerések",title:"Versenyek, kongresszusok<br><span>és tudományos elismerések.</span>",desc:"Válogatott díjak és kongresszusi prezentációk."},
         lubdub:{kicker:"06 · Saját alapítású oktatási kezdeményezés",title:"The Lub Dub Club.<br><span>Kardiológia szimuláción keresztül.</span>",desc:"A Debreceni Egyetemen alapított és vezetett kezdeményezés, amely a kardiológiát gyakorlatiasabbá, interaktívabbá és klinikailag megalapozottabbá teszi."},
         doe:{kicker:"07 · Hallgatói vezetés",title:"DOE / IFMSA.<br><span>Nemzetközi hallgatói kapcsolatok.</span>",desc:"Nemzetközi hallgatói programok vezetése cserelehetőségekkel, globális szakmai lehetőségekkel és multidiszciplináris oktatási eseményekkel."},
-        evidence:{kicker:"08 · Igazolások",title:"Erős bizonyítékok, válogatva.<br><span>Kitakarva, ahol az adatvédelem számít.</span>",desc:"Alapvető végzettségek, válogatott nemzetközi klinikai igazolások és tudományos díjak nagy felbontású, adatvédelmi szempontból biztonságos formában."},
-        recommendations:{kicker:"09 · Ajánlólevelek",title:"Aláírt klinikai ajánlások.<br><span>Külön a bizonyítványoktól.</span>",desc:"A válogatott ajánlólevelek külön jelennek meg, hogy az igazolások könnyen áttekinthetők maradjanak."},
+        evidence:{kicker:"08 · Igazolások",title:"Erős bizonyítékok, válogatva.<br><span>Kitakarva, ahol az adatvédelem számít.</span>",desc:"Alapvető végzettségek, válogatott nemzetközi klinikai igazolások, tudományos díjak és közösségi szolgálat adatvédelmi szempontból biztonságos formában."},
+        recommendations:{kicker:"09 · Referenciák",title:"Ajánlólevelek.",desc:""},
         teaching:{kicker:"10 · Oktatás",title:"Rendszerek építése<br><span>a tanuláshoz és együttműködéshez.</span>",desc:"Oktatási tapasztalat kutatásmódszertanban és patológiai gyakorlati képzésben."},
         about:{kicker:"11 · Rólam",title:"Klinikailag megalapozott.<br><span>Kutatásvezérelt.</span>"}
       },
