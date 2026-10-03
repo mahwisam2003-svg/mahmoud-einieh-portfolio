@@ -1,400 +1,134 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#07131b" />
-  <meta name="description" content="Dr. Mahmoud Einieh, MD — cardiovascular research, advanced imaging, evidence synthesis, international clinical experience, publications and academic portfolio." />
-  <meta property="og:title" content="Dr. Mahmoud Einieh, MD" />
-  <meta property="og:description" content="Cardiovascular Research · Advanced Imaging · Evidence Synthesis" />
-  <meta property="og:type" content="website" />
-  <title>Dr. Mahmoud Einieh, MD · Research & Clinical Portfolio</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?v=20261002-10" />
-  <style>.reveal{opacity:1!important;transform:none!important}</style>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Mahmoud Einieh",
-    "honorificPrefix":"Dr.",
-    "honorificSuffix":"MD",
-    "jobTitle":"Medical Doctor and Clinical Researcher",
-    "affiliation":{"@type":"Organization","name":"University of Debrecen"},
-    "sameAs":[
-      "https://orcid.org/0009-0002-4240-9376",
-      "https://www.linkedin.com/in/mahmoud-einieh-74691428a"
-    ]
-  }
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#08131c">
+  <meta name="description" content="Dr. Mahmoud Einieh, MD — clinical medicine, cardiovascular research, advanced imaging, evidence synthesis, international experience and academic portfolio.">
+  <meta property="og:title" content="Dr. Mahmoud Einieh, MD">
+  <meta property="og:description" content="Clinical Medicine · Cardiovascular Research · Advanced Imaging · Evidence Synthesis">
+  <meta property="og:type" content="website">
+  <title>Dr. Mahmoud Einieh, MD · Clinical & Research Portfolio</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=final-20261003-1">
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="cursor-glow" aria-hidden="true"></div>
-
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Mahmoud Einieh home">
-      <span class="brand-mark">ME</span>
-      <span class="brand-name">Mahmoud Einieh</span>
-    </a>
+    <a class="brand" href="#top" aria-label="Home"><span class="brand-mark">ME</span><span>Mahmoud Einieh</span></a>
     <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#research">Research</a>
-      <a href="#clinical">Clinical</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#highlights">Highlights</a>
-      <a href="#credentials">Credentials</a>
-      <a href="#about">About</a>
+      <a href="#research" data-nav="research">Research</a>
+      <a href="#clinical" data-nav="clinical">Clinical</a>
+      <a href="#leadership" data-nav="leadership">Leadership</a>
+      <a href="#highlights" data-nav="highlights">Highlights</a>
+      <a href="#documents" data-nav="documents">Documents</a>
+      <a href="#about" data-nav="about">About</a>
     </nav>
     <div class="header-actions">
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="de">DE</button>
-        <button type="button" data-lang="hu">HU</button>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button><button type="button" data-lang="hu">HU</button>
       </div>
-      <button class="icon-button" id="searchToggle" aria-label="Search portfolio" title="Search (/)" type="button">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
-      </button>
-      <button class="icon-button" id="themeToggle" aria-label="Toggle theme" type="button">
-        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-      </button>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" type="button"><span></span><span></span></button>
+      <button class="theme-button" type="button" id="themeToggle" aria-label="Toggle theme">◐</button>
+      <button class="menu-button" type="button" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
   </header>
-
   <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <div class="mobile-lang-switch lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button><button type="button" data-lang="hu">HU</button></div>
-    <a href="#research">Research</a>
-    <a href="#clinical">Clinical</a>
-    <a href="#leadership">Leadership</a>
-    <a href="#highlights">Highlights</a>
-    <a href="#credentials">Credentials</a>
-    <a href="#about">About</a>
+    <a href="#research" data-nav="research">Research</a><a href="#clinical" data-nav="clinical">Clinical</a><a href="#leadership" data-nav="leadership">Leadership</a><a href="#highlights" data-nav="highlights">Highlights</a><a href="#documents" data-nav="documents">Documents</a><a href="#about" data-nav="about">About</a>
   </nav>
 
   <main>
-    <section class="hero section" aria-labelledby="hero-title">
-      <div class="hero-visual" aria-hidden="true">
-        <div class="orb orb-a"></div><div class="orb orb-b"></div>
-        <svg class="ecg-line" viewBox="0 0 1200 220" preserveAspectRatio="none">
-          <path class="ecg-track" d="M0 115 H260 L295 115 L316 88 L341 154 L375 43 L411 171 L448 115 H1200" />
-          <path class="ecg-pulse" d="M0 115 H260 L295 115 L316 88 L341 154 L375 43 L411 171 L448 115 H1200" />
-        </svg>
-      </div>
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="status-dot"></span> MD · Clinical researcher · International experience</div>
-        <h1 id="hero-title">Clinical medicine,<br><em>translated through evidence.</em></h1>
-        <p class="hero-lead" id="heroSummary"></p>
+    <section class="hero section" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow" id="heroEyebrow">MD · Clinical researcher · International experience</span>
+        <h1 id="heroTitle">Clinical medicine,<br><em>built on evidence.</em></h1>
+        <p class="hero-summary" id="heroSummary"></p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#research">Explore research <span>↘</span></a>
-          <a class="button button-ghost" id="cvLink" href="#">Public CV <span>↗</span></a>
+          <a class="button primary" href="#research" id="exploreBtn">Explore research</a>
+          <a class="button secondary" id="cvBtn" href="assets/docs/Mahmoud_Einieh_Public_CV.pdf" target="_blank" rel="noopener">Public CV ↗</a>
         </div>
         <div class="hero-links" id="heroLinks"></div>
       </div>
-      <div class="hero-profile reveal delay-1">
-        <div class="portrait-wrap">
-          <div class="portrait-ring"></div>
-          <img id="heroPortrait" src="assets/portrait_hd.webp" alt="Portrait of Mahmoud Einieh" class="portrait" width="640" height="640" fetchpriority="high" />
-        </div>
-        <div class="profile-card glass">
-          <div>
-            <span class="mini-label">Current focus</span>
-            <strong>Cardiovascular physiology · Imaging · AI</strong>
-          </div>
-          <div class="profile-card-row"><span>Research identity</span><strong>ORCID 0009-0002-4240-9376</strong></div>
-        </div>
-      </div>
-      <div class="metric-strip" id="metricStrip"></div>
+      <figure class="hero-photo"><img src="assets/portrait_hd.webp" alt="Portrait of Mahmoud Einieh" fetchpriority="high"></figure>
     </section>
 
-    
-    <section class="section section-intro" id="research">
+    <section class="metric-strip" id="metricStrip" aria-label="Portfolio overview"></section>
 
-      <div class="section-heading reveal">
-        <div><span class="kicker">01 · Research</span><h2>Research.</h2></div>
-        <p>Selected projects.</p>
-      </div>
-      <div class="filter-row reveal" id="researchFilters" aria-label="Research filters"></div>
+    <section class="section" id="research">
+      <div class="section-heading"><div><span class="kicker" id="researchKicker">01 · Research</span><h2 id="researchHeading">Research.</h2></div><p id="researchDesc">Projects, publications and presentations.</p></div>
       <div class="research-grid" id="researchGrid"></div>
-      <div class="center-action reveal"><button class="button button-ghost" id="showAllResearch" type="button">Show complete research portfolio</button></div>
-    
-      <section class="portfolio-subsection outputs-section" id="publications">
-
-      <div class="section-heading subsection-heading reveal">
-        <div><span class="kicker">Outputs</span><h2>Publications.</h2></div>
-        <p>Papers, abstracts and presentations.</p>
-      </div>
-      <div class="outputs-grid reveal" id="outputsGrid"></div>
-      <div class="source-ribbon reveal" id="sourceRibbon"></div>
-    
-      </section>
     </section>
 
-    <section class="section" id="clinical">
-
-      <div class="section-heading reveal">
-        <div><span class="kicker">02 · Clinical</span><h2>Clinical.</h2></div>
-        <p>International placements, electives and simulation.</p>
-      </div>
-      <div class="clinical-shell">
-        <div class="clinical-route reveal" aria-label="Countries represented in clinical experience">
-          <div class="route-line"></div>
-          <button type="button" data-country="Hungary"><span>HU</span><small>Debrecen</small></button>
-          <button type="button" data-country="United Kingdom"><span>UK</span><small>London / Swansea</small></button>
-          <button type="button" data-country="Italy"><span>IT</span><small>Catania</small></button>
-          <button type="button" data-country="Germany"><span>DE</span><small>Siegen</small></button>
-          <button type="button" data-country="Portugal"><span>PT</span><small>Porto</small></button>
-          <button type="button" data-country="Romania"><span>RO</span><small>Diosig</small></button>
-          <button type="button" data-country="Tunisia"><span>TN</span><small>Tunis</small></button>
-          <button type="button" data-country="United Arab Emirates"><span>AE</span><small>Dubai</small></button>
-        </div>
-        <div class="filter-row reveal" id="clinicalFilters"></div>
-        <div class="clinical-list" id="clinicalList"></div>
-      </div>
-    
+    <section class="section alt" id="clinical">
+      <div class="section-heading"><div><span class="kicker" id="clinicalKicker">02 · Clinical</span><h2 id="clinicalHeading">Clinical.</h2></div><p id="clinicalDesc">International placements, electives and simulation training.</p></div>
+      <div class="clinical-grid" id="clinicalGrid"></div>
     </section>
 
-    <section class="section portfolio-group" id="leadership">
-      <div class="section-heading reveal">
-        <div><span class="kicker">03 · Leadership</span><h2>Leadership.</h2></div>
-        <p>Student leadership, teaching and practical medical education.</p>
-      </div>
-      <section class="portfolio-subsection lubdub-section" id="lubdub">
-
-      <div class="section-heading subsection-heading reveal">
-        <div><span class="kicker">Founder-led education</span><h2>Lub Dub Club.</h2></div>
-        <p>Founder-led cardiology education through simulation.</p>
-      </div>
-      <div class="lubdub-grid">
-        <figure class="lubdub-photo reveal"><img id="lubdubPhoto" src="assets/lubdub_activity.webp" alt="Lub Dub Club cardiology simulation workshop" loading="lazy"></figure>
-        <div class="lubdub-copy glass reveal delay-1">
-          <img id="lubdubLogo" class="lubdub-logo" src="assets/lubdub_logo.webp" alt="The Lub Dub Club logo" loading="lazy">
-          <span id="lubdubRole"></span>
-          <h3 id="lubdubTitle"></h3>
-          <p id="lubdubSummary"></p>
-          <ul id="lubdubPoints"></ul>
-          <div class="lubdub-actions">
-            <a class="button button-ghost lubdub-link" href="https://www.instagram.com/lub.dubclub/" target="_blank" rel="noopener">Club Instagram <span>↗</span></a>
-            <a class="button button-ghost lubdub-linkedin" href="https://www.linkedin.com/company/lubdubclub" target="_blank" rel="noopener">Club LinkedIn <span>↗</span></a>
-          </div>
-        </div>
-      </div>
-    
-      </section>
-      <section class="portfolio-subsection doe-section" id="doe">
-
-      <div class="section-heading subsection-heading reveal">
-        <div><span class="kicker">Student leadership</span><h2>DOE & IFMSA.</h2></div>
-        <p>Leadership, outreach and exchange.</p>
-      </div>
-      <div class="doe-card glass reveal">
-        <div class="doe-mark" aria-label="DOE"><img src="assets/doe_logo.png" alt="DOE — Medical Students’ Association of Debrecen logo" loading="lazy"></div>
-        <div class="doe-copy">
-          <span id="doeRole" class="role"></span>
-          <h3 id="doeTitle"></h3>
-          <p id="doeSummary"></p>
-          <ul id="doePoints"></ul>
-          <div class="doe-highlights" id="doeHighlights"></div>
-          <div class="doe-gallery" id="doeGallery" aria-label="DOE and IFMSA photo highlights"></div>
-          <a class="button button-ghost doe-link" href="https://www.doedebrecen.hu/index.php" target="_blank" rel="noopener">DOE website <span>↗</span></a>
-        </div>
-      </div>
-    
-      </section>
-      <section class="portfolio-subsection" id="teaching">
-
-      <div class="section-heading subsection-heading reveal">
-        <div><span class="kicker">Education</span><h2>Teaching.</h2></div>
-        <p>Research methods and pathology.</p>
-      </div>
-      <div class="teaching-grid" id="teachingGrid"></div>
-    
-      </section>
+    <section class="section" id="leadership">
+      <div class="section-heading"><div><span class="kicker" id="leadershipKicker">03 · Leadership</span><h2 id="leadershipHeading">Leadership.</h2></div><p id="leadershipDesc">Student leadership, teaching and practical medical education.</p></div>
+      <div id="lubdubBlock"></div>
+      <div id="doeBlock"></div>
+      <div id="teachingBlock"></div>
     </section>
 
-    <section class="section portfolio-group" id="highlights">
-      <div class="section-heading reveal">
-        <div><span class="kicker">04 · Highlights</span><h2>Highlights.</h2></div>
-        <p>Selected awards, competitions and academic milestones.</p>
-      </div>
-      <section class="portfolio-subsection photo-highlights-section" id="photo-highlights">
-        <div class="section-heading subsection-heading reveal">
-          <div><span class="kicker">Portfolio in pictures</span><h2>Photo highlights.</h2></div>
-          <p>Selected clinical, academic, leadership and extracurricular moments.</p>
-        </div>
-        <div class="photo-highlights" id="photoHighlights"></div>
-      </section>
-
-      <section class="portfolio-subsection medcup-section" id="medcup">
-
-      <div class="section-heading subsection-heading reveal">
-        <div><span class="kicker">Featured</span><h2>MedCup 2024.</h2></div>
-        <p>Second place in Brussels.</p>
-      </div>
-      <div class="medcup-layout">
-        <div class="medcup-copy glass reveal">
-          <span class="role" id="medcupResult"></span>
-          <h3 id="medcupTitle"></h3>
-          <p id="medcupSummary"></p>
-          <p id="medcupDetail"></p>
-          <div class="medcup-actions">
-            <a class="button button-ghost" id="medcupSource" href="#" target="_blank" rel="noopener">University of Debrecen article <span>↗</span></a>
-            <a class="button button-ghost youtube-button" id="medcupAftermovie" href="#" target="_blank" rel="noopener">Aftermovie <span>▶</span></a>
-            <a class="button button-ghost youtube-button" id="medcupLivestream" href="#" target="_blank" rel="noopener">Livestream replay <span>▶</span></a>
-          </div>
-          <div class="medcup-press" id="medcupPress">
-            <a href="https://www.haon.hu/helyi-kozelet/2024/03/medcup-szakmai-verseny-debreceni-egyetem-orvostudomanyi-kar" target="_blank" rel="noopener">HAON ↗</a>
-            <a href="https://www.debrecensun.hu/uni/2024/03/08/medical-students-from-debrecen-successfully-participated-in-the-professional-championship-in-brussels/" target="_blank" rel="noopener">Debrecen Sun ↗</a>
-            <a href="https://www.lespecialiste.be/fr/actualites/medcup-nbsp-2024-quand-les-etudiants-en-medecine-testent-leurs-aptitudes.html" target="_blank" rel="noopener">Le Spécialiste ↗</a>
-            <a href="https://www.univ-spn.fr/sorbonne-paris-nord-a-la-medcup-2024/" target="_blank" rel="noopener">Sorbonne Paris Nord ↗</a>
-          </div>
-        </div>
-        <div class="medcup-gallery reveal delay-1" id="medcupGallery"></div>
-      </div>
-    
-      </section>
-      <section class="portfolio-subsection" id="awards">
-
-      <div class="section-heading subsection-heading reveal">
-        <div><span class="kicker">Recognition</span><h2>Awards.</h2></div>
-        <p>Selected academic and scientific recognition.</p>
-      </div>
-      <div class="award-list" id="awardList"></div>
-    
-      </section>
+    <section class="section alt" id="highlights">
+      <div class="section-heading"><div><span class="kicker" id="highlightsKicker">04 · Highlights</span><h2 id="highlightsHeading">Highlights.</h2></div><p id="highlightsDesc">Selected awards, competitions and academic milestones.</p></div>
+      <div id="medcupBlock"></div>
+      <div id="academicPhotosBlock"></div>
+      <div id="awardsBlock"></div>
     </section>
 
-    <section class="section credentials-section portfolio-group" id="credentials">
-      <div class="section-heading reveal">
-        <div><span class="kicker">05 · Credentials</span><h2>Credentials.</h2></div>
-        <p>Certificates, supporting evidence and recommendation letters.</p>
-      </div>
-
-      <div class="evidence-groups" id="evidenceGroups"></div>
-      <p class="evidence-privacy reveal">Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.</p>
-    
-      <section class="portfolio-subsection recommendations-section" id="recommendations">
-
-      <div class="section-heading subsection-heading reveal">
-        <div><span class="kicker">References</span><h2>Letters of recommendation.</h2></div>
-      </div>
-      <div class="recommendation-grid" id="recommendationGrid"></div>
-    
-      </section>
+    <section class="section" id="documents">
+      <div class="section-heading"><div><span class="kicker" id="documentsKicker">05 · Documents</span><h2 id="documentsHeading">Documents.</h2></div><p id="documentsDesc">Qualifications, certificates, supporting evidence and recommendation letters.</p></div>
+      <div class="privacy-note" id="privacyNote">Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.</div>
+      <div id="evidenceGroups"></div>
+      <div id="recommendationsBlock"></div>
     </section>
 
-    <section class="section about-section" id="about">
-
+    <section class="section alt" id="about">
+      <div class="section-heading"><div><span class="kicker" id="aboutKicker">06 · About</span><h2 id="aboutHeading">About.</h2></div><p id="aboutLead">Medical doctor and clinical researcher with international clinical and academic experience.</p></div>
       <div class="about-grid">
-        <div class="about-copy reveal">
-          <span class="kicker">06 · About</span>
-          <h2>About.</h2>
-          <p>Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.</p>
-          <p>Interested in cardiovascular medicine, clinical research, imaging, and translational science.</p>
+        <div class="about-copy">
+          <p id="aboutP1">Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.</p>
+          <p id="aboutP2">Interested in cardiovascular medicine, clinical research, imaging and translational science.</p>
           <div class="language-list" id="languageList"></div>
-          <div class="hobby-block" id="hobbyBlock">
-            <span class="mini-label">Hobby</span>
-            <h3 id="hobbyTitle"></h3>
-            <p id="hobbySummary"></p>
-            <div class="hobby-gallery" id="hobbyGallery" aria-label="Horse riding photo highlights"></div>
-          </div>
+          <div class="contact-links" id="contactLinks"></div>
         </div>
-        <aside class="about-panel glass reveal delay-1"><img id="graduationPhoto" src="assets/portrait_hd.webp" class="about-photo" alt="Graduation portrait of Mahmoud Einieh" loading="lazy">
-          <span class="mini-label">Selected credentials</span>
-          <a href="assets/docs/Mahmoud_Einieh_Public_CV.pdf" target="_blank" rel="noopener"><span>Public CV</span><strong>PDF ↗</strong></a>
-          <a href="#credentials"><span>Selected evidence</span><strong>View ↓</strong></a>
-          <a href="https://orcid.org/0009-0002-4240-9376" target="_blank" rel="noopener"><span>ORCID</span><strong>Record ↗</strong></a>
-          <a href="https://pubmed.ncbi.nlm.nih.gov/42083154/" target="_blank" rel="noopener"><span>PubMed</span><strong>First-author paper ↗</strong></a>
-          <div class="privacy-note">Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.</div>
-        </aside>
-      </div>
-    
-    </section>
-
-    <section class="section contact-section">
-      <div class="contact-card reveal">
-        <span class="kicker">Contact</span>
-        <h2>Research collaboration,<br>clinical opportunities, or academic work.</h2>
-        <div class="contact-actions">
-          <a class="button button-primary" href="mailto:mahwisam2003@gmail.com">Email Mahmoud <span>↗</span></a>
-          <a class="button button-ghost" href="https://www.linkedin.com/in/mahmoud-einieh-74691428a" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        <div class="hobby-card">
+          <span class="mini-label" id="hobbyLabel">Outside medicine</span>
+          <h3 id="hobbyTitle">Equestrian & show jumping</h3>
+          <p id="hobbySummary"></p>
+          <div class="photo-grid compact" id="hobbyGallery"></div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div><strong>Dr. Mahmoud Einieh, MD</strong><span>Cardiovascular Research · Advanced Imaging · Evidence Synthesis</span></div>
-    <div class="footer-meta"><span>Built as a living academic portfolio.</span><a href="#top">Back to top ↑</a></div>
-  </footer>
+  <footer class="site-footer"><span>Dr. Mahmoud Einieh, MD</span><span id="footerTagline">Cardiovascular Research · Advanced Imaging · Evidence Synthesis</span><a href="#top">Back to top ↑</a></footer>
 
-  <dialog class="project-modal" id="projectModal">
-    <button class="modal-close" id="modalClose" aria-label="Close project details" type="button">×</button>
-    <div id="modalContent"></div>
+  <dialog class="gallery-dialog" id="galleryDialog">
+    <button class="dialog-close" type="button" id="galleryClose" aria-label="Close">×</button>
+    <div id="galleryContent"></div>
   </dialog>
 
-  <dialog class="evidence-modal" id="evidenceModal">
-    <button class="modal-close" id="evidenceModalClose" aria-label="Close document preview" type="button">×</button>
-    <div id="evidenceModalContent"></div>
-  </dialog>
-
-  <dialog class="gallery-modal" id="galleryModal">
-    <button class="modal-close" id="galleryModalClose" aria-label="Close photo gallery" type="button">×</button>
-    <div id="galleryModalContent"></div>
-  </dialog>
-
-  <dialog class="search-dialog" id="searchDialog">
-    <div class="search-head"><input id="searchInput" type="search" placeholder="Search projects, specialties, institutions…" autocomplete="off" aria-label="Search portfolio"/><kbd>esc</kbd></div>
-    <div class="search-results" id="searchResults"></div>
-  </dialog>
-
-  <script>
-    (() => {
-      const root=document.documentElement;
-      const saved=localStorage.getItem('me-theme');
-      if(saved==='light' || saved==='dark') root.dataset.theme=saved;
-      const btn=document.getElementById('themeToggle');
-      if(btn && !btn.dataset.themeBound){
-        btn.dataset.themeBound='true';
-        btn.addEventListener('click',()=>{
-          const next=root.dataset.theme==='dark'?'light':'dark';
-          root.dataset.theme=next;
-          localStorage.setItem('me-theme',next);
-          const meta=document.querySelector('meta[name="theme-color"]');
-          if(meta) meta.content=next==='light'?'#ffffff':'#090b10';
-        });
-      }
-      const meta=document.querySelector('meta[name="theme-color"]');
-      if(meta) meta.content=root.dataset.theme==='light'?'#ffffff':'#090b10';
-    })();
-  </script>
-
-  <script src="image_data.js?v=20261002-13"></script>
-  <script src="data.js?v=20261002-12"></script>
-  <script src="translations.js?v=20261002-11"></script>
-  <script>window.SITE_MEDIA = window.SITE_MEDIA || {};</script>
-  <script src="app.js?v=20261002-18"></script>
-  <script src="fallback.js?v=20261002-3"></script>
-
-  <!-- Large document/photo payloads load after the portfolio itself so text/cards never appear blank. -->
-  <script async src="media_diplomas.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_clinical.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_awards_training.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_recommendations.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_new_evidence.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_romania.js?v=20261002-3" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_clinical_gallery.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_surgical_skills.js?v=20261002-3" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_doe_gallery.js?v=20261002-3" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_medcup.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <!-- Verified media overrides: authoritative LOIS team photo and emailed MERIT certificate. -->
-  <script src="media_lois_team.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script src="media_merit_certificate.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_academic_photos.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_hobbies.js?v=20261002-2" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_final_academic.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <script async src="media_final_misc.js?v=20261002-1" onload="window.dispatchEvent(new Event('site-media-updated'))"></script>
-  <!-- final-photo-batch-20261002-live -->
-  <!-- visible-photo-sections-live -->
-  <!-- deploy-trigger-2026-10-03 -->
+  <script src="data.js?v=final-20261003-1"></script>
+  <script src="translations.js?v=final-20261003-1"></script>
+  <script src="image_data.js?v=final-20261003-1"></script>
+  <script src="media_diplomas.js?v=final-20261003-1"></script>
+  <script src="media_clinical.js?v=final-20261003-1"></script>
+  <script src="media_clinical_gallery.js?v=final-20261003-1"></script>
+  <script src="media_awards_training.js?v=final-20261003-1"></script>
+  <script src="media_recommendations.js?v=final-20261003-1"></script>
+  <script src="media_new_evidence.js?v=final-20261003-1"></script>
+  <script src="media_merit_certificate.js?v=final-20261003-1"></script>
+  <script src="media_romania.js?v=final-20261003-1"></script>
+  <script src="media_surgical_skills.js?v=final-20261003-1"></script>
+  <script src="media_lois_team.js?v=final-20261003-1"></script>
+  <script src="media_doe_gallery.js?v=final-20261003-1"></script>
+  <script src="media_academic_photos.js?v=final-20261003-1"></script>
+  <script src="media_final_misc.js?v=final-20261003-1"></script>
+  <script src="media_hobbies.js?v=final-20261003-1"></script>
+  <script src="media_medcup.js?v=final-20261003-1"></script>
+  <script src="media_user_extras.js?v=final-20261003-1"></script>
+  <script src="media_pdf_docs.js?v=final-20261003-1"></script>
+  <script src="app.js?v=final-20261003-1"></script>
 </body>
 </html>

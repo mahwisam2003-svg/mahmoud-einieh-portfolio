@@ -1,505 +1,215 @@
 (() => {
-  const BASE = SITE_DATA;
-  const I18N = typeof SITE_I18N !== 'undefined' ? SITE_I18N : { en:{} };
-  const imgs = typeof SITE_IMAGES !== 'undefined' ? SITE_IMAGES : {};
-  const media = window.SITE_MEDIA = window.SITE_MEDIA || {};
+  'use strict';
+  const BASE = window.SITE_DATA || (typeof SITE_DATA !== 'undefined' ? SITE_DATA : null);
+  if (!BASE) { console.error('SITE_DATA missing'); return; }
+  const I18N = window.SITE_I18N || (typeof SITE_I18N !== 'undefined' ? SITE_I18N : {en:{}});
+  const IMAGES = window.SITE_IMAGES || (typeof SITE_IMAGES !== 'undefined' ? SITE_IMAGES : {});
+  const MEDIA = window.SITE_MEDIA || {};
+  const DOCS = window.SITE_DOCS || {};
   const $ = (s, p=document) => p.querySelector(s);
-  const $$ = (s, p=document) => [...p.querySelectorAll(s)];
-  const esc = s => String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const $$ = (s, p=document) => Array.from(p.querySelectorAll(s));
+  const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
   const supported = ['en','de','hu'];
-  const queryLang = new URLSearchParams(location.search).get('lang');
-  const savedLang = localStorage.getItem('me-lang');
-  const lang = supported.includes(queryLang) ? queryLang : (supported.includes(savedLang) ? savedLang : 'en');
-  const pack = I18N[lang] || I18N.en;
-  const ui = pack.ui || I18N.en.ui;
+  const params = new URLSearchParams(location.search);
+  const requested = params.get('lang');
+  const saved = localStorage.getItem('me-lang');
+  const lang = supported.includes(requested) ? requested : (supported.includes(saved) ? saved : 'en');
+  const pack = I18N[lang] || I18N.en || {};
+  const ui = pack.ui || I18N.en?.ui || {};
 
-  function cloneData(obj){ return JSON.parse(JSON.stringify(obj)); }
-  function localizeData(){
-    const d = cloneData(BASE);
-    if(pack.profile) Object.assign(d.profile, pack.profile);
-    if(pack.metrics) d.metrics = d.metrics.map((m,i)=>({...m,label:pack.metrics[i] || m.label}));
-
-    d.research = d.research.map(p=>{
-      const tr = pack.research?.[p.id] || {};
-      const out = {...p,...tr};
-      if(tr.metricLabels) out.metrics = p.metrics.map((m,i)=>({...m,label:tr.metricLabels[i] || m.label}));
-      if(tr.linkLabels) out.links = p.links.map((l,i)=>({...l,label:tr.linkLabels[i] || l.label}));
+  function clone(x){ return JSON.parse(JSON.stringify(x)); }
+  function localizedData(){
+    const d = clone(BASE);
+    if (pack.profile) Object.assign(d.profile, pack.profile);
+    if (Array.isArray(pack.metrics)) d.metrics = d.metrics.map((m,i)=>({...m,label:pack.metrics[i] || m.label}));
+    if (pack.research) d.research = d.research.map(x=>({...x,...(pack.research[x.id]||{})}));
+    if (pack.clinical) d.clinical = d.clinical.map(x=>({...x,...(pack.clinical[x.id]||{})}));
+    if (pack.awards) d.awards = d.awards.map(a=>({...a,...(pack.awards[a.title]||pack.awards[`${a.title}|${a.year}`]||{})}));
+    if (pack.teaching) d.teaching = d.teaching.map(t=>{
+      const tr=pack.teaching[`${t.role}|${t.organization}`]||{};
+      const out={...t,...tr};
+      if(t.role==='Pathology Teaching Assistant'){
+        if(lang==='de') out.detail='Unterstützung des Autopsieunterrichts für Studierende im 3. Studienjahr über vier Semester.';
+        if(lang==='hu') out.detail='Harmadéves bonctermi oktatás támogatása négy féléven keresztül.';
+      }
       return out;
     });
-
-    d.clinical = d.clinical.map(c=>({...c,...(pack.clinical?.[c.id]||{})}));
-
-    d.awards = d.awards.map(a=>{
-      const tr = pack.awards?.[a.title] || {};
-      return {...a,...tr};
-    });
-
-    d.teaching = d.teaching.map(t=>{
-      const key = `${t.role}|${t.organization}`;
-      return {...t,...(pack.teaching?.[key]||{})};
-    });
-
-    if(pack.lubdub) d.lubdub = {...d.lubdub,...pack.lubdub};
-    if(pack.doe) d.doe = {...d.doe,...pack.doe};
-    if(pack.hobbies) d.hobbies = (d.hobbies||[]).map(h=>({...h,...(pack.hobbies[h.id]||{})}));
-
-    if(pack.medcup) d.medcup = {...d.medcup,...pack.medcup};
-    if(pack.evidenceGroups) d.evidenceGroups = d.evidenceGroups.map(g=>({...g,...(pack.evidenceGroups[g.id]||{})}));
-    if(pack.recommendations) d.recommendations = d.recommendations.map(r=>({...r,...(pack.recommendations[r.id]||{})}));
-
-    if(pack.languages) d.languages = pack.languages.map(([language,level])=>({language,level}));
+    if (pack.lubdub) d.lubdub = {...d.lubdub,...pack.lubdub};
+    if (pack.doe) d.doe = {...d.doe,...pack.doe};
+    if (pack.languages) d.languages = pack.languages.map(([language,level])=>({language,level}));
     return d;
   }
-  const d = localizeData();
+  const d = localizedData();
 
-  function applyDeferredMedia(){
-    $$('[data-media-key]').forEach(img=>{
-      const key=img.dataset.mediaKey;
-      if(key && media[key] && img.getAttribute('src') !== media[key]) img.setAttribute('src',media[key]);
-    });
+  const copy = {
+    en:{documents:'Documents',documentsDesc:'Qualifications, certificates, supporting evidence and recommendation letters.',open:'Open document',photos:'View photos',gallery:'Photo gallery',articlePdf:'Open uploaded article PDF',videos:'Video',press:'Press coverage',recommendations:'Letters of recommendation',outside:'Outside medicine',academic:'Academic & research moments'},
+    de:{documents:'Nachweise',documentsDesc:'Qualifikationen, Zertifikate, Belege und Empfehlungsschreiben.',open:'Dokument öffnen',photos:'Fotos ansehen',gallery:'Fotogalerie',articlePdf:'Hochgeladenen Artikel als PDF öffnen',videos:'Video',press:'Presse',recommendations:'Empfehlungsschreiben',outside:'Außerhalb der Medizin',academic:'Akademische & wissenschaftliche Momente'},
+    hu:{documents:'Igazolások',documentsDesc:'Végzettségek, tanúsítványok, igazoló dokumentumok és ajánlólevelek.',open:'Dokumentum megnyitása',photos:'Fotók megtekintése',gallery:'Fotógaléria',articlePdf:'Feltöltött cikk megnyitása PDF-ben',videos:'Videó',press:'Sajtómegjelenések',recommendations:'Ajánlólevelek',outside:'Az orvosláson kívül',academic:'Akadémiai és kutatási pillanatok'}
+  }[lang];
+
+  function imageSrc(key){ return (key && (MEDIA[key] || IMAGES[key])) || ''; }
+  function figureTile(item, groupTitle){
+    const src=imageSrc(item.key);
+    if(!src) return '';
+    return `<button type="button" class="photo-tile" data-gallery-key="${esc(item.key)}" aria-label="${esc(item.caption||groupTitle)}"><img src="${src}" alt="${esc(item.caption||groupTitle)}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}"><span>${esc(item.caption||groupTitle)}</span></button>`;
   }
-  window.addEventListener('site-media-updated', applyDeferredMedia);
-
-  function setHTML(sel, value){ const el=$(sel); if(el && value!=null) el.innerHTML=value; }
-  function setText(sel, value){ const el=$(sel); if(el && value!=null) el.textContent=value; }
-  function applyStaticUI(){
-    document.documentElement.lang = lang;
-    document.title = pack.meta?.title || document.title;
-    const md=$('meta[name="description"]'); if(md && pack.meta?.description) md.content=pack.meta.description;
-    const ogd=$('meta[property="og:description"]'); if(ogd && pack.meta?.description) ogd.content=pack.meta.description;
-
-    const navMap = {
-      research:ui.nav.research,
-      clinical:ui.nav.clinical,
-      leadership:ui.nav.leadership || 'Leadership',
-      highlights:ui.nav.highlights || ui.nav.awards || 'Highlights',
-      credentials:ui.nav.evidence || 'Credentials',
-      about:ui.nav.about
-    };
-    Object.entries(navMap).forEach(([id,label])=>{
-      $$('a[href="#'+id+'"]').forEach(a=>a.textContent=label);
-    });
-
-    setHTML('.eyebrow', '<span class="status-dot"></span>'+esc(ui.hero.eyebrow));
-    setHTML('#hero-title', ui.hero.title);
-    const heroPrimary=$('.hero-actions .button-primary'); if(heroPrimary) heroPrimary.innerHTML=esc(ui.hero.explore)+' <span>↘</span>';
-    const cv=$('#cvLink'); if(cv) cv.innerHTML=esc(ui.hero.publicCV)+' <span>↗</span>';
-    setText('.profile-card .mini-label', ui.hero.currentFocus);
-    setText('.profile-card > div:first-child strong', ui.hero.focusValue);
-    setText('.profile-card-row span:first-child', ui.hero.researchIdentity);
-
-    const applySection=(id,obj)=>{
-      const sec=$('#'+id); if(!sec||!obj)return;
-      const kicker=$('.kicker',sec); if(kicker) kicker.textContent=obj.kicker;
-      const h2=$('.section-heading h2',sec); if(h2) h2.innerHTML=obj.title;
-      const p=$('.section-heading > p',sec); if(p) p.textContent=obj.desc;
-    };
-    applySection('research',ui.sections.research);
-    applySection('clinical',ui.sections.clinical);
-    applySection('leadership',ui.sections.leadership);
-    applySection('highlights',ui.sections.highlights);
-    applySection('publications',ui.sections.outputs);
-    applySection('medcup',ui.sections.medcup);
-    applySection('awards',ui.sections.awards);
-    applySection('lubdub',ui.sections.lubdub);
-    applySection('doe',ui.sections.doe);
-    applySection('credentials',ui.sections.evidence);
-    applySection('recommendations',ui.sections.recommendations);
-    applySection('teaching',ui.sections.teaching);
-
-    const about=$('#about');
-    if(about){
-      const kicker=$('.about-copy .kicker',about); if(kicker) kicker.textContent=ui.sections.about.kicker;
-      const h2=$('.about-copy h2',about); if(h2) h2.innerHTML=ui.sections.about.title;
-      const ps=$$('.about-copy p',about); if(ps[0]) ps[0].textContent=ui.about.p1; if(ps[1]) ps[1].textContent=ui.about.p2;
-      const label=$('.about-panel .mini-label',about); if(label) label.textContent=ui.about.selected;
-      const links=$$('.about-panel > a',about);
-      if(links[0]){ $('span',links[0]).textContent=ui.about.publicCV; $('strong',links[0]).textContent='PDF ↗'; }
-      if(links[1]){ $('span',links[1]).textContent=ui.about.selectedEvidence || 'Selected evidence'; $('strong',links[1]).textContent=(ui.about.view || 'View')+' ↓'; }
-      if(links[2]){ $('strong',links[2]).textContent=ui.about.record+' ↗'; }
-      if(links[3]){ $('strong',links[3]).textContent=ui.about.firstAuthor+' ↗'; }
-      const privacy=$('.privacy-note',about); if(privacy) privacy.textContent=ui.about.privacy;
-      const hobbyLabel=$('.hobby-block .mini-label',about); if(hobbyLabel) hobbyLabel.textContent=ui.about.hobby || 'Hobby';
-    }
-
-    const contact=$('.contact-section');
-    if(contact){
-      setText('.contact-section .kicker',ui.contact.kicker);
-      setHTML('.contact-section h2',ui.contact.title);
-      const email=$('.contact-actions .button-primary'); if(email) email.innerHTML=esc(ui.buttons.email)+' <span>↗</span>';
-    }
-
-    const footer=$('.site-footer');
-    if(footer){
-      const firstSpan=$('.site-footer > div:first-child span'); if(firstSpan) firstSpan.textContent=ui.footer.tagline;
-      const living=$('.footer-meta span'); if(living) living.textContent=ui.footer.living;
-      const back=$('.footer-meta a'); if(back) back.textContent=ui.buttons.backTop+' ↑';
-    }
-
-    const searchInput=$('#searchInput'); if(searchInput) searchInput.placeholder=ui.search.placeholder;
-    const lubLink=$('.lubdub-link'); if(lubLink) lubLink.innerHTML=esc(ui.buttons.clubInstagram)+' <span>↗</span>';
-    const doeLink=$('.doe-link'); if(doeLink) doeLink.innerHTML=esc(ui.buttons.doeWebsite)+' <span>↗</span>';
-
-    $$('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
-  }
-  applyStaticUI();
-
-  $$('[data-lang]').forEach(b=>b.addEventListener('click',()=>{
-    const next=b.dataset.lang;
-    if(!supported.includes(next) || next===lang) return;
-    localStorage.setItem('me-lang',next);
-    const url=new URL(location.href);
-    if(next==='en') url.searchParams.delete('lang'); else url.searchParams.set('lang',next);
-    location.href=url.pathname+(url.search||'')+url.hash;
-  }));
-
-  $('#heroSummary').textContent = d.profile.summary;
-  if($('#heroPortrait') && imgs.graduationPortrait) $('#heroPortrait').src = imgs.graduationPortrait;
-  if($('#graduationPhoto') && imgs.graduationPortrait) $('#graduationPhoto').src = imgs.graduationPortrait;
-  $('#cvLink').href = d.profile.cv;
-  $('#cvLink').target = '_blank';
-  $('#cvLink').rel = 'noopener';
-  $('#heroLinks').innerHTML = [
-    ['ORCID', d.profile.orcid],
-    ['LinkedIn', d.profile.linkedin],
-    ['Email', `mailto:${d.profile.email}`]
-  ].map(([label,url]) => `<a href="${url}" ${url.startsWith('http')?'target="_blank" rel="noopener"':''}>${label}</a>`).join('');
-
-  $('#metricStrip').innerHTML = d.metrics.map(m => `<div class="metric reveal"><strong><span data-count="${m.value}">0</span>${m.suffix}</strong><span>${esc(m.label)}</span></div>`).join('');
-
-  const baseResearch = Object.fromEntries(BASE.research.map(x=>[x.id,x]));
-  const researchCats = ['All','Cardiology','Imaging / AI','Nephrology','Hematology'];
-  let researchFilter = 'All';
-  let researchExpanded = false;
-  const matchesResearchCategory = (p, filter) => {
-    if(filter==='All') return true;
-    const b=baseResearch[p.id] || p;
-    const t = [b.domain,b.type,...b.tags].join(' ').toLowerCase();
-    if(filter==='Cardiology') return /cardio|coronary|electrophysi|arrhythm|echo/.test(t);
-    if(filter==='Imaging / AI') return /imaging|spect|oct|pet\/ct|artificial intelligence|synthetic ct/.test(t);
-    if(filter==='Nephrology') return /nephro|kidney|ckd|rituximab|glomerular/.test(t);
-    if(filter==='Hematology') return /hematolog|autopsy|myeloproliferative|hlh|bone marrow/.test(t);
-    return false;
-  };
-  function renderResearchFilters(){
-    $('#researchFilters').innerHTML = researchCats.map(c => `<button type="button" class="filter-pill ${c===researchFilter?'active':''}" data-filter="${c}">${esc(ui.filters.research[c]||c)}</button>`).join('');
-  }
-  renderResearchFilters();
-  $('#researchFilters').addEventListener('click', e => {
-    const b=e.target.closest('[data-filter]'); if(!b)return;
-    researchFilter=b.dataset.filter; researchExpanded=true;
-    renderResearchFilters(); renderResearch();
-  });
-  $('#showAllResearch').addEventListener('click',()=>{
-    if(researchFilter!=='All'){
-      researchFilter='All'; researchExpanded=false; renderResearchFilters();
-    }else{ researchExpanded=!researchExpanded; }
-    renderResearch();
-  });
-
-  const photoClass=p=>p.imageKey==='escPoster'?'photo-esc':p.imageKey==='eanmBarcelona'?'photo-eanm':p.imageKey==='boneSpectPresentation'?'photo-bonespect':p.imageKey==='mdThesisPortrait'?'photo-thesis':'';
-  function researchCard(p){
-    const metrics = (p.metrics||[]).slice(0,4).map(m=>`<div class="micro-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('');
-    return `<article class="research-card ${p.featured?'featured':''} reveal" tabindex="0" data-project="${p.id}" role="button" aria-label="${esc(ui.aria.openProject)}: ${esc(p.title)}">
-      ${p.imageKey && imgs[p.imageKey] ? `<div class="research-card-image ${photoClass(p)}"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}
-      <div class="card-top"><span class="status-badge">${esc(p.status)}</span><span class="project-year">${esc(p.year)}</span></div>
-      <h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p>
-      ${metrics?`<div class="card-metrics">${metrics}</div>`:''}
-      <div class="card-footer"><strong>${esc(p.domain)}</strong><span class="card-arrow">↗</span></div>
-    </article>`;
-  }
-  function renderResearch(){
-    let projects = d.research.filter(p => matchesResearchCategory(p,researchFilter));
-    if(!researchExpanded && researchFilter==='All') projects = projects.slice(0,6);
-    $('#researchGrid').innerHTML=projects.map(researchCard).join('');
-    $('#showAllResearch').textContent = (!researchExpanded && researchFilter==='All') ? ui.buttons.showAll : ui.buttons.showFeatured;
-    if(researchFilter!=='All') $('#showAllResearch').textContent=ui.buttons.resetResearch;
-    bindReveal();
-  }
-  renderResearch();
-
-  const modal=$('#projectModal'), modalContent=$('#modalContent');
-  function openProject(id){
-    const p=d.research.find(x=>x.id===id); if(!p)return;
-    modalContent.innerHTML=`
-      <span class="modal-kicker">${esc(p.domain)} · ${esc(p.year)}</span>
-      <h3 class="modal-title">${esc(p.title)}</h3>
-      ${p.imageKey && imgs[p.imageKey] ? `<img class="modal-project-photo ${photoClass(p)}" src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy">` : ''}
-      <p class="modal-summary">${esc(p.summary)}</p>
-      ${(p.metrics||[]).length?`<div class="modal-metrics">${(p.metrics||[]).map(m=>`<div class="modal-stat"><strong>${esc(m.value)}</strong><span>${esc(m.label)}</span></div>`).join('')}</div>`:''}
-      <div class="modal-section"><h4>${esc(ui.modal.detail)}</h4><p>${esc(p.detail)}</p></div>
-      <div class="modal-section"><h4>${esc(ui.modal.role)}</h4><p>${esc(p.role)}</p></div>
-      <div class="modal-section"><h4>${esc(ui.modal.status)}</h4><p>${esc(p.status)} · ${esc(p.type)}</p></div>
-      <div class="modal-links">
-        ${(p.links||[]).map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}
-
-      </div>`;
-    modal.showModal(); document.body.classList.add('modal-open');
-  }
-  $('#researchGrid').addEventListener('click',e=>{const c=e.target.closest('[data-project]');if(c)openProject(c.dataset.project)});
-  $('#researchGrid').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-project]')){e.preventDefault();openProject(e.target.dataset.project)}});
-  $('#modalClose').addEventListener('click',()=>modal.close());
-  modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
-  modal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
-
-  const galleryModal=$('#galleryModal'), galleryModalContent=$('#galleryModalContent');
   function openGallery(title, items){
-    if(!galleryModal || !items?.length) return;
-    galleryModalContent.innerHTML=`
-      <span class="modal-kicker">Photo gallery</span>
-      <h3 class="modal-title">${esc(title)}</h3>
-      <div class="portfolio-gallery-grid">
-        ${items.map((item,i)=>`<figure class="portfolio-gallery-item">
-          <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||title)}" loading="${i===0?'eager':'lazy'}" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
-          ${item.caption?`<figcaption>${esc(item.caption)}</figcaption>`:''}
-        </figure>`).join('')}
-      </div>`;
-    applyDeferredMedia();
-    galleryModal.showModal();
-    document.body.classList.add('modal-open');
-  }
-  if($('#galleryModalClose')) $('#galleryModalClose').addEventListener('click',()=>galleryModal.close());
-  if(galleryModal){
-    galleryModal.addEventListener('click',e=>{if(e.target===galleryModal)galleryModal.close()});
-    galleryModal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
+    const valid=(items||[]).filter(x=>imageSrc(x.key));
+    if(!valid.length) return;
+    $('#galleryContent').innerHTML=`<span class="kicker">${esc(copy.gallery)}</span><h3>${esc(title)}</h3><div class="dialog-grid">${valid.map(x=>`<figure><img src="${imageSrc(x.key)}" alt="${esc(x.caption||title)}" style="${x.position?`object-position:${esc(x.position)}`:''}"><figcaption>${esc(x.caption||title)}</figcaption></figure>`).join('')}</div>`;
+    $('#galleryDialog').showModal();
   }
 
-  const baseClinical = Object.fromEntries(BASE.clinical.map(x=>[x.id,x]));
-  const clinicalCats=['All','Cardiology','Medicine','Surgery','Neonatology','Emergency'];
-  let clinicalFilter='All', countryFilter='All';
-  function renderClinicalFilters(){
-    $('#clinicalFilters').innerHTML=clinicalCats.map(c=>`<button type="button" class="filter-pill ${c===clinicalFilter?'active':''}" data-clinical="${c}">${esc(ui.filters.clinical[c]||c)}</button>`).join('');
-  }
-  renderClinicalFilters();
-  const clinicalCategory=c=>{
-    const s=(baseClinical[c.id]?.specialty || c.specialty).toLowerCase();
-    if(s.includes('cardiology'))return'Cardiology';
-    if(s.includes('surgery'))return'Surgery';
-    if(s.includes('neonat'))return'Neonatology';
-    if(s.includes('disaster')||s.includes('emergency'))return'Emergency';
-    return'Medicine';
-  };
-  function renderClinical(){
-    let items=d.clinical.filter(c=>(clinicalFilter==='All'||clinicalCategory(c)===clinicalFilter)&&(countryFilter==='All'||(baseClinical[c.id]?.location||c.location).includes(countryFilter)));
-    $('#clinicalList').innerHTML=items.map(c=>`<article class="clinical-item reveal">
-      <div class="clinical-date"><strong>${esc(c.date)}</strong><br>${esc(c.duration)}</div>
-      <div class="clinical-main"><h3>${esc(c.specialty)}</h3><div class="institution">${esc(c.institution)} · ${esc(c.location)}</div><p>${esc(c.detail)}</p>
-        ${(c.courses||[]).length?`<details class="clinical-details"><summary>${esc((c.courses||[]).length)} completed electives</summary><ul>${c.courses.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details>`:''}
-        <div class="clinical-actions">
-          ${(c.gallery||[]).length?`<button class="clinical-gallery-trigger" type="button" data-clinical-gallery="${esc(c.id)}">View photos · ${c.gallery.length}</button>`:''}
-          ${c.evidenceId?`<button class="clinical-evidence-trigger" type="button" data-clinical-evidence="${esc(c.evidenceId)}">View certificate</button>`:''}
-        </div>
-      </div>
-      <div class="clinical-meta"><span>${esc(ui.clinical.supervision)}: ${esc(c.supervisor)}</span></div>
-    </article>`).join('') || `<div class="search-empty">${esc(ui.clinical.empty)}</div>`;
-    $('#clinicalList').querySelectorAll('[data-clinical-gallery]').forEach(b=>b.addEventListener('click',()=>{
-      const item=d.clinical.find(x=>x.id===b.dataset.clinicalGallery); if(item) openGallery(item.galleryTitle||item.specialty,item.gallery||[]);
-    }));
-    $('#clinicalList').querySelectorAll('[data-clinical-evidence]').forEach(b=>b.addEventListener('click',()=>openEvidenceDocument(b.dataset.clinicalEvidence)));
-    bindReveal();
-  }
-  $('#clinicalFilters').addEventListener('click',e=>{const b=e.target.closest('[data-clinical]');if(!b)return;clinicalFilter=b.dataset.clinical;renderClinicalFilters();renderClinical()});
-  $$('.clinical-route button').forEach(b=>b.addEventListener('click',()=>{const c=b.dataset.country;if(countryFilter===c){countryFilter='All';b.classList.remove('active')}else{countryFilter=c;$$('.clinical-route button').forEach(x=>x.classList.toggle('active',x===b))}renderClinical()}));
-  renderClinical();
-
-  const outputIds = new Set(BASE.research.filter(p=>/Published|Submitted|Conference|Completed/.test(p.status)).map(p=>p.id));
-  const outputs=d.research.filter(p=>outputIds.has(p.id));
-  $('#outputsGrid').innerHTML=outputs.map(p=>`<article class="output-card">${p.imageKey && imgs[p.imageKey] ? `<div class="output-photo ${photoClass(p)}"><img src="${imgs[p.imageKey]}" alt="${esc(p.title)}" loading="lazy"></div>` : ''}<span class="pub-journal">${esc(p.venue||p.status)}</span><h3>${esc(p.title)}</h3><p>${esc(p.status)} · ${esc(p.type)} · ${esc(p.year)}</p><div class="output-links">${(p.links||[]).map(l=>`<a href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div></article>`).join('');
-  $('#sourceRibbon').innerHTML=d.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)} ↗</a>`).join('');
-
-  $('#awardList').innerHTML=d.awards.map(a=>`<article class="award-item reveal"><span class="award-year">${esc(a.year)}</span><h3>${esc(a.title)}</h3><p>${esc(a.detail)}</p><div class="award-action">${a.source?`<a class="doc-link" href="${a.source}" target="_blank" rel="noopener">${esc(ui.buttons.officialSource)} ↗</a>`:''}${a.credential?`<a class="doc-link" href="${a.credential}" target="_blank" rel="noopener">${esc(ui.buttons.supportingDoc)} ↗</a>`:''}</div></article>`).join('');
-
-  if(d.medcup){
-    setText('#medcupResult', d.medcup.result);
-    setText('#medcupTitle', d.medcup.title);
-    setText('#medcupSummary', d.medcup.summary);
-    setText('#medcupDetail', d.medcup.detail);
-    const source=$('#medcupSource'); if(source) source.href=d.medcup.source;
-    const aftermovie=$('#medcupAftermovie'); if(aftermovie && d.medcup.youtubeAftermovie) aftermovie.href=d.medcup.youtubeAftermovie;
-    const livestream=$('#medcupLivestream'); if(livestream && d.medcup.youtubeLivestream) livestream.href=d.medcup.youtubeLivestream;
-    const press=$('#medcupPress');
-    if(press) press.innerHTML=(d.medcup.press||[]).map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${esc(x.label)} ↗</a>`).join('');
-    const gallery=$('#medcupGallery');
-    if(gallery){
-      gallery.innerHTML=(d.medcup.images||[]).map((key,i)=>`<figure class="medcup-shot shot-${i+1}"><img data-media-key="${esc(key)}" alt="MedCup 2024 — ${i<2?'Belgian Defence clinical simulation':i===2?'final stage':i===3?'final quiz':'second-place award'}" loading="lazy" decoding="async"></figure>`).join('');
-    }
-  }
-
-  const evidenceItems=(d.evidenceGroups||[]).flatMap(g=>(g.items||[]).map(item=>({...item,groupTitle:g.title})));
-  const recommendationItems=d.recommendations||[];
-  const evidenceById=Object.fromEntries([...evidenceItems,...recommendationItems].map(x=>[x.id,x]));
-
-  $('#evidenceGroups').innerHTML=(d.evidenceGroups||[]).map(g=>`
-    <section class="evidence-group reveal">
-      <div class="evidence-group-head"><div><h3>${esc(g.title)}</h3><p>${esc(g.description||'')}</p></div><span>${g.items.length}</span></div>
-      <div class="evidence-grid">
-        ${g.items.map(item=>`<button class="evidence-card" type="button" data-evidence="${item.id}">
-          <div class="evidence-preview"><img data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}" loading="lazy" decoding="async"></div>
-          <div class="evidence-copy"><span>${esc(item.year)} · ${esc(item.note)}</span><h4>${esc(item.title)}</h4><p>${esc(item.issuer)}</p><strong>${esc(item.redacted===false?'View certificate':(ui.credential?.open || 'View redacted copy'))} ↗</strong></div>
-        </button>`).join('')}
-      </div>
-    </section>`).join('');
-
-  $('#recommendationGrid').innerHTML=recommendationItems.map(item=>`
-    <button class="recommendation-card glass reveal" type="button" data-evidence="${item.id}">
-      <div class="recommendation-preview"><img data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}" loading="lazy" decoding="async"></div>
-      <div class="recommendation-copy"><span>${esc(item.year)} · Signed recommendation</span><h3>${esc(item.title)}</h3><p>${esc(item.issuer)}</p><p>${esc(item.detail)}</p><strong>View letter ↗</strong></div>
-    </button>`).join('');
-
-  const evidenceModal=$('#evidenceModal'), evidenceModalContent=$('#evidenceModalContent');
-  function mediaToObjectUrl(dataUrl){
-    if(!dataUrl || !dataUrl.startsWith('data:')) return dataUrl || '';
+  function dataUrlToBlobUrl(dataUrl){
     try{
       const [head,body]=dataUrl.split(',',2);
-      const mime=(head.match(/^data:([^;]+)/)||[])[1] || 'application/octet-stream';
-      const bytes=head.includes(';base64') ? Uint8Array.from(atob(body),ch=>ch.charCodeAt(0)) : new TextEncoder().encode(decodeURIComponent(body));
+      const mime=(head.match(/^data:([^;]+)/)||[])[1]||'application/octet-stream';
+      const bytes=head.includes(';base64') ? Uint8Array.from(atob(body),c=>c.charCodeAt(0)) : new TextEncoder().encode(decodeURIComponent(body));
       return URL.createObjectURL(new Blob([bytes],{type:mime}));
-    }catch(_){ return dataUrl; }
+    }catch(e){ console.error(e); return dataUrl; }
   }
-  function openEvidenceDocument(id){
-    const item=evidenceById[id]; if(!item) return;
-    const src=media[item.imageKey];
-    if(src){
-      const url=mediaToObjectUrl(src);
-      window.open(url,'_blank','noopener');
-      return;
-    }
-    openEvidence(id);
+  function openDataUrl(dataUrl){
+    const url=dataUrlToBlobUrl(dataUrl);
+    window.open(url,'_blank','noopener');
+    if(url.startsWith('blob:')) setTimeout(()=>URL.revokeObjectURL(url),120000);
   }
-
-  function openEvidence(id){
-    const item=evidenceById[id]; if(!item || !evidenceModal)return;
-    const isRecommendation=recommendationItems.some(r=>r.id===id);
-    evidenceModalContent.innerHTML=`
-      <span class="modal-kicker">${esc(item.year)} · ${esc(isRecommendation?'Recommendation letter':item.note||item.groupTitle||'Supporting evidence')}</span>
-      <h3 class="modal-title">${esc(item.title)}</h3>
-      <p class="modal-summary">${esc(item.issuer||'')}</p>
-      ${item.detail?`<p class="modal-summary">${esc(item.detail)}</p>`:''}
-      <img class="evidence-modal-image" data-media-key="${esc(item.imageKey)}" alt="${esc(item.title)}">
-      <div class="evidence-modal-note">${isRecommendation?'Signature redacted for privacy. Original unredacted copy available on reasonable request.':(item.redacted===false?'Official certificate shown in full.':'Redacted for privacy. Original unredacted copy available on reasonable request.')}</div>`;
-    applyDeferredMedia();
-    evidenceModal.showModal(); document.body.classList.add('modal-open');
-  }
-  $('#evidenceGroups').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidenceDocument(b.dataset.evidence)});
-  $('#recommendationGrid').addEventListener('click',e=>{const b=e.target.closest('[data-evidence]');if(b)openEvidenceDocument(b.dataset.evidence)});
-  $('#evidenceModalClose').addEventListener('click',()=>evidenceModal.close());
-  evidenceModal.addEventListener('click',e=>{if(e.target===evidenceModal)evidenceModal.close()});
-  evidenceModal.addEventListener('close',()=>document.body.classList.remove('modal-open'));
-
-  $('#teachingGrid').innerHTML=d.teaching.map(t=>`<article class="teaching-card reveal"><span class="role">${esc(t.role)}</span><h3>${esc(t.organization)}</h3><span class="date">${esc(t.date)}</span><p>${esc(t.detail)}</p>${t.credential?`<a class="doc-link" href="${t.credential}" target="_blank" rel="noopener">${esc(ui.buttons.supportingDoc)} ↗</a>`:''}</article>`).join('');
-  $('#languageList').innerHTML=d.languages.map(l=>`<div class="language-chip"><strong>${esc(l.language)}</strong><span>${esc(l.level)}</span></div>`).join('');
-
-  if($('#hobbyBlock') && d.hobbies?.length){
-    const hobby=d.hobbies[0];
-    $('#hobbyTitle').textContent=hobby.title;
-    $('#hobbySummary').textContent=hobby.summary;
-    const preview=(hobby.gallery||[]).slice(0,3);
-    $('#hobbyGallery').innerHTML=preview.map((item,i)=>`<button type="button" class="hobby-photo hobby-photo-${i+1}" data-hobby-gallery>
-      <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||hobby.title)}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
-    </button>`).join('')+((hobby.gallery||[]).length>3?`<button class="hobby-more" type="button" data-hobby-gallery>View all ${hobby.gallery.length} photos</button>`:'');
-    $('#hobbyGallery').querySelectorAll('[data-hobby-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(hobby.galleryTitle||hobby.title,hobby.gallery||[])));
+  const pdfMap={
+    'porto-cert':'assets/docs/IFMSA_Neonatology_Porto_2026_Redacted.pdf',
+    'tunis-cert':'assets/docs/IFMSA_Pulmonology_Tunis_2025_Redacted.pdf',
+    'catania-cert':'assets/docs/IFMSA_Cardiology_Catania_2024_Redacted.pdf',
+    'ahd-cert':'assets/docs/American_Hospital_Dubai_Cardiology_2024_Redacted.pdf',
+    'tdk-2025':'assets/docs/TDK_2025_Third_Prize_Redacted.pdf',
+    'tdk-2026':'assets/docs/TDK_2026_Third_Prize_Redacted.pdf',
+    'maa-completion':'assets/docs/Meta_Analysis_Academy_Completion_Redacted.pdf'
+  };
+  function openEvidence(item){
+    if(pdfMap[item.id]) { window.open(pdfMap[item.id],'_blank','noopener'); return; }
+    const src=imageSrc(item.imageKey);
+    if(src){ openDataUrl(src); return; }
   }
 
-  applyDeferredMedia();
+  function setText(id,value){ const el=$(id); if(el && value!=null) el.textContent=value; }
+  function setHtml(id,value){ const el=$(id); if(el && value!=null) el.innerHTML=value; }
 
-  if(d.lubdub){
-    if($('#lubdubPhoto') && imgs[d.lubdub.photoKey]) $('#lubdubPhoto').src = imgs[d.lubdub.photoKey];
-    if($('#lubdubLogo') && imgs[d.lubdub.logoKey]) $('#lubdubLogo').src = imgs[d.lubdub.logoKey];
-    if($('#lubdubTitle')) $('#lubdubTitle').textContent = d.lubdub.title;
-    if($('#lubdubRole')) $('#lubdubRole').textContent = d.lubdub.role;
-    if($('#lubdubSummary')) $('#lubdubSummary').textContent = d.lubdub.summary;
-    if($('#lubdubPoints')) $('#lubdubPoints').innerHTML = d.lubdub.points.map(x=>`<li>${esc(x)}</li>`).join('');
-    const lubLink=$('.lubdub-link'); if(lubLink && d.lubdub.instagram) lubLink.href=d.lubdub.instagram;
-    const lubLinkedIn=$('.lubdub-linkedin'); if(lubLinkedIn && d.lubdub.linkedin) lubLinkedIn.href=d.lubdub.linkedin;
-  }
+  // Language and static UI
+  document.documentElement.lang=lang;
+  $$('.lang-switch [data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  const sections=ui.sections||{};
+  const nav=ui.nav||{};
+  const navLabels={research:nav.research||'Research',clinical:nav.clinical||'Clinical',leadership:nav.leadership||'Leadership',highlights:nav.highlights||'Highlights',documents:copy.documents,about:nav.about||'About'};
+  Object.entries(navLabels).forEach(([k,v])=>$$(`[data-nav="${k}"]`).forEach(a=>a.textContent=v));
+  setText('#researchKicker',sections.research?.kicker||'01 · Research'); setText('#researchHeading',sections.research?.title||'Research.'); setText('#researchDesc',sections.research?.desc||'Projects, publications and presentations.');
+  setText('#clinicalKicker',sections.clinical?.kicker||'02 · Clinical'); setText('#clinicalHeading',sections.clinical?.title||'Clinical.'); setText('#clinicalDesc',sections.clinical?.desc||'International placements, electives and simulation training.');
+  setText('#leadershipKicker',sections.leadership?.kicker||'03 · Leadership'); setText('#leadershipHeading',sections.leadership?.title||'Leadership.'); setText('#leadershipDesc',sections.leadership?.desc||'Student leadership, teaching and practical medical education.');
+  setText('#highlightsKicker',sections.highlights?.kicker||'04 · Highlights'); setText('#highlightsHeading',sections.highlights?.title||'Highlights.'); setText('#highlightsDesc',sections.highlights?.desc||'Selected awards, competitions and academic milestones.');
+  setText('#documentsKicker',sections.evidence?.kicker||`05 · ${copy.documents}`); setText('#documentsHeading',sections.evidence?.title||`${copy.documents}.`); setText('#documentsDesc',copy.documentsDesc);
+  setText('#aboutKicker',sections.about?.kicker||'06 · About'); setText('#aboutHeading',sections.about?.title||'About.');
+  setText('#aboutP1',ui.about?.p1||'Graduated from the six-year English Medicine programme at the University of Debrecen in 2026.');
+  setText('#aboutP2',ui.about?.p2||'Interested in cardiovascular medicine, clinical research, imaging and translational science.');
+  setText('#privacyNote',ui.about?.privacy||'Documents are shown in redacted form for privacy. Original unredacted copies can be made available on reasonable request.');
+  setText('#hobbyLabel',copy.outside);
 
-  if(d.doe){
-    if($('#doeTitle')) $('#doeTitle').textContent = d.doe.title;
-    if($('#doeRole')) $('#doeRole').textContent = d.doe.role;
-    if($('#doeSummary')) $('#doeSummary').textContent = d.doe.summary;
-    if($('#doePoints')) $('#doePoints').innerHTML = d.doe.points.map(x=>`<li>${esc(x)}</li>`).join('');
-    if($('#doeHighlights')) $('#doeHighlights').innerHTML=(d.doe.highlights||[]).map(x=>`<article><span>${esc(x.title)}</span><p>${esc(x.detail)}</p></article>`).join('');
-    if($('#doeGallery')){
-      const allDoeGallery=d.doe.gallery||[];
-      $('#doeGallery').innerHTML=allDoeGallery.slice(0,4).map((item,i)=>`<button type="button" class="doe-gallery-tile doe-gallery-${i+1}" data-doe-gallery>
-        <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||'DOE activity')}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
-        <span>${esc(item.caption||'DOE activity')}</span>
-      </button>`).join('')+`
-        ${allDoeGallery.length>4?`<button type="button" class="doe-gallery-more" data-doe-gallery>View all ${allDoeGallery.length} photos</button>`:''}`;
-      $('#doeGallery').querySelectorAll('[data-doe-gallery]').forEach(b=>b.addEventListener('click',()=>openGallery(d.doe.galleryTitle||'DOE & IFMSA',allDoeGallery)));
-    }
-    const doeLink=$('.doe-link'); if(doeLink && d.doe.website) doeLink.href=d.doe.website;
-  }
+  // Hero
+  setText('#heroEyebrow',ui.hero?.eyebrow||'MD · Clinical researcher · International experience');
+  setHtml('#heroTitle',ui.hero?.title||'Clinical medicine,<br><em>built on evidence.</em>');
+  setText('#heroSummary',d.profile.summary);
+  setText('#exploreBtn',ui.hero?.explore||'Explore research');
+  setHtml('#cvBtn',`${esc(ui.hero?.publicCV||'Public CV')} ↗`);
+  $('#cvBtn').href=d.profile.cv;
+  setHtml('#heroLinks',`<a href="${esc(d.profile.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a><a href="${esc(d.profile.orcid)}" target="_blank" rel="noopener">ORCID ↗</a><a href="mailto:${esc(d.profile.email)}">Email ↗</a>`);
+  setText('#footerTagline',ui.footer?.tagline||d.profile.tagline);
 
-  if($('#photoHighlights') && d.photoHighlights?.length){
-    $('#photoHighlights').innerHTML=d.photoHighlights.map((group,gi)=>`
-      <article class="photo-highlight-group reveal">
-        <div class="photo-highlight-head">
-          <div><span class="mini-label">${esc(group.kicker||'Photo highlights')}</span><h3>${esc(group.title)}</h3></div>
-          <button type="button" class="photo-highlight-view" data-photo-highlight="${gi}">View all ${group.gallery.length}</button>
-        </div>
-        <div class="photo-highlight-grid">
-          ${group.gallery.slice(0,4).map((item,i)=>`<button type="button" class="photo-highlight-tile photo-highlight-${i+1}" data-photo-highlight="${gi}">
-            <img data-media-key="${esc(item.key)}" alt="${esc(item.caption||group.title)}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}">
-            <span>${esc(item.caption||group.title)}</span>
-          </button>`).join('')}
-        </div>
-      </article>`).join('');
-    $('#photoHighlights').querySelectorAll('[data-photo-highlight]').forEach(b=>b.addEventListener('click',()=>{
-      const g=d.photoHighlights[Number(b.dataset.photoHighlight)];
-      if(g) openGallery(g.title,g.gallery);
-    }));
-  }
+  // Metrics
+  setHtml('#metricStrip',d.metrics.map(m=>`<div class="metric"><strong>${esc(m.value)}${esc(m.suffix||'')}</strong><span>${esc(m.label)}</span></div>`).join(''));
 
-  const themeToggle=$('#themeToggle');
-  if(themeToggle && !themeToggle.dataset.themeBound){
-    themeToggle.dataset.themeBound='true';
-    themeToggle.addEventListener('click',()=>{
-      const t=document.documentElement.dataset.theme==='dark'?'light':'dark';
-      document.documentElement.dataset.theme=t;
-      localStorage.setItem('me-theme',t);
-      const meta=document.querySelector('meta[name="theme-color"]');
-      if(meta) meta.content=t==='light'?'#ffffff':'#090b10';
-    });
-  }
+  // Research
+  setHtml('#researchGrid',d.research.map(p=>{
+    const src=imageSrc(p.imageKey);
+    return `<article class="research-card ${p.featured?'featured':''}">${src?`<div class="card-photo"><img src="${src}" alt="${esc(p.title)}" loading="lazy"></div>`:''}<span class="meta">${esc(p.venue||p.domain)} · ${esc(p.year)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p><div class="tag-row">${(p.tags||[]).slice(0,4).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><div class="link-row">${(p.links||[]).map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}${p.credential?`<a href="${esc(p.credential)}" target="_blank" rel="noopener">${esc(copy.open)} ↗</a>`:''}</div></article>`;
+  }).join(''));
 
-  const menuToggle=$('#menuToggle'), mobileMenu=$('#mobileMenu');
-  menuToggle.addEventListener('click',()=>{const open=menuToggle.getAttribute('aria-expanded')==='true';menuToggle.setAttribute('aria-expanded',String(!open));mobileMenu.classList.toggle('open',!open)});
-  $$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{mobileMenu.classList.remove('open');menuToggle.setAttribute('aria-expanded','false')}));
+  // Clinical
+  setHtml('#clinicalGrid',d.clinical.map(c=>{
+    const gallery=(c.gallery||[]).filter(x=>imageSrc(x.key));
+    const src=gallery.length?imageSrc(gallery[0].key):'';
+    return `<article class="clinical-card">${src?`<div class="clinical-visual"><img src="${src}" alt="${esc(gallery[0].caption||c.specialty)}" loading="lazy" style="${gallery[0].position?`object-position:${esc(gallery[0].position)}`:''}"></div>`:''}<div class="clinical-body"><div class="clinical-topline"><span>${esc(c.date)}</span><span>${esc(c.duration)}</span></div><h3>${esc(c.specialty)}</h3><div class="institution">${esc(c.institution)} · ${esc(c.location)}</div><p>${esc(c.detail)}</p>${(c.courses||[]).length?`<ul class="course-list">${c.courses.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}<div class="clinical-actions">${gallery.length?`<button class="button secondary" type="button" data-clinical-gallery="${esc(c.id)}">${esc(copy.photos)} · ${gallery.length}</button>`:''}${c.credential?`<a class="button ghost" href="${esc(c.credential)}" target="_blank" rel="noopener">${esc(copy.open)} ↗</a>`:''}${c.evidenceId?`<button class="button ghost" type="button" data-evidence-id="${esc(c.evidenceId)}">${esc(copy.open)} ↗</button>`:''}</div></div></article>`;
+  }).join(''));
+  $$('[data-clinical-gallery]').forEach(b=>b.addEventListener('click',()=>{const c=d.clinical.find(x=>x.id===b.dataset.clinicalGallery); if(c) openGallery(c.galleryTitle||c.specialty,c.gallery||[]);}));
 
-  const searchDialog=$('#searchDialog'), searchInput=$('#searchInput'), searchResults=$('#searchResults');
-  const searchable=[
-    ...d.research.map(x=>({kind:ui.search.research,title:x.title,meta:`${x.domain} · ${x.status}`,text:[x.title,x.domain,x.summary,...(x.tags||[])].join(' '),action:()=>{searchDialog.close();openProject(x.id)}})),
-    ...d.clinical.map(x=>({kind:ui.search.clinical,title:`${x.specialty} · ${x.institution}`,meta:`${x.location} · ${x.date}`,text:[x.specialty,x.institution,x.location,x.detail,x.supervisor].join(' '),action:()=>{searchDialog.close();location.hash='clinical'}})),
-    ...d.awards.map(x=>({kind:ui.search.recognition,title:x.title,meta:x.year,text:[x.title,x.detail].join(' '),action:()=>{searchDialog.close();location.hash='awards'}})),
-    ...(d.medcup?[{kind:'MedCup',title:d.medcup.title,meta:d.medcup.result,text:[d.medcup.title,d.medcup.result,d.medcup.summary,d.medcup.detail].join(' '),action:()=>{searchDialog.close();location.hash='medcup'}}]:[]),
-    ...evidenceItems.map(x=>({kind:ui.search.credential,title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.note].join(' '),action:()=>{searchDialog.close();location.hash='credentials';setTimeout(()=>openEvidenceDocument(x.id),200)}})),
-    ...recommendationItems.map(x=>({kind:'Recommendation',title:x.title,meta:`${x.issuer} · ${x.year}`,text:[x.title,x.issuer,x.detail].join(' '),action:()=>{searchDialog.close();location.hash='recommendations';setTimeout(()=>openEvidenceDocument(x.id),200)}}))
-  ];
-  function openSearch(){searchDialog.showModal();setTimeout(()=>searchInput.focus(),30);renderSearch('')}
-  function renderSearch(q){
-    q=q.trim().toLowerCase();
-    const res=(q?searchable.filter(x=>x.text.toLowerCase().includes(q)):searchable.slice(0,8)).slice(0,12);
-    searchResults.innerHTML=res.map((x,i)=>`<button class="search-result" type="button" data-search-index="${i}"><strong>${esc(x.title)}</strong><span>${esc(x.kind)} · ${esc(x.meta)}</span></button>`).join('')||`<div class="search-empty">${esc(ui.search.empty)}</div>`;
-    $$('#searchResults [data-search-index]').forEach((b,i)=>b.addEventListener('click',()=>res[i].action()));
-  }
-  $('#searchToggle').addEventListener('click',openSearch); searchInput.addEventListener('input',()=>renderSearch(searchInput.value));
-  document.addEventListener('keydown',e=>{if(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();openSearch()}if(e.key==='Escape'&&searchDialog.open)searchDialog.close()});
+  // Leadership — Lub Dub
+  const lub=d.lubdub;
+  setHtml('#lubdubBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.lubdub?.kicker||'Founder-led education')}</span><h3>${esc(sections.lubdub?.title||'Lub Dub Club.')}</h3></div><p>${esc(sections.lubdub?.desc||'Cardiology education through simulation.')}</p></div><div class="feature-panel"><div class="feature-grid"><figure class="feature-photo"><img src="${imageSrc(lub.photoKey)||'assets/lubdub_activity.webp'}" alt="Lub Dub Club cardiology simulation" loading="lazy"></figure><div class="feature-copy"><img class="logo-small" src="${imageSrc(lub.logoKey)||'assets/lubdub_logo.webp'}" alt="Lub Dub Club logo"><span class="meta">${esc(lub.role)}</span><h3>${esc(lub.title)}</h3><p>${esc(lub.summary)}</p><ul>${(lub.points||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="link-row"><a href="${esc(lub.instagram)}" target="_blank" rel="noopener">Instagram ↗</a><a href="${esc(lub.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a></div></div></div></div>`);
 
-  function bindReveal(){
-    if(!('IntersectionObserver' in window)){
-      $$('.reveal:not(.visible)').forEach(el=>el.classList.add('visible'));
-      return;
-    }
-    const io=new IntersectionObserver((entries,obs)=>entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}}),{threshold:.08,rootMargin:'0px 0px -40px'});
-    $$('.reveal:not(.visible)').forEach(el=>io.observe(el));
-  }
-  bindReveal();
+  // Leadership — DOE
+  const doe=d.doe;
+  const doeGallery=(doe.gallery||[]).filter(x=>imageSrc(x.key));
+  setHtml('#doeBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.doe?.kicker||'Student leadership')}</span><h3>${esc(sections.doe?.title||'DOE & IFMSA.')}</h3></div><p>${esc(sections.doe?.desc||'Leadership, outreach and exchange.')}</p></div><div class="doe-layout"><div class="doe-copy"><img src="assets/doe_logo.png" alt="DOE logo"><span class="meta">${esc(doe.role)}</span><h3>${esc(doe.title)}</h3><p>${esc(doe.summary)}</p><ul>${(doe.points||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="link-row"><a href="${esc(doe.website)}" target="_blank" rel="noopener">DOE ↗</a></div></div><div><div class="photo-grid">${doeGallery.map(x=>figureTile(x,doe.galleryTitle)).join('')}</div></div></div>`);
+  $$('#doeBlock .photo-tile').forEach(b=>b.addEventListener('click',()=>openGallery(doe.galleryTitle||'DOE & IFMSA',doeGallery)));
 
-  const countObs=new IntersectionObserver((entries,obs)=>entries.forEach(en=>{if(!en.isIntersecting)return;const el=en.target,target=Number(el.dataset.count);if(!Number.isFinite(target))return;const start=performance.now(),dur=900;const step=now=>{const p=Math.min(1,(now-start)/dur);el.textContent=Math.round(target*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step);obs.unobserve(el)}),{threshold:.35});
-  $$('[data-count]').forEach(x=>countObs.observe(x));
+  // Teaching
+  setHtml('#teachingBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.teaching?.kicker||'Education')}</span><h3>${esc(sections.teaching?.title||'Teaching.')}</h3></div><p>${esc(sections.teaching?.desc||'Research methods and pathology.')}</p></div><div class="teaching-grid">${d.teaching.map(t=>`<article class="teaching-card"><span class="meta">${esc(t.date)}</span><h4>${esc(t.role)}</h4><strong>${esc(t.organization)}</strong><p>${esc(t.detail)}</p></article>`).join('')}</div>`);
 
-  const glow=$('.cursor-glow');
-  window.addEventListener('pointermove',e=>{if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'}},{passive:true});
+  // Highlights — MedCup
+  const med=d.medcup; const medItems=(med.images||[]).map((key,i)=>({key,caption:['Belgian Defence medical simulation','Belgian Defence medical simulation','Final clinical stage','Final quiz','2nd place · MedCup 2024'][i]||'MedCup 2024'})).filter(x=>imageSrc(x.key));
+  setHtml('#medcupBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.medcup?.kicker||'Featured')}</span><h3>${esc(sections.medcup?.title||'MedCup 2024.')}</h3></div><p>${esc(sections.medcup?.desc||'Second place in Brussels.')}</p></div><div class="medcup-panel"><div class="medcup-header"><div><span class="meta">${esc(med.result)}</span><h3>${esc(med.title)}</h3><p>${esc(med.summary)}</p><p>${esc(med.detail)}</p></div><div class="medcup-actions"><button class="button primary" type="button" id="medcupPdf">${esc(copy.articlePdf)}</button><a class="button secondary" href="${esc(med.source)}" target="_blank" rel="noopener">University article ↗</a><a class="button ghost" href="${esc(med.youtubeAftermovie)}" target="_blank" rel="noopener">Aftermovie ↗</a><a class="button ghost" href="${esc(med.youtubeLivestream)}" target="_blank" rel="noopener">Livestream replay ↗</a></div></div><div class="photo-grid">${medItems.map(x=>figureTile(x,med.title)).join('')}</div><div class="link-row" style="margin-top:18px">${(med.press||[]).map(p=>`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.label)} ↗</a>`).join('')}</div></div>`);
+  $('#medcupPdf')?.addEventListener('click',()=>{if(DOCS.medcupArticle)openDataUrl(DOCS.medcupArticle);});
+  $$('#medcupBlock .photo-tile').forEach(b=>b.addEventListener('click',()=>openGallery(med.title,medItems)));
+
+  // Highlights — Academic photography (includes user-supplied final batch)
+  const academicItems=[
+    {key:'boneSpectPresentation',caption:'Bone SPECT/CT research presentation'},
+    {key:'tdkAwardPortrait',caption:'TDK research award'},
+    {key:'mdThesisPortrait',caption:'MD thesis · University of Debrecen'},
+    {key:'mdThesisBook',caption:'MD thesis · Debrecen 2026'},
+    {key:'mdThesisOutdoor',caption:'MD thesis milestone'},
+    {key:'unidebStudentTalk',caption:'Student orientation & guidance presentation'}
+  ].filter(x=>imageSrc(x.key));
+  setHtml('#academicPhotosBlock',`<div class="subhead"><div><span class="mini-label">${esc(copy.academic)}</span><h3>${esc(copy.academic)}.</h3></div><p></p></div><div class="academic-photo-grid">${academicItems.map(x=>figureTile(x,copy.academic)).join('')}</div>`);
+  $$('#academicPhotosBlock .photo-tile').forEach(b=>b.addEventListener('click',()=>openGallery(copy.academic,academicItems)));
+
+  // Awards
+  setHtml('#awardsBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.awards?.kicker||'Recognition')}</span><h3>${esc(sections.awards?.title||'Awards & recognition.')}</h3></div><p>${esc(sections.awards?.desc||'Selected academic and scientific recognition.')}</p></div><div class="award-list">${d.awards.map(a=>`<article class="award-item"><span class="meta">${esc(a.year)}</span><h4>${esc(a.title)}</h4><p>${esc(a.detail)}</p>${a.source?`<a class="award-link" href="${esc(a.source)}" target="_blank" rel="noopener">Source ↗</a>`:'<span></span>'}</article>`).join('')}</div>`);
+
+  // Documents
+  const evidenceIndex={}; (d.evidenceGroups||[]).forEach(g=>(g.items||[]).forEach(i=>evidenceIndex[i.id]=i));
+  setHtml('#evidenceGroups',(d.evidenceGroups||[]).map(g=>`<section class="evidence-group"><h3>${esc(g.title)}</h3><p>${esc(g.description)}</p><div class="document-grid">${(g.items||[]).map(item=>{const src=imageSrc(item.imageKey);return `<button type="button" class="document-card" data-evidence="${esc(item.id)}">${src?`<div class="document-preview"><img src="${src}" alt="${esc(item.title)}" loading="lazy"></div>`:''}<div class="document-body"><span class="meta">${esc(item.year||'')} · ${esc(item.issuer||'')}</span><h4>${esc(item.title)}</h4><p>${esc(item.note||'')}</p><span class="open-label">${esc(copy.open)} ↗</span></div></button>`}).join('')}</div></section>`).join(''));
+  $$('[data-evidence]').forEach(b=>b.addEventListener('click',()=>{const item=evidenceIndex[b.dataset.evidence]; if(item)openEvidence(item);}));
+  $$('[data-evidence-id]').forEach(b=>b.addEventListener('click',()=>{const item=evidenceIndex[b.dataset.evidenceId]; if(item)openEvidence(item);}));
+
+  // Recommendations are intentionally separate as requested.
+  setHtml('#recommendationsBlock',`<div class="subhead"><div><span class="mini-label">References</span><h3>${esc(copy.recommendations)}.</h3></div><p></p></div><div class="recommendation-grid">${(d.recommendations||[]).map(r=>{const src=imageSrc(r.imageKey);return `<button type="button" class="document-card" data-recommendation="${esc(r.id)}">${src?`<div class="document-preview"><img src="${src}" alt="${esc(r.title)}" loading="lazy"></div>`:''}<div class="document-body"><span class="meta">${esc(r.year)} · ${esc(r.issuer)}</span><h4>${esc(r.title)}</h4><p>${esc(r.detail)}</p><span class="open-label">${esc(copy.open)} ↗</span></div></button>`}).join('')}</div>`);
+  $$('[data-recommendation]').forEach(b=>b.addEventListener('click',()=>{const r=d.recommendations.find(x=>x.id===b.dataset.recommendation); if(r)openEvidence(r);}));
+
+  // About / languages / equestrian
+  setHtml('#languageList',(d.languages||[]).map(l=>`<div class="language-chip"><strong>${esc(l.language)}</strong><span>${esc(l.level)}</span></div>`).join(''));
+  setHtml('#contactLinks',`<a href="mailto:${esc(d.profile.email)}">${esc(d.profile.email)}</a><a href="${esc(d.profile.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a><a href="${esc(d.profile.orcid)}" target="_blank" rel="noopener">ORCID ↗</a>`);
+  const hobby=d.hobbies?.[0];
+  if(hobby){setText('#hobbyTitle',hobby.title);setText('#hobbySummary',hobby.summary);const items=(hobby.gallery||[]).filter(x=>imageSrc(x.key));setHtml('#hobbyGallery',items.map(x=>figureTile(x,hobby.title)).join(''));$$('#hobbyGallery .photo-tile').forEach(b=>b.addEventListener('click',()=>openGallery(hobby.galleryTitle||hobby.title,items)));}
+
+  // Dialog
+  $('#galleryClose')?.addEventListener('click',()=>$('#galleryDialog').close());
+  $('#galleryDialog')?.addEventListener('click',e=>{if(e.target===$('#galleryDialog'))$('#galleryDialog').close();});
+
+  // Language switching: preserve current section/hash; if no hash, stay at top.
+  $$('.lang-switch [data-lang]').forEach(b=>b.addEventListener('click',()=>{
+    const next=b.dataset.lang; if(!supported.includes(next)||next===lang)return;
+    localStorage.setItem('me-lang',next); const u=new URL(location.href); u.searchParams.set('lang',next); location.href=u.toString();
+  }));
+
+  // Theme
+  const savedTheme=localStorage.getItem('me-theme'); if(savedTheme==='light'||savedTheme==='dark')document.documentElement.dataset.theme=savedTheme;
+  $('#themeToggle')?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=next;localStorage.setItem('me-theme',next);});
+
+  // Mobile nav
+  $('#menuToggle')?.addEventListener('click',()=>{const m=$('#mobileMenu');const open=m.classList.toggle('open');$('#menuToggle').setAttribute('aria-expanded',String(open));});
+  $$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{$('#mobileMenu').classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false');}));
+
+  // Fail-safe diagnostics: make missing-media problems visible in console without breaking the page.
+  const requestedMedia=new Set();
+  d.clinical.forEach(c=>(c.gallery||[]).forEach(x=>requestedMedia.add(x.key)));
+  (d.doe?.gallery||[]).forEach(x=>requestedMedia.add(x.key));
+  (d.medcup?.images||[]).forEach(x=>requestedMedia.add(x));
+  (d.hobbies?.[0]?.gallery||[]).forEach(x=>requestedMedia.add(x.key));
+  [...requestedMedia].filter(k=>!imageSrc(k)).forEach(k=>console.warn('Portfolio media missing:',k));
 })();
