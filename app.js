@@ -5,7 +5,6 @@
   const I18N = window.SITE_I18N || (typeof SITE_I18N !== 'undefined' ? SITE_I18N : {en:{}});
   const IMAGES = window.SITE_IMAGES || (typeof SITE_IMAGES !== 'undefined' ? SITE_IMAGES : {});
   const MEDIA = window.SITE_MEDIA || {};
-  const DOCS = window.SITE_DOCS || {};
   const $ = (s, p=document) => p.querySelector(s);
   const $$ = (s, p=document) => Array.from(p.querySelectorAll(s));
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -143,7 +142,11 @@
 
   // Leadership — DOE
   const doe=d.doe;
-  const doeGallery=(doe.gallery||[]).filter(x=>imageSrc(x.key));
+  const doeGallery=[
+    ...(doe.gallery||[]),
+    {key:'pedsTeam',caption:'Paediatric & community outreach team',position:'50% 43%'},
+    {key:'doeCommunityGroup',caption:'Community health-awareness outreach',position:'50% 50%'}
+  ].filter((x,i,a)=>imageSrc(x.key) && a.findIndex(y=>y.key===x.key)===i);
   setHtml('#doeBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.doe?.kicker||'Student leadership')}</span><h3>${esc(sections.doe?.title||'DOE & IFMSA.')}</h3></div><p>${esc(sections.doe?.desc||'Leadership, outreach and exchange.')}</p></div><div class="doe-layout"><div class="doe-copy"><img src="assets/doe_logo.png" alt="DOE logo"><span class="meta">${esc(doe.role)}</span><h3>${esc(doe.title)}</h3><p>${esc(doe.summary)}</p><ul>${(doe.points||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="link-row"><a href="${esc(doe.website)}" target="_blank" rel="noopener">DOE ↗</a></div></div><div><div class="photo-grid">${doeGallery.map(x=>figureTile(x,doe.galleryTitle)).join('')}</div></div></div>`);
   $$('#doeBlock .photo-tile').forEach(b=>b.addEventListener('click',()=>openGallery(doe.galleryTitle||'DOE & IFMSA',doeGallery)));
 
@@ -152,8 +155,7 @@
 
   // Highlights — MedCup
   const med=d.medcup; const medItems=(med.images||[]).map((key,i)=>({key,caption:['Belgian Defence medical simulation','Belgian Defence medical simulation','Final clinical stage','Final quiz','2nd place · MedCup 2024'][i]||'MedCup 2024'})).filter(x=>imageSrc(x.key));
-  setHtml('#medcupBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.medcup?.kicker||'Featured')}</span><h3>${esc(sections.medcup?.title||'MedCup 2024.')}</h3></div><p>${esc(sections.medcup?.desc||'Second place in Brussels.')}</p></div><div class="medcup-panel"><div class="medcup-header"><div><span class="meta">${esc(med.result)}</span><h3>${esc(med.title)}</h3><p>${esc(med.summary)}</p><p>${esc(med.detail)}</p></div><div class="medcup-actions"><button class="button primary" type="button" id="medcupPdf">${esc(copy.articlePdf)}</button><a class="button secondary" href="${esc(med.source)}" target="_blank" rel="noopener">University article ↗</a><a class="button ghost" href="${esc(med.youtubeAftermovie)}" target="_blank" rel="noopener">Aftermovie ↗</a><a class="button ghost" href="${esc(med.youtubeLivestream)}" target="_blank" rel="noopener">Livestream replay ↗</a></div></div><div class="photo-grid">${medItems.map(x=>figureTile(x,med.title)).join('')}</div><div class="link-row" style="margin-top:18px">${(med.press||[]).map(p=>`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.label)} ↗</a>`).join('')}</div></div>`);
-  $('#medcupPdf')?.addEventListener('click',()=>{if(DOCS.medcupArticle)openDataUrl(DOCS.medcupArticle);});
+  setHtml('#medcupBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.medcup?.kicker||'Featured')}</span><h3>${esc(sections.medcup?.title||'MedCup 2024.')}</h3></div><p>${esc(sections.medcup?.desc||'Second place in Brussels.')}</p></div><div class="medcup-panel"><div class="medcup-header"><div><span class="meta">${esc(med.result)}</span><h3>${esc(med.title)}</h3><p>${esc(med.summary)}</p><p>${esc(med.detail)}</p></div><div class="medcup-actions"><a class="button primary" href="assets/docs/MedCup_2024_Article.pdf" target="_blank" rel="noopener">${esc(copy.articlePdf)} ↗</a><a class="button secondary" href="${esc(med.source)}" target="_blank" rel="noopener">University article ↗</a><a class="button ghost" href="${esc(med.youtubeAftermovie)}" target="_blank" rel="noopener">Aftermovie ↗</a><a class="button ghost" href="${esc(med.youtubeLivestream)}" target="_blank" rel="noopener">Livestream replay ↗</a></div></div><div class="photo-grid">${medItems.map(x=>figureTile(x,med.title)).join('')}</div><div class="link-row" style="margin-top:18px">${(med.press||[]).map(p=>`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.label)} ↗</a>`).join('')}</div></div>`);
   $$('#medcupBlock .photo-tile').forEach(b=>b.addEventListener('click',()=>openGallery(med.title,medItems)));
 
   // Highlights — Academic photography (includes user-supplied final batch)
