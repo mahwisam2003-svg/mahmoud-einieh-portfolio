@@ -538,12 +538,12 @@ const SITE_DATA = {
     ],
     galleryTitle: "DOE & IFMSA in practice",
     gallery: [
-      { key:"loisTeam2025", caption:"LOIS team · 2025–2026", position:"50% 48%" },
-      { key:"doePediatric", caption:"Paediatric & community outreach", position:"52% 42%" },
-      { key:"doePaTH", caption:"PaTH capacity-building training", position:"50% 46%" },
-      { key:"doeAwareness", caption:"Community prevention & awareness activity", position:"50% 38%" },
-      { key:"doeSurgeryClub", caption:"DOE / Surgery Club collaboration", position:"50% 45%" },
-      { key:"doeStudentTalk", caption:"International-student orientation & guidance", position:"50% 40%" }
+      { key:"loisTeam2025", caption:"LOIS leadership team, 2025–2026", position:"50% 48%" },
+      { key:"doePediatric", caption:"Paediatric community outreach", position:"52% 42%" },
+      { key:"doePaTH", caption:"PaTH capacity-building workshop", position:"50% 46%" },
+      { key:"doeAwareness", caption:"Community health awareness activity", position:"50% 38%" },
+      { key:"doeSurgeryClub", caption:"DOE and Surgery Club collaboration", position:"50% 45%" },
+      { key:"doeStudentTalk", caption:"International student orientation", position:"50% 40%" }
     ],
     website: "https://www.doedebrecen.hu/index.php"
   },
@@ -582,10 +582,10 @@ const SITE_DATA = {
       kicker: "Outside medicine",
       title: "Equestrian & show jumping",
       gallery: [
-        { key:"horseAward", caption:"Competition day", position:"50% 36%" },
-        { key:"horseJumpRed", caption:"Show-jumping session", position:"50% 44%" },
-        { key:"horseCompetition", caption:"Indoor show-jumping competition", position:"50% 42%" },
-        { key:"horseJumpLongines", caption:"Show-jumping competition", position:"50% 46%" }
+        { key:"horseAward", caption:"Equestrian award ceremony", position:"50% 36%" },
+        { key:"horseJumpRed", caption:"Show-jumping round", position:"50% 44%" },
+        { key:"horseCompetition", caption:"Indoor show-jumping round", position:"50% 42%" },
+        { key:"horseJumpLongines", caption:"Longines show-jumping round", position:"50% 46%" }
       ]
     }
   ],
