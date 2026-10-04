@@ -51,7 +51,7 @@
   function figureTile(item, groupTitle){
     const src=imageSrc(item.key);
     if(!src) return '';
-    return `<button type="button" class="photo-tile" data-gallery-key="${esc(item.key)}" aria-label="${esc(item.caption||groupTitle)}"><img src="${src}" alt="${esc(item.caption||groupTitle)}" loading="lazy" decoding="async" style="${item.position?`object-position:${esc(item.position)}`:''}"><span>${esc(item.caption||groupTitle)}</span></button>`;
+    return `<button type="button" class="photo-tile" data-gallery-key="${esc(item.key)}" aria-label="${esc(item.caption||groupTitle)}"><img src="${src}" alt="${esc(item.caption||groupTitle)}" loading="lazy" decoding="async" style="${item.fit?`object-fit:${esc(item.fit)};`:''}${item.position?`object-position:${esc(item.position)};`:''}"><span>${esc(item.caption||groupTitle)}</span></button>`;
   }
   function openGallery(title, items){
     const valid=(items||[]).filter(x=>imageSrc(x.key));
@@ -144,8 +144,8 @@
   const doe=d.doe;
   const doeGallery=[
     ...(doe.gallery||[]),
-    {key:'pedsTeam',caption:'Paediatric & community outreach team',position:'50% 43%'},
-    {key:'doeCommunityGroup',caption:'Community health-awareness outreach',position:'50% 50%'}
+    {key:'pedsTeam',caption:'Paediatric outreach team',position:'50% 43%',fit:'contain'},
+    {key:'doeCommunityGroup',caption:'Community health outreach group',position:'50% 50%',fit:'contain'}
   ].filter((x,i,a)=>imageSrc(x.key) && a.findIndex(y=>y.key===x.key)===i);
   setHtml('#doeBlock',`<div class="subhead"><div><span class="mini-label">${esc(sections.doe?.kicker||'Student leadership')}</span><h3>${esc(sections.doe?.title||'DOE & IFMSA.')}</h3></div><p>${esc(sections.doe?.desc||'Leadership, outreach and exchange.')}</p></div><div class="doe-layout"><div class="doe-copy"><img src="assets/doe_logo.png" alt="DOE logo"><span class="meta">${esc(doe.role)}</span><h3>${esc(doe.title)}</h3><p>${esc(doe.summary)}</p><ul>${(doe.points||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="link-row"><a href="${esc(doe.website)}" target="_blank" rel="noopener">DOE ↗</a></div></div><div><div class="photo-grid">${doeGallery.map(x=>figureTile(x,doe.galleryTitle)).join('')}</div></div></div>`);
   $$('#doeBlock .photo-tile').forEach(b=>b.addEventListener('click',()=>openGallery(doe.galleryTitle||'DOE & IFMSA',doeGallery)));
@@ -160,12 +160,12 @@
 
   // Highlights — Academic photography (includes user-supplied final batch)
   const academicItems=[
-    {key:'boneSpectPresentation',caption:'Bone SPECT/CT research presentation'},
-    {key:'tdkAwardPortrait',caption:'TDK research award'},
-    {key:'mdThesisPortrait',caption:'MD thesis · University of Debrecen'},
-    {key:'mdThesisBook',caption:'MD thesis · Debrecen 2026'},
-    {key:'mdThesisOutdoor',caption:'MD thesis milestone'},
-    {key:'unidebStudentTalk',caption:'Student orientation & guidance presentation'}
+    {key:'boneSpectPresentation',caption:'Bone SPECT/CT research presentation',fit:'contain'},
+    {key:'tdkAwardPortrait',caption:'Third prize at the TDK conference',fit:'contain'},
+    {key:'mdThesisPortrait',caption:'MD thesis milestone',fit:'contain'},
+    {key:'mdThesisBook',caption:'MD thesis, University of Debrecen',fit:'contain'},
+    {key:'mdThesisOutdoor',caption:'MD thesis graduation portrait',fit:'contain'},
+    {key:'unidebStudentTalk',caption:'Student orientation talk at the University of Debrecen',fit:'contain'}
   ].filter(x=>imageSrc(x.key));
   setHtml('#academicPhotosBlock',`<div class="subhead"><div><span class="mini-label">${esc(copy.academic)}</span><h3>${esc(copy.academic)}.</h3></div><p></p></div><div class="academic-photo-grid">${academicItems.map(x=>figureTile(x,copy.academic)).join('')}</div>`);
   $$('#academicPhotosBlock .photo-tile').forEach(b=>b.addEventListener('click',()=>openGallery(copy.academic,academicItems)));
