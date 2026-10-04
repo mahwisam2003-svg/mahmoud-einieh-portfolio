@@ -51,7 +51,7 @@
   function figureTile(item, groupTitle){
     const src=imageSrc(item.key);
     if(!src) return '';
-    return `<button type="button" class="photo-tile" data-gallery-key="${esc(item.key)}" aria-label="${esc(item.caption||groupTitle)}"><img src="${src}" alt="${esc(item.caption||groupTitle)}" loading="lazy" decoding="async" style="${item.fit?`object-fit:${esc(item.fit)};`:''}${item.position?`object-position:${esc(item.position)};`:''}"><span>${esc(item.caption||groupTitle)}</span></button>`;
+    return `<button type="button" class="photo-tile" data-gallery-key="${esc(item.key)}" aria-label="${esc(item.caption||groupTitle)}"><span class="photo-tile-image"><img class="photo-tile-backdrop" src="${src}" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="photo-tile-main" src="${src}" alt="${esc(item.caption||groupTitle)}" loading="lazy" decoding="async" style="object-fit:${esc(item.fit||'contain')};${item.position?`object-position:${esc(item.position)};`:''}"></span><span class="photo-tile-caption">${esc(item.caption||groupTitle)}</span></button>`;
   }
   function openGallery(title, items){
     const valid=(items||[]).filter(x=>imageSrc(x.key));
