@@ -56,7 +56,7 @@
   function openGallery(title, items){
     const valid=(items||[]).filter(x=>imageSrc(x.key));
     if(!valid.length) return;
-    $('#galleryContent').innerHTML=`<span class="kicker">${esc(copy.gallery)}</span><h3>${esc(title)}</h3><div class="dialog-grid">${valid.map(x=>`<figure><img src="${imageSrc(x.key)}" alt="${esc(x.caption||title)}" style="${x.position?`object-position:${esc(x.position)}`:''}"><figcaption>${esc(x.caption||title)}</figcaption></figure>`).join('')}</div>`;
+    $('#galleryContent').innerHTML=`<span class="kicker">${esc(copy.gallery)}</span><h3>${esc(title)}</h3><div class="dialog-grid">${valid.map(x=>`<figure><span class="dialog-image"><img class="dialog-backdrop" src="${imageSrc(x.key)}" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="dialog-main" src="${imageSrc(x.key)}" alt="${esc(x.caption||title)}" loading="lazy" decoding="async" style="object-fit:${esc(x.fit||'contain')};${x.position?`object-position:${esc(x.position)};`:''}"></span><figcaption>${esc(x.caption||title)}</figcaption></figure>`).join('')}</div>`;
     $('#galleryDialog').showModal();
   }
 
